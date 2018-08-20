@@ -1,26 +1,26 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { RestProvider } from '../../providers/rest/rest';
-
+import { AddprojectPage } from '../addproject/addproject';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-	users: any;
-
-	getUsers() {
-	this.restProvider.getUsers()
-	.then(data => {
-	this.users = data;
-	console.log(this.users);
-	});
-	}
-
-	
-  constructor(public navCtrl: NavController, public restProvider: RestProvider) {} {
-	this.getUsers();
+	projects: any;
+  constructor(public navCtrl: NavController, public restProvider: RestProvider) {
+	this.getProjects();
+  }
+  getProjects() {
+    this.restProvider.getProjects()
+    .then(data => {
+      this.projects = data;
+      console.log(this.projects);
+    });
   }
 
+  goAnOtherPage(params){
+  	this.navCtrl.push(AddprojectPage,{project:params});
+  }
 }

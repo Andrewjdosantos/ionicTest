@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
+import { AddprojectPage } from '../pages/addproject/addproject';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -21,6 +22,7 @@ import { RestProvider } from '../providers/rest/rest';
     AboutPage,
     ContactPage,
     HomePage,
+    AddprojectPage,
     TabsPage
   ],
   imports: [
@@ -35,7 +37,8 @@ import { RestProvider } from '../providers/rest/rest';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    AddprojectPage
   ],
   providers: [
     StatusBar,

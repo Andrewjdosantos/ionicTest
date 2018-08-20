@@ -16,13 +16,23 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class RestProvider {
-  apiUrl = 'https://jsonplaceholder.typicode.com';
+  apiUrl = 'http://127.0.0.1:8000/api';
   constructor(public http: HttpClient) {
     console.log('Hello PeopleServiceProvider Provider');
   }
-	getUsers() {
+	getProjects() {
 	return new Promise(resolve => {
-	this.http.get(this.apiUrl+’/users’).subscribe(data => {
+	this.http.get(this.apiUrl+'/ProjectView').subscribe(data => {
+	resolve(data);}, 
+	err => {
+	console.log(err);
+	});
+	});
+	}
+
+	getDataLine(filter) {
+	return new Promise(resolve => {
+	this.http.get(this.apiUrl+'/list/?project='+filter).subscribe(data => {
 	resolve(data);}, 
 	err => {
 	console.log(err);

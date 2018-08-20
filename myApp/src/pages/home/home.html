@@ -6,9 +6,10 @@
 
 <ion-content>
   <ion-list inset>
-    <ion-item *ngFor="let user of users">
-      <h2>{{user.name}}</h2>
-      <p>{{user.email}}</p>
+    <ion-item *ngFor="let project of projects">
+      <h2>{{project.ProjectName}}</h2>
+      <button (click)="goAnOtherPage(project.id)" ion-button>Create New Project</button>
     </ion-item>
   </ion-list>
+  <button (click)="goAnOtherPage()" ion-button>Create New Project</button>
 </ion-content>
