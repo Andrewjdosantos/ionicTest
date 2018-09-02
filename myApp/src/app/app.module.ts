@@ -9,6 +9,10 @@ import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { AddprojectPage } from '../pages/addproject/addproject';
+import { AddtestpitPage } from '../pages/addtestpit/addtestpit';
+import { ListTestPitsPage } from '../pages/list-test-pits/list-test-pits';
+import { CreateHorizonPage } from '../pages/create-horizon/create-horizon';
+import { ListhorizonsPage } from '../pages/listhorizons/listhorizons';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -23,7 +27,11 @@ import { RestProvider } from '../providers/rest/rest';
     ContactPage,
     HomePage,
     AddprojectPage,
-    TabsPage
+    TabsPage,
+    AddtestpitPage,
+    ListTestPitsPage,
+    CreateHorizonPage,
+    ListhorizonsPage
   ],
   imports: [
     BrowserModule,
@@ -38,7 +46,11 @@ import { RestProvider } from '../providers/rest/rest';
     ContactPage,
     HomePage,
     TabsPage,
-    AddprojectPage
+    AddprojectPage,
+    AddtestpitPage,
+    ListTestPitsPage,
+    CreateHorizonPage,
+    ListhorizonsPage
   ],
   providers: [
     StatusBar,

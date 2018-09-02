@@ -1,0 +1,39 @@
+<!--
+  Generated template for the AddtestpitPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Addtestpit</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<!-- Add origin to horizon descriptor -->
+<ion-content padding>
+<form [formGroup]="todo" (ngSubmit)="postDataLine()">
+    <ion-item>
+      <ion-label>Pit Depth</ion-label>
+      <ion-input value={{PitDepth}} type="number" formControlName="PitDepth"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Horizon</ion-label>
+      <ion-input value={{Horizon}} type="text" formControlName="Horizon"></ion-input>
+    </ion-item>
+     <ion-item>
+      <ion-label>Profiler</ion-label>
+      <ion-input value={{Profiler}} type="text" formControlName="Profiler"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-icon item-left name="pin"></ion-icon>
+      <ion-label></ion-label>
+      <ion-select  [(ngModel)]="Contact" formControlName="Contact">
+       <ion-option  *ngFor="let val of ContactOptions"  [value]="val.id"  selected="val.id == Contact">{{val.ContactName}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <button ion-button type="submit" [disabled]="!todo.valid">Submit</button>
+  </form>
+</ion-content>

@@ -7,31 +7,33 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>it is this project: {{project}}</ion-title>
+    <ion-title>it is this project:</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <form [formGroup]="todo" (ngSubmit)="logForm()">
+  
+
+<ion-content padding>
+  <form [formGroup]="todo" (ngSubmit)="postNewProject()">
     <ion-item>
-      <ion-label>Todo</ion-label>
-      <ion-input type="text" formControlName="title"></ion-input>
+      <ion-label>ProjectName</ion-label>
+      <ion-input type="string" formControlName="ProjectName"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label>Description</ion-label>
-      <ion-textarea formControlName="description"></ion-textarea>
+      <ion-label>Project Description</ion-label>
+      <ion-input type="string" formControlName="ProjectDesc"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-icon item-left name="pin"></ion-icon>
-      <ion-label></ion-label>
-      <ion-select formControlName="project">
-       <ion-option *ngFor="let val of dataline">{{val.TestPit}}</ion-option>
-      </ion-select>
+      <ion-label>Client Name</ion-label>
+      <ion-input type="string" formControlName="Client"></ion-input>
     </ion-item>
     <button ion-button type="submit" [disabled]="!todo.valid">Submit</button>
   </form>
 </ion-content>
+
+
 
 

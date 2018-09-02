@@ -1,0 +1,21 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>it is this project: {{Project}} and this Test Pit: {{TestPit}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  
+
+  <ion-list inset>
+    <ion-item *ngFor="let horizon of dataline">
+      <h2>Horizon:{{horizon.Horizon}}</h2>
+      <button (click)="goAnOtherPage(horizon)" ion-button>Edit Horizon</button>
+    </ion-item>
+  </ion-list>
+  <button (click)="goAnOtherPage(TestPitObject)" ion-button>Create Horizon</button>
+
+</ion-content>

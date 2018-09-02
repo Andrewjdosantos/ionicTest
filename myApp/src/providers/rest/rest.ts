@@ -30,14 +30,81 @@ export class RestProvider {
 	});
 	}
 
-	getDataLine(filter) {
+	getTestPits(filter) {
 	return new Promise(resolve => {
-	this.http.get(this.apiUrl+'/list/?project='+filter).subscribe(data => {
+	this.http.get(this.apiUrl+'/TestPitView?project='+String(filter)).subscribe(data => {
 	resolve(data);}, 
 	err => {
 	console.log(err);
 	});
 	});
 	}
+
+
+	getDataSelect(FieldName,){
+	return new Promise(resolve => {
+	this.http.get(this.apiUrl+'/'+FieldName+'View').subscribe(data => {
+	resolve(data);}, 
+	err => {
+	console.log(err);
+	});
+	});
+	}
+
+	postDataSelect(FieldName,body) {
+	return new Promise(resolve => {
+	this.http.post(this.apiUrl+'/'+FieldName+'View',body,
+		{  	headers: { 'Content-Type': 'application/json' }
+	}).subscribe(data => {
+		alert('Data Added');
+	}, 
+	err => {
+		console.log(body)
+	alert('Data Not Added');
+	});
+	});
+	}
+
+
+	getDataLine(filter) {
+	return new Promise(resolve => {
+	this.http.get(this.apiUrl+'/list/?'+filter).subscribe(data => {
+		console.log(this.apiUrl+'/list/?'+filter);
+	resolve(data);}, 
+	err => {
+	console.log(err);
+	});
+	});
+	}
+
+	postDataLine(body) {
+	return new Promise(resolve => {
+	this.http.post(this.apiUrl+'/listpost/',body,
+		{  	headers: { 'Content-Type': 'application/json' }
+	}).subscribe(data => {
+		alert('Data Added');
+	}, 
+	err => {
+		console.log(body)
+	alert('Data Not Added');
+	});
+	});
+	}
+
+	putDataLine(body,pk) {
+	return new Promise(resolve => {
+	this.http.put(this.apiUrl+'/listput/'+pk,body,
+		{  	headers: { 'Content-Type': 'application/json' }
+	}).subscribe(data => {
+		alert('Data Added');
+	}, 
+	err => {
+		console.log(body)
+	alert('Data Not Added');
+	});
+	});
+	}
+
+
 
 }
