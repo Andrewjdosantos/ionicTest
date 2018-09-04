@@ -29,10 +29,12 @@ export class CreateHorizonPage {
 	Profiler: any;
   constructor(public navCtrl: NavController,public restProvider: RestProvider, public navParams: NavParams, private formBuilder: FormBuilder) {
   this.project = navParams.get("project");
-  if (this.project.TestPit){
+  console.log('Project')
+  console.log(this.project)
+  if (this.project.Horizon){
     this.id = this.project.id;
-  	this.Project = this.project.Project.id;
-  	this.TestPit = this.project.TestPit;
+  	this.Project = this.project.TestPitProject;
+  	this.TestPit = this.project.id;
   	this.PitDepth = this.project.PitDepth;
   	this.Contact = this.project.Contact.id;
   	this.Horizon = this.project.Horizon;
@@ -44,9 +46,9 @@ export class CreateHorizonPage {
   this.getDataSelect('Contact');
   console.log(this)
   this.todo = this.formBuilder.group({
-  	  id:[this.id],
-      Project: [this.Project],
-      TestPit: [this.project.TestPit.id],
+  	  id:[this.project.id],
+      Project: [this.project.TestPitProject],
+      TestPit: [this.project.TestPit],
       PitDepth: ['', Validators.required],
       Contact: ['',Validators.required],
       Horizon: ['',Validators.required],

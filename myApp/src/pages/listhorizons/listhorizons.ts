@@ -21,14 +21,15 @@ export class ListhorizonsPage {
 	TestPit: any;
 	dataline: any;
   TestPitObject:any;
+  Project:any;
   constructor(public navCtrl: NavController,public restProvider: RestProvider, public navParams: NavParams, private formBuilder: FormBuilder) {
   	
     this.Project = navParams.get("project").TestPitProject;
   	this.TestPit = navParams.get("project").Name;
-    this.TestPitObject = navParams.get("project").id;
+    this.TestPitObject = navParams.get("project");
 
   	// console.log(this.TestPitObject)
-  	this.getDataLine(this.TestPitObject);
+  	this.getDataLine(this.TestPitObject.id);
   }
 
    goAnOtherPage(params){
