@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { RestProvider } from '../../providers/rest/rest';
 import { AddtestpitPage } from '../addtestpit/addtestpit';
-
+import { AddcontactPage } from '../addcontact/addcontact';
 /**
  * Generated class for the CreateHorizonPage page.
  *
@@ -33,27 +33,32 @@ export class CreateHorizonPage {
   console.log(this.project)
   if (this.project.Horizon){
     this.id = this.project.id;
-  	this.Project = this.project.TestPitProject;
-  	this.TestPit = this.project.id;
+  	this.Project = this.project.TestPit.TestPitProject.id;
+  	this.TestPit = this.project.TestPit.id;
   	this.PitDepth = this.project.PitDepth;
   	this.Contact = this.project.Contact.id;
   	this.Horizon = this.project.Horizon;
   	this.Profiler = this.project.Profiler;
   }else{
-    this.Project = this.project.TestPitProject
+    this.Project = this.project.TestPitProject;
+    this.TestPit = this.project.id;
   }
 
   this.getDataSelect('Contact');
   console.log(this)
   this.todo = this.formBuilder.group({
-  	  id:[this.project.id],
-      Project: [this.project.TestPitProject],
-      TestPit: [this.project.TestPit],
+  	  id:[this.id],
+      Project: [this.Project],
+      TestPit: [this.TestPit],
       PitDepth: ['', Validators.required],
       Contact: ['',Validators.required],
       Horizon: ['',Validators.required],
       Profiler: ['',Validators.required],
     });
+  }
+
+   GOTOcontactDetails(params){
+    this.navCtrl.push(AddcontactPage,{dataline:params});
   }
 
 

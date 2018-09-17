@@ -14,6 +14,10 @@ import { ListTestPitsPage } from '../pages/list-test-pits/list-test-pits';
 import { CreateHorizonPage } from '../pages/create-horizon/create-horizon';
 import { ListhorizonsPage } from '../pages/listhorizons/listhorizons';
 import { TabsPage } from '../pages/tabs/tabs';
+import { AddcontactPage } from '../pages/addcontact/addcontact';
+import { ModalselectPage } from '../pages/modalselect/modalselect';
+import { EditmoisturePage } from '../pages/editmoisture/editmoisture';
+import { EditcolourPage } from '../pages/editcolour/editcolour';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -31,7 +35,11 @@ import { RestProvider } from '../providers/rest/rest';
     AddtestpitPage,
     ListTestPitsPage,
     CreateHorizonPage,
-    ListhorizonsPage
+    ListhorizonsPage,
+    AddcontactPage,
+    ModalselectPage,
+    EditmoisturePage,
+    EditcolourPage
   ],
   imports: [
     BrowserModule,
@@ -50,7 +58,11 @@ import { RestProvider } from '../providers/rest/rest';
     AddtestpitPage,
     ListTestPitsPage,
     CreateHorizonPage,
-    ListhorizonsPage
+    ListhorizonsPage,
+    AddcontactPage,
+    ModalselectPage,
+    EditmoisturePage,
+    EditcolourPage
   ],
   providers: [
     StatusBar,

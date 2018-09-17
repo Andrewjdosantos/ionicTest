@@ -17,23 +17,25 @@
 <form [formGroup]="todo" (ngSubmit)="postDataLine()">
     <ion-item>
       <ion-label>Pit Depth</ion-label>
-      <ion-input value={{PitDepth}} type="number" formControlName="PitDepth"></ion-input>
+      <ion-input value={{PitDepth}} [max]=5 type="number" formControlName="PitDepth"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Horizon</ion-label>
-      <ion-input value={{Horizon}} type="text" formControlName="Horizon"></ion-input>
+      <ion-input value={{Horizon}} [max]=5 type="text" formControlName="Horizon"></ion-input>
     </ion-item>
      <ion-item>
       <ion-label>Profiler</ion-label>
-      <ion-input value={{Profiler}} type="text" formControlName="Profiler"></ion-input>
+      <ion-input value={{Profiler}} [max]=5 type="text" formControlName="Profiler"></ion-input>
     </ion-item>
     <ion-item>
+
       <ion-icon item-left name="pin"></ion-icon>
       <ion-label></ion-label>
       <ion-select  [(ngModel)]="Contact" formControlName="Contact">
        <ion-option  *ngFor="let val of ContactOptions"  [value]="val.id"  selected="val.id == Contact">{{val.ContactName}}</ion-option>
       </ion-select>
     </ion-item>
+    <button (click)="GOTOcontactDetails(project)" ion-button>Contact Details</button>
     <button ion-button type="submit" [disabled]="!todo.valid">Submit</button>
   </form>
 </ion-content>

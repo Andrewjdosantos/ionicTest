@@ -14,6 +14,7 @@
     <ion-item *ngFor="let horizon of dataline">
       <h2>Horizon:{{horizon.Horizon}}</h2>
       <button (click)="goAnOtherPage(horizon)" ion-button>Edit Horizon</button>
+      <button (click)="showPageModal(horizon)" ion-button>---</button>
     </ion-item>
   </ion-list>
   <button (click)="goAnOtherPage(TestPitObject)" ion-button>Create Horizon</button>

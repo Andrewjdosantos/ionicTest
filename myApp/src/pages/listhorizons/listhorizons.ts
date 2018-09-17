@@ -3,7 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { RestProvider } from '../../providers/rest/rest';
 import { CreateHorizonPage } from '../create-horizon/create-horizon';
-
+import { ModalController } from 'ionic-angular';
+import { ModalselectPage } from '../modalselect/modalselect';
 /**
  * Generated class for the ListhorizonsPage page.
  *
@@ -22,7 +23,7 @@ export class ListhorizonsPage {
 	dataline: any;
   TestPitObject:any;
   Project:any;
-  constructor(public navCtrl: NavController,public restProvider: RestProvider, public navParams: NavParams, private formBuilder: FormBuilder) {
+  constructor(public modalCtrl: ModalController,public navCtrl: NavController,public restProvider: RestProvider, public navParams: NavParams, private formBuilder: FormBuilder) {
   	
     this.Project = navParams.get("project").TestPitProject;
   	this.TestPit = navParams.get("project").Name;
@@ -34,6 +35,12 @@ export class ListhorizonsPage {
 
    goAnOtherPage(params){
   	this.navCtrl.push(CreateHorizonPage,{project:params});
+  }
+
+
+    showPageModal(params) {
+    const modal = this.modalCtrl.create(ModalselectPage,{horizon:params});
+    modal.present();
   }
 
   getDataLine(TestPitObject) {
@@ -53,3 +60,4 @@ export class ListhorizonsPage {
   }
 
 }
+

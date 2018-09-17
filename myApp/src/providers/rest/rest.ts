@@ -16,7 +16,8 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class RestProvider {
-  apiUrl = 'http://icefyer5004.pythonanywhere.com/api';
+  // apiUrl = 'http://icefyer5004.pythonanywhere.com/api';
+  apiUrl = 'http://127.0.0.1:8000/api';
   constructor(public http: HttpClient) {
     console.log('Hello PeopleServiceProvider Provider');
   }
