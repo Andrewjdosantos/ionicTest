@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { RestProvider } from '../../providers/rest/rest';
 /**
- * Generated class for the EditmoisturePage page.
+ * Generated class for the EditgroundwaterPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -11,31 +11,31 @@ import { RestProvider } from '../../providers/rest/rest';
 
 @IonicPage()
 @Component({
-  selector: 'page-editmoisture',
-  templateUrl: 'editmoisture.html',
+  selector: 'page-editgroundwater',
+  templateUrl: 'editgroundwater.html',
 })
-export class EditmoisturePage {
+export class EditgroundwaterPage {
 	private todo : FormGroup; 
 	horizon : any;
 	Project :any;
 	TestPit : any;
-	PrimMoisture :any;
-	SecMoisture : any;
-	MoistureVariant : any;
+	GroundwaterSeepageDepth :any;
+	GroundwaterSeepageRate : any;
+	GroundWaterDescriptors : any;
 	Horizon : any;
-	MoistureOptions :any;
+	GWDescritpros :any;
 	id: any;
   constructor(public navCtrl: NavController,public restProvider: RestProvider, public navParams: NavParams, private formBuilder: FormBuilder) {
     this.horizon = navParams.get("horizon");
-    this.getDataSelect('Moisture');
+    this.getDataSelect('GroundWaterDescriptor');
     this.id = this.horizon.id;
     this.Project = this.horizon.Project.id
     this.TestPit = this.horizon.TestPit.id
     this.Horizon = this.horizon.Horizon
     try {
-    this.PrimMoisture = this.horizon.PrimaryMoisture.id
-    this.SecMoisture = this.horizon.SecondaryMoisture.id
-    this.MoistureVariant = this.horizon.MoistureVariant
+    this.GroundwaterSeepageDepth = this.horizon.GroundwaterSeepageDepth
+    this.GroundwaterSeepageRate = this.horizon.GroundwaterSeepageRate
+    this.GroundWaterDescriptors = this.horizon.GroundWaterDescriptors.id
 	}
     catch(TypeError) {
 	}
@@ -44,9 +44,9 @@ export class EditmoisturePage {
   	  Project: [this.Project],
       TestPit: [this.TestPit],
       Horizon: [this.Horizon],
-      PrimaryMoisture: ['', Validators.required],
-      SecondaryMoisture: ['',Validators.required],
-      MoistureVariant: ['',Validators.required],
+      GroundwaterSeepageDepth: ['', Validators.required],
+      GroundwaterSeepageRate: ['',Validators.required],
+      GroundWaterDescriptors: ['',Validators.required],
     });
 
 
@@ -60,7 +60,7 @@ export class EditmoisturePage {
   getDataSelect(FieldName) {
     this.restProvider.getDataSelect(FieldName)
     .then(data => {
-      this.MoistureOptions = data;
+      this.GWDescritpros = data;
     });
   }
 

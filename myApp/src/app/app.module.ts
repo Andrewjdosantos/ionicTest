@@ -18,6 +18,12 @@ import { AddcontactPage } from '../pages/addcontact/addcontact';
 import { ModalselectPage } from '../pages/modalselect/modalselect';
 import { EditmoisturePage } from '../pages/editmoisture/editmoisture';
 import { EditcolourPage } from '../pages/editcolour/editcolour';
+import { ConsistencyeditPage } from '../pages/consistencyedit/consistencyedit';
+import { EditstructurePage } from '../pages/editstructure/editstructure';
+import { EdittexturePage } from '../pages/edittexture/edittexture';
+import { EditoriginPage } from '../pages/editorigin/editorigin';
+import { EditgroundwaterPage } from '../pages/editgroundwater/editgroundwater';
+import { EditpedocretePage } from '../pages/editpedocrete/editpedocrete';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -39,7 +45,13 @@ import { RestProvider } from '../providers/rest/rest';
     AddcontactPage,
     ModalselectPage,
     EditmoisturePage,
-    EditcolourPage
+    EditcolourPage,
+    ConsistencyeditPage,
+    EditstructurePage,
+    EdittexturePage,
+    EditoriginPage,
+    EditgroundwaterPage,
+    EditpedocretePage
   ],
   imports: [
     BrowserModule,
@@ -62,7 +74,13 @@ import { RestProvider } from '../providers/rest/rest';
     AddcontactPage,
     ModalselectPage,
     EditmoisturePage,
-    EditcolourPage
+    EditcolourPage,
+    ConsistencyeditPage,
+    EditstructurePage,
+    EdittexturePage,
+    EditoriginPage,
+    EditgroundwaterPage,
+    EditpedocretePage
   ],
   providers: [
     StatusBar,
