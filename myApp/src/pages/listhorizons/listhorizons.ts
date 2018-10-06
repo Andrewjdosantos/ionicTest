@@ -43,6 +43,16 @@ export class ListhorizonsPage {
     modal.present();
   }
 
+
+    doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+    this.getDataLine(this.TestPitObject.id);
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
+  }
+
   getDataLine(TestPitObject) {
     console.log(TestPitObject)
   	const filterstring = 'TestPit='+TestPitObject

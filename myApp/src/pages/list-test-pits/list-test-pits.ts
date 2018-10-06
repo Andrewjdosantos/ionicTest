@@ -38,6 +38,16 @@ export class ListTestPitsPage {
     });
   }
 
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+    this.getTestPits(String(this.project.id));
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
+  }
+
+
   CreateTestPit(params){
     this.navCtrl.push(AddtestpitPage,{project:params});
   }

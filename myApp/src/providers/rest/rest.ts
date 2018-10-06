@@ -4,7 +4,7 @@ import {Http ,Response } from '@angular/http';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-
+import { AlertController } from 'ionic-angular';
 /*
   Generated class for the PeopleServiceProvider provider.
 
@@ -16,11 +16,30 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class RestProvider {
+
+
   // apiUrl = 'http://icefyer5004.pythonanywhere.com/api';
-  apiUrl = 'http://127.0.0.1:8000/api';
-  constructor(public http: HttpClient) {
+  apiUrl = 'http://icefyer5004.pythonanywhere.com/api';
+  constructor(public http: HttpClient,public alertCtrl: AlertController) {
     console.log('Hello PeopleServiceProvider Provider');
   }
+
+  	Success() {
+  	let alert = this.alertCtrl.create({
+    title: 'Data Added',
+    buttons: ['Dismiss']
+  	});
+  	alert.present();
+	}
+ 
+  	Failure() {
+  	let alert = this.alertCtrl.create({
+    title: 'Data Not Added',
+    buttons: ['Dismiss']
+  	});
+  	alert.present();
+	}
+
 	getProjects() {
 	return new Promise(resolve => {
 	this.http.get(this.apiUrl+'/ProjectView').subscribe(data => {
@@ -57,11 +76,13 @@ export class RestProvider {
 	this.http.post(this.apiUrl+'/'+FieldName+'View',body,
 		{  	headers: { 'Content-Type': 'application/json' }
 	}).subscribe(data => {
-		alert('Data Added');
+		this.Success()
+		// alert('Data Added');
 	}, 
 	err => {
 		console.log(body)
-	alert('Data Not Added');
+		this.Failure()
+	// alert('Data Not Added');
 	});
 	});
 	}
@@ -83,11 +104,13 @@ export class RestProvider {
 	this.http.post(this.apiUrl+'/listpost/',body,
 		{  	headers: { 'Content-Type': 'application/json' }
 	}).subscribe(data => {
-		alert('Data Added');
+		this.Success();
+		// alert('Data Added');
 	}, 
 	err => {
-		console.log(body)
-	alert('Data Not Added');
+		console.log(body);
+		this.Failure();
+	// alert('Data Not Added');
 	});
 	});
 	}
@@ -97,11 +120,13 @@ export class RestProvider {
 	this.http.put(this.apiUrl+'/listput/'+pk,body,
 		{  	headers: { 'Content-Type': 'application/json' }
 	}).subscribe(data => {
-		alert('Data Added');
+		this.Success()
+		// alert('Data Added');
 	}, 
 	err => {
 		console.log(body)
-	alert('Data Not Added');
+		this.Failure()
+	// alert('Data Not Added');
 	});
 	});
 	}

@@ -4,6 +4,7 @@ import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { RestProvider } from '../../providers/rest/rest';
 import { AddtestpitPage } from '../addtestpit/addtestpit';
 import { AddcontactPage } from '../addcontact/addcontact';
+import { AlertController } from 'ionic-angular';
 /**
  * Generated class for the CreateHorizonPage page.
  *
@@ -27,7 +28,7 @@ export class CreateHorizonPage {
 	Contact: any;
 	Horizon: any;
 	Profiler: any;
-  constructor(public navCtrl: NavController,public restProvider: RestProvider, public navParams: NavParams, private formBuilder: FormBuilder) {
+  constructor(private alertCtrl: AlertController,public navCtrl: NavController,public restProvider: RestProvider, public navParams: NavParams, private formBuilder: FormBuilder) {
   this.project = navParams.get("project");
   console.log('Project')
   console.log(this.project)
@@ -74,6 +75,7 @@ export class CreateHorizonPage {
     if (this.id){
      this.restProvider.putDataLine(JSON.stringify(this.todo.value),this.id)
     .then(data => {
+      this.presentAlert()
       this.navCtrl.pop();
       console.log(this.todo.value)
     });
@@ -81,11 +83,22 @@ export class CreateHorizonPage {
     else{
     this.restProvider.postDataLine(JSON.stringify(this.todo.value))
     .then(data => {
+      this.presentAlert()
       this.navCtrl.pop();
       console.log(this.todo.value)
     });
   }
   }
+
+  presentAlert() {
+  let alert = this.alertCtrl.create({
+    title: 'Low battery',
+    subTitle: '10% of battery remaining',
+    buttons: ['Dismiss']
+  });
+  alert.present();
+}
+
 
   logForm(){
   	console.log(this.todo.value)

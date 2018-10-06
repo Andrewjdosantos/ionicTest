@@ -20,6 +20,16 @@ export class HomePage {
       this.projects = data;
       console.log(this.projects);
     });
+    return false;
+  }
+
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+    this.getProjects();
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
   }
 
   goAnOtherPage(params){

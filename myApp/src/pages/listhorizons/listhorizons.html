@@ -9,7 +9,9 @@
 
 <ion-content padding>
   
-
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <ion-list inset>
     <ion-item *ngFor="let horizon of dataline">
       <h2>Horizon:{{horizon.Horizon}}</h2>

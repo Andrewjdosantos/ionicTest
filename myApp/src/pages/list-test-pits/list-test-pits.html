@@ -15,7 +15,9 @@
 
 <ion-content padding>
   
-
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <ion-list inset>
     <ion-item *ngFor="let testpit of dataline">
       <h2>Test Pit:{{testpit.Name}}</h2>
