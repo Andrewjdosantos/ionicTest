@@ -30,7 +30,7 @@
     <ion-item>
 
       <ion-icon item-left name="pin"></ion-icon>
-      <ion-label></ion-label>
+      <ion-label>Contact</ion-label>
       <ion-select  [(ngModel)]="Contact" formControlName="Contact">
        <ion-option  *ngFor="let val of ContactOptions"  [value]="val.id"  selected="val.id == Contact">{{val.ContactName}}</ion-option>
       </ion-select>
