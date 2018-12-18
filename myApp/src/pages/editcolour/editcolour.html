@@ -19,7 +19,7 @@
       <ion-icon item-left name="pin"></ion-icon>
       <ion-label>Primary Colour</ion-label>
       <ion-select  [(ngModel)]="PrimaryColour" formControlName="PrimaryColour">
-       <ion-option  *ngFor="let value of ColourOptions"  [value]="value.id"  selected="value.id == PrimaryColour">{{value.ColourName}}</ion-option>
+       <ion-option  *ngFor="let value of PrimColourOptions"  [value]="value.id"  selected="value.id == PrimaryColour">{{value.ColourName}}</ion-option>
       </ion-select>
     </ion-item>
     <ion-item>
