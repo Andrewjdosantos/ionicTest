@@ -40,21 +40,21 @@
       <ion-icon item-left name="pin"></ion-icon>
       <ion-label>PrimaryInclusionColour</ion-label>
       <ion-select  [(ngModel)]="PrimaryInclusionColour" formControlName="PrimaryInclusionColour">
-       <ion-option  *ngFor="let value of ColourOptions"  [value]="value.id"  selected="value.id == PrimaryInclusionColour">{{value.ColourName}}</ion-option>
+       <ion-option  *ngFor="let value of PrimColourOptions"  [value]="value.id"  selected="value.id == PrimaryInclusionColour">{{value.ColourName}}</ion-option>
       </ion-select>
     </ion-item>
       <ion-item>
       <ion-icon item-left name="pin"></ion-icon>
       <ion-label>SecondaryInclusionColour</ion-label>
       <ion-select  [(ngModel)]="SecondaryInclusionColour" formControlName="SecondaryInclusionColour">
-       <ion-option  *ngFor="let value of ColourOptions"  [value]="value.id"  selected="value.id == SecondaryInclusionColour">{{value.ColourName}}</ion-option>
+       <ion-option  *ngFor="let value of PrimColourOptions"  [value]="value.id"  selected="value.id == SecondaryInclusionColour">{{value.ColourName}}</ion-option>
       </ion-select>
     </ion-item>
       <ion-item>
       <ion-icon item-left name="pin"></ion-icon>
       <ion-label>TertiaryInclusionColour</ion-label>
       <ion-select  [(ngModel)]="TertiaryInclusionColour" formControlName="TertiaryInclusionColour">
-       <ion-option  *ngFor="let value of ColourOptions"  [value]="value.id"  selected="value.id == TertiaryInclusionColour">{{value.ColourName}}</ion-option>
+       <ion-option  *ngFor="let value of PrimColourOptions"  [value]="value.id"  selected="value.id == TertiaryInclusionColour">{{value.ColourName}}</ion-option>
       </ion-select>
     </ion-item>
     <ion-item>

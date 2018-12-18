@@ -21,7 +21,7 @@
     </ion-item>
     <ion-item>
       <ion-label>Horizon</ion-label>
-      <ion-input value={{Horizon}} [max]=5 type="text" formControlName="Horizon"></ion-input>
+      <ion-input value={{Horizon}} [max]=5 type="number" formControlName="Horizon"></ion-input>
     </ion-item>
      <ion-item>
       <ion-label>Profiler</ion-label>
@@ -35,7 +35,7 @@
        <ion-option  *ngFor="let val of ContactOptions"  [value]="val.id"  selected="val.id == Contact">{{val.ContactName}}</ion-option>
       </ion-select>
     </ion-item>
-    <button (click)="GOTOcontactDetails(project)" ion-button>Contact Details</button>
+    <button ng-if='project' (click)="GOTOcontactDetails(project)" ion-button>Contact Details</button>
     <button ion-button type="submit" [disabled]="!todo.valid">Submit</button>
   </form>
 </ion-content>

@@ -16,21 +16,21 @@
 <ion-content padding>
 <form [formGroup]="todo" (ngSubmit)="postDataLine()">
 	 <ion-item>
-    <ion-label>PrimaryCohesive</ion-label>
+    <ion-label>Primary Cohesive</ion-label>
     <ion-toggle checked={{PrimaryCohesive}} [(ngModel)]="PrimaryCohesive" formControlName="PrimaryCohesive" (ionChange)="notify($event.checked,1)"></ion-toggle>
   </ion-item>
 	<ion-item>
-	  <ion-label>Primary Colour</ion-label>
+	  <ion-label>Primary Consistency</ion-label>
 	  <ion-select [(ngModel)]="PrimaryCohesiveCharacter" formControlName="PrimaryCohesiveCharacter">
 	    <ion-option *ngFor="let value of PrimConsistencyOptions" [value]="value.id" selected="value.id == PrimaryCohesiveCharacter">{{value.ConsistencyName}}</ion-option>
 	  </ion-select>
 	</ion-item>
   <ion-item>
-    <ion-label>SecondaryCohesive</ion-label>
+    <ion-label>Secondary Cohesive</ion-label>
     <ion-toggle ion-toggle-text="online;offline" checked={{SecondaryCohesive}} [(ngModel)]="SecondaryCohesive" formControlName="SecondaryCohesive" (ionChange)="notify($event.checked,0)"></ion-toggle>
   </ion-item>
 	<ion-item>
-	  <ion-label>Secondary Colour</ion-label>
+	  <ion-label>Secondary Consistency</ion-label>
 	  <ion-select [(ngModel)]="SecondaryCohesiveCharacter" formControlName="SecondaryCohesiveCharacter">
 	    <ion-option *ngFor="let value of SecConsistencyOptions" [value]="value.id" selected="value.id == SecondaryCohesiveCharacter">{{value.ConsistencyName}}</ion-option>
 	  </ion-select>
