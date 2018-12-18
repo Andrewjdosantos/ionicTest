@@ -42,6 +42,8 @@ export class EdittexturePage {
 	TextureInclusionFreqOptions :any;
 	TextureInclusionCharacterOptions :any;
 	TextureClassificationsOptions :any;
+  SecTextureClassificationsOptions :any;
+  TertTextureClassificationsOptions :any;
   constructor(public navCtrl: NavController,public restProvider: RestProvider, public navParams: NavParams, private formBuilder: FormBuilder) {
     this.horizon = navParams.get("horizon");
     this.getTextInclSizeDataSelect('TextureInclusionSize');
@@ -116,7 +118,13 @@ export class EdittexturePage {
   getTextClassDataSelect(FieldName) {
     this.restProvider.getDataSelect(FieldName)
     .then(data => {
-      this.TextureClassificationsOptions = data;
+      var primdata = data.filter( element => element.Primary == true)
+      var secdata = data.filter( element => element.Secondary == true)
+      var tertdata = data.filter( element => element.Tertiary == true)
+      console.log(secdata)
+      this.TextureClassificationsOptions = this.primdata;
+      this.SecTextureClassificationsOptions = this.secdata;
+      this.TertTextureClassificationsOptions = this.tertdata;
     });
   }
 

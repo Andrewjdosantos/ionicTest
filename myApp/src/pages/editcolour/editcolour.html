@@ -26,14 +26,14 @@
       <ion-icon item-left name="pin"></ion-icon>
       <ion-label>Secondary Colour</ion-label>
       <ion-select  [(ngModel)]="SecondaryColour" formControlName="SecondaryColour">
-       <ion-option  *ngFor="let value of ColourOptions"  [value]="value.id"  selected="value.id == SecondaryColour">{{value.ColourName}}</ion-option>
+       <ion-option  *ngFor="let value of SecColourOptions"  [value]="value.id"  selected="value.id == SecondaryColour">{{value.ColourName}}</ion-option>
       </ion-select>
     </ion-item>
     <ion-item>
       <ion-icon item-left name="pin"></ion-icon>
       <ion-label>TertiaryColour Colour</ion-label>
       <ion-select  [(ngModel)]="TertiaryColour" formControlName="TertiaryColour">
-       <ion-option  *ngFor="let value of ColourOptions"  [value]="value.id"  selected="value.id == TertiaryColour">{{value.ColourName}}</ion-option>
+       <ion-option  *ngFor="let value of TertColourOptions"  [value]="value.id"  selected="value.id == TertiaryColour">{{value.ColourName}}</ion-option>
       </ion-select>
     </ion-item>
       <ion-item>

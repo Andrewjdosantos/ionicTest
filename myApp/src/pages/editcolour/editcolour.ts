@@ -32,11 +32,15 @@ export class EditcolourPage {
 	PrimaryInclusionCharacter : any;
 	SecondaryInclusionCharacter :any;	
 	TertiaryInclusionCharacter :any;	
-	ColourOptions :any;
+  SecColourOptions :any;
+  PrimColourOptions :any;
+  TertColourOptions :any;
 	InclusionOptions :any;
   constructor(public navCtrl: NavController,public restProvider: RestProvider, public navParams: NavParams, private formBuilder: FormBuilder) {
     this.horizon = navParams.get("horizon");
-    this.getColDataSelect('Colour');
+    this.getPrimColDataSelect('PrimColour');
+    this.getSecColDataSelect('SecColour');
+    this.getTertColDataSelect('TertColour');
     this.getIncDataSelect('Inclusion');
     this.id = this.horizon.id;
     this.Horizon = this.horizon.Horizon
@@ -73,10 +77,24 @@ export class EditcolourPage {
   }
 
 
-  getColDataSelect(FieldName) {
+  getPrimColDataSelect(FieldName) {
     this.restProvider.getDataSelect(FieldName)
     .then(data => {
-      this.ColourOptions = data;
+      this.PrimColourOptions = data;
+    });
+  }
+
+  getSecColDataSelect(FieldName) {
+    this.restProvider.getDataSelect(FieldName)
+    .then(data => {
+      this.SecColourOptions = data;
+    });
+  }
+
+  getTertColDataSelect(FieldName) {
+    this.restProvider.getDataSelect(FieldName)
+    .then(data => {
+      this.TertColourOptions = data;
     });
   }
 

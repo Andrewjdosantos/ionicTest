@@ -71,6 +71,16 @@ export class RestProvider {
 	});
 	}
 
+	// getFilterDataSelect(FieldName,filter){
+	// return new Promise(resolve => {
+	// this.http.get(this.apiUrl+'/'+FieldName+'View/?'+filter).subscribe(data => {
+	// resolve(data);}, 
+	// err => {
+	// console.log(err);
+	// });
+	// });
+	// }
+
 	postDataSelect(FieldName,body) {
 	return new Promise(resolve => {
 	this.http.post(this.apiUrl+'/'+FieldName+'View',body,

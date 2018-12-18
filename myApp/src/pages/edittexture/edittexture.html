@@ -47,7 +47,7 @@
       <ion-icon item-left name="pin"></ion-icon>
       <ion-label>Secondary Texture Classification</ion-label>
       <ion-select  [(ngModel)]="SecondaryTexture" formControlName="SecondaryTexture">
-       <ion-option  *ngFor="let value of TextureClassificationsOptions"  [value]="value.id"  selected="value.id == SecondaryTexture">{{value.TextureClassificationName}}</ion-option>
+       <ion-option  *ngFor="let value of SecTextureClassificationsOptions"  [value]="value.id"  selected="value.id == SecondaryTexture">{{value.TextureClassificationName}}</ion-option>
       </ion-select>
     </ion-item>
         <ion-item>
@@ -75,7 +75,7 @@
       <ion-icon item-left name="pin"></ion-icon>
       <ion-label>Tertiary Texture Classification</ion-label>
       <ion-select  [(ngModel)]="TertiaryTexture" formControlName="TertiaryTexture">
-       <ion-option  *ngFor="let value of TextureClassificationsOptions"  [value]="value.id"  selected="value.id == TertiaryTexture">{{value.TextureClassificationName}}</ion-option>
+       <ion-option  *ngFor="let value of TertTextureClassificationsOptions"  [value]="value.id"  selected="value.id == TertiaryTexture">{{value.TextureClassificationName}}</ion-option>
       </ion-select>
     </ion-item>
         <ion-item>
