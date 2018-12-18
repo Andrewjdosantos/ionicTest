@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { RestProvider } from '../../providers/rest/rest';
-// import { map, filter, scan } from 'rxjs/operators';
+import { map, filter, scan } from 'rxjs/operators';
 /**
  * Generated class for the EdittexturePage page.
  *
@@ -25,7 +25,7 @@ export class EdittexturePage {
 	PrimaryTexture :any;
 	SecondaryTexture : any;
 	TertiaryTexture : any;
-	
+	data :any;
 	PrimaryTextureInclusionSize :any;
 	SecondaryTextureInclusionSize :any;
 	TertiaryTextureInclusionSize : any;
@@ -118,11 +118,12 @@ export class EdittexturePage {
   getTextClassDataSelect(FieldName) {
     this.restProvider.getDataSelect(FieldName)
     .then(data => {
-      console.log(data)
-      this.TextureClassificationsOptions = data.filter( element => element.Primary == true)
-      this.SecTextureClassificationsOptions = data.filter( element => element.Secondary == true)
-      this.TertTextureClassificationsOptions = data.filter( element => element.Tertiary == true)
-      console.log(this.SecTextureClassificationsOptions)
+      // console.log(data[0])
+      this.data = data;
+      this.TextureClassificationsOptions = this.data.filter( element => element.Primary == true)
+      this.SecTextureClassificationsOptions = this.data.filter( element => element.Secondary == true)
+      this.TertTextureClassificationsOptions = this.data.filter( element => element.Tertiary == true)
+    
     });
   }
 
