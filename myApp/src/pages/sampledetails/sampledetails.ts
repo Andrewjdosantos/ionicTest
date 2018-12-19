@@ -17,6 +17,7 @@ import { RestProvider } from '../../providers/rest/rest';
 })
 export class SampledetailsPage {
 	private todo : FormGroup; 
+	horizon : any;
 	Horizon : any;
 	Project :any;
 	TestPit : any;
@@ -29,7 +30,7 @@ export class SampledetailsPage {
 	id: any;
   constructor(public navCtrl: NavController,public restProvider: RestProvider, public navParams: NavParams, private formBuilder: FormBuilder) {
     this.horizon = navParams.get("horizon");
-    this.getDataSelect('GroundWaterDescriptor');
+    // this.getDataSelect('GroundWaterDescriptor');
     this.id = this.horizon.id;
     this.Project = this.horizon.Project.id
     this.TestPit = this.horizon.TestPit.id
@@ -56,18 +57,21 @@ export class SampledetailsPage {
       SecondarySampleNumber: ['',Validators.required],
       TertiarySampleNumber: ['',Validators.required],
     });
+
+
+
   }
  
   ionViewDidLoad() {
     console.log('ionViewDidLoad EditmoisturePage');
   }
 
-  getDataSelect(FieldName) {
-    this.restProvider.getDataSelect(FieldName)
-    .then(data => {
-      this.GWDescritpros = data;
-    });
-  }
+  // getDataSelect(FieldName) {
+  //   this.restProvider.getDataSelect(FieldName)
+  //   .then(data => {
+  //     this.GWDescritpros = data;
+  //   });
+  // }
 
   postDataLine() {
     // console.log(JSON.stringify(this.todo.value))
