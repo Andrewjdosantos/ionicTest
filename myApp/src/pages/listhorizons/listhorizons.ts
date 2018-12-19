@@ -59,6 +59,7 @@ export class ListhorizonsPage {
     this.restProvider.getDataLine(filterstring)
     .then(data => {
       this.dataline = data;
+      console.log(data)
       
     });
   }

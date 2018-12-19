@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>it is this project:</ion-title>
+    <ion-title>Enter Test Pit Number:</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -19,10 +19,15 @@
 <ion-content padding>
   <form [formGroup]="todo" (ngSubmit)="postNewTestPit()">
     <ion-item>
-      <ion-label>TestPit Name</ion-label>
-      <ion-input type="number" formControlName="Name"></ion-input>
+      <ion-label>TP</ion-label>
+      <ion-input placeholder="Number" type="number" formControlName="Name"></ion-input>
     </ion-item>
+
+  <ion-row style='text-align:center'>
+    <ion-col>
     <button ion-button type="submit" [disabled]="!todo.valid">Submit</button>
+    </ion-col>
+</ion-row>
   </form>
 </ion-content>
 

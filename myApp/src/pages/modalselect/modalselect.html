@@ -7,49 +7,52 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Select the section of horizon you would like to edit:</ion-title>
+    <ion-title>Descriptions</ion-title>
+                <ion-buttons begin>
+                <button ion-button icon-only (click)="closeModal()">
+                    <ion-icon item-right name="ios-arrow-back-outline"></ion-icon>
+                </button>
+            </ion-buttons>
   </ion-navbar>
-
 </ion-header>
 
 
 <ion-content padding>
-	                <button ion-button icon-only (click)="closeModal()">
-                    <ion-icon item-right name="ios-close-outline"></ion-icon>
-                </button>
+
 	<ion-list>
-	<ion-list-header>
-  Section
-</ion-list-header>
-<button ion-item (click)="gotoHorizonEditPage(horizon)">
-  Horizon Details
-</button>
+
+
 <button ion-item (click)="gotoMoistureEditPage(horizon)">
-  Moisture Details
+  Moisture
 </button>
 <button ion-item (click)="gotoColourEditPage(horizon)">
-  Colour Details
+  Colour
 </button>
 <button ion-item (click)="gotoConsEditPage(horizon)">
-  Consistency Details
+  Consistency
 </button>
 <button ion-item (click)="gotoStructEditPage(horizon)">
-  Structure Details
+  Structure
 </button>
 <button ion-item (click)="gotoTextEditPage(horizon)">
-  Texture Details
+  Texture
 </button>
 <button ion-item (click)="gotoOriginPage(horizon)">
-  Origin Details
+  Origin
 </button>
+</ion-list>
+<ion-list>
+    <ion-list-header>
+  Notes
+</ion-list-header>
 <button ion-item (click)="gotoGroundWaterEditPage(horizon)">
-  GroundWater Details
+  Ground Water
 </button>
 <button ion-item (click)="gotoPedocreteEditPage(horizon)">
-  Pedocrete Details
+  Pedogenic Material
 </button>
 <button ion-item (click)="gotoSamepleEditPage(horizon)">
-  Sample Details
+  Sample
 </button>
 
 </ion-list>

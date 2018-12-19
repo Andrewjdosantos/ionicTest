@@ -7,25 +7,47 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>it is this project: {{project.ProjectName}}</ion-title>
+    <ion-title>Test pits</ion-title>
   </ion-navbar>
-
+<!--   <div color="secondary">
+    <p style='border:0;text-align:center'>{{project.ProjectName}}</p>
+  </div> -->
 </ion-header>
 
 
 <ion-content padding>
-  
   <ion-refresher (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-  <ion-list inset>
-    <ion-item *ngFor="let testpit of dataline">
-      <h2>Test Pit:{{testpit.Name}}</h2>
-      <button (click)="goAnOtherPage(testpit)" ion-button>Edit Testpit</button>
-    </ion-item>
-  </ion-list>
-  <button (click)="CreateTestPit(project)" ion-button>Create Testpit</button>
+<!--   <ion-card (click)="goAnOtherPage(testpit)" *ngFor="let testpit of dataline">
+  <ion-card-header>
+    TP{{testpit.Name}}
+  </ion-card-header>
+</ion-card> -->
 
+  <ion-list inset>
+        <ion-list-header>
+  {{project.ProjectName}}
+</ion-list-header>
+    <ion-item-sliding *ngFor="let testpit of dataline">
+              <ion-item (click)="goAnOtherPage(testpit)">
+      TP{{testpit.Name}}
+<!--       <button (click)="goAnOtherPage(horizon)" ion-button>Edit Horizon</button>
+      <button (click)="showPageModal(horizon)" ion-button>---</button> -->
+      </ion-item>
+<!--       <ion-item-options side="left">
+        <button ion-button (click)="goAnOtherPage(horizon)">edit</button>
+      </ion-item-options> -->
+    </ion-item-sliding>
+  </ion-list>
+
+
+
+  <ion-row style='text-align:center'>
+    <ion-col>
+      <button (click)="CreateTestPit(project)" ion-button>Create Testpit</button>
+    </ion-col>
+  </ion-row>
 </ion-content>
 
 
