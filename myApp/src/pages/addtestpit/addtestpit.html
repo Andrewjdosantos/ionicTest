@@ -20,7 +20,7 @@
   <form [formGroup]="todo" (ngSubmit)="postNewTestPit()">
     <ion-item>
       <ion-label>TestPit Name</ion-label>
-      <ion-input type="string" formControlName="Name"></ion-input>
+      <ion-input type="number" formControlName="Name"></ion-input>
     </ion-item>
     <button ion-button type="submit" [disabled]="!todo.valid">Submit</button>
   </form>

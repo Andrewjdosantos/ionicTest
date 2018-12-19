@@ -50,12 +50,12 @@ export class SampledetailsPage {
   	  Project: [this.Project],
       TestPit: [this.TestPit],
       Horizon: [this.Horizon],
-      PrimarySampleType: ['', Validators.required],
-      SecondarySampleType: ['',Validators.required],
-      TertiarySampleType: ['',Validators.required],
-      PrimarySampleNumber: ['', Validators.required],
-      SecondarySampleNumber: ['',Validators.required],
-      TertiarySampleNumber: ['',Validators.required],
+      PrimarySampleType: [''],
+      SecondarySampleType: [''],
+      TertiarySampleType: [''],
+      PrimarySampleNumber: [''],
+      SecondarySampleNumber: [''],
+      TertiarySampleNumber: [''],
     });
 
 

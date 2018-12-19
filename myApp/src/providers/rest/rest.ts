@@ -126,6 +126,7 @@ export class RestProvider {
 	}
 
 	putDataLine(body,pk) {
+	console.log(this.apiUrl+'/listput/'+pk,body)
 	return new Promise(resolve => {
 	this.http.put(this.apiUrl+'/listput/'+pk,body,
 		{  	headers: { 'Content-Type': 'application/json' }
