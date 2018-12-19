@@ -1,5 +1,5 @@
 <!--
-  Generated template for the SampledetailsPage page.
+  Generated template for the AddtestpitPage page.
 
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
@@ -7,12 +7,38 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>sampledetails</ion-title>
+    <ion-title>Addtestpit</ion-title>
   </ion-navbar>
 
 </ion-header>
 
-
+<!-- Add origin to horizon descriptor -->
 <ion-content padding>
-
+<form [formGroup]="todo" (ngSubmit)="postDataLine()">
+	<ion-item>
+	  <ion-label>PrimarySampleType</ion-label>
+	  <ion-input value={{PrimarySampleType}} [max]=5 type="text" formControlName="PrimarySampleType"></ion-input>
+	</ion-item>
+	<ion-item>
+	  <ion-label>SecondarySampleType</ion-label>
+	  <ion-input value={{SecondarySampleType}} [max]=5 type="text" formControlName="SecondarySampleType"></ion-input>
+	</ion-item>
+	<ion-item>
+	  <ion-label>TertiarySampleType</ion-label>
+	  <ion-input value={{TertiarySampleType}} [max]=5 type="text" formControlName="TertiarySampleType"></ion-input>
+	</ion-item>
+	<ion-item>
+	  <ion-label>PrimarySampleNumber</ion-label>
+	  <ion-input value={{PrimarySampleNumber}} [max]=5 type="text" formControlName="PrimarySampleNumber"></ion-input>
+	</ion-item>
+	<ion-item>
+	  <ion-label>SecondarySampleNumber</ion-label>
+	  <ion-input value={{SecondarySampleNumber}} [max]=5 type="text" formControlName="SecondarySampleNumber"></ion-input>
+	</ion-item>
+	<ion-item>
+	  <ion-label>TertiarySampleNumber</ion-label>
+	  <ion-input value={{TertiarySampleNumber}} [max]=5 type="text" formControlName="TertiarySampleNumber"></ion-input>
+	</ion-item>
+    <button ion-button type="submit" [disabled]="!todo.valid">Submit</button>
+  </form>
 </ion-content>

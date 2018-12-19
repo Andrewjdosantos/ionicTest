@@ -9,7 +9,7 @@ import { EdittexturePage } from '../edittexture/edittexture';
 import { EditoriginPage } from '../editorigin/editorigin';
 import { EditgroundwaterPage } from '../editgroundwater/editgroundwater';
 import { EditpedocretePage } from '../editpedocrete/editpedocrete';
-
+import { SampledetailsPage } from '../sampledetails/sampledetails';
 /**
  * Generated class for the ModalselectPage page.
  *
@@ -66,6 +66,11 @@ export class ModalselectPage {
   gotoPedocreteEditPage(params,horizon){
     this.navCtrl.push(EditpedocretePage,{horizon:params});
   };
+
+  gotoSamepleEditPage(params,horizon){
+    this.navCtrl.push(SampledetailsPage,{horizon:params});
+  };
+
 
 closeModal() {
         this.navCtrl.pop();

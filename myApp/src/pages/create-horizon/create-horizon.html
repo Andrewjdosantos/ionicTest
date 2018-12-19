@@ -35,7 +35,7 @@
        <ion-option  *ngFor="let val of ContactOptions"  [value]="val.id"  selected="val.id == Contact">{{val.ContactName}}</ion-option>
       </ion-select>
     </ion-item>
-    <button ng-if='project' (click)="GOTOcontactDetails(project)" ion-button>Contact Details</button>
+    <button ng-if='project.Horizon!==undefined' (click)="GOTOcontactDetails(project)" ion-button>Contact Details</button>
     <button ion-button type="submit" [disabled]="!todo.valid">Submit</button>
   </form>
 </ion-content>
