@@ -45,9 +45,10 @@ export class EditmoisturePage {
       TestPit: [this.TestPit],
       Horizon: [this.Horizon],
       PrimaryMoisture: ['', Validators.required],
-      SecondaryMoisture: ['',Validators.required],
-      MoistureVariant: ['',Validators.required],
+      SecondaryMoisture: [''],
+      MoistureVariant: [''],
     });
+    console.log(this.todo)
 
 
 

@@ -56,18 +56,60 @@ export class EdittexturePage {
     this.TestPit = this.horizon.TestPit.id
     try {
 	this.PrimaryTexture = this.horizon.PrimaryTexture.id;
+} catch(TypeError) {
+    console.log('TypeError')
+  }
+ try {
 	this.PrimaryTextureInclusionSize = this.horizon.PrimaryTextureInclusionSize.id;
+} catch(TypeError) {
+    console.log('TypeError')
+  }
+try{
 	this.PrimaryTextureInclusionFrequency = this.horizon.PrimaryTextureInclusionFrequency.id;
+} catch(TypeError) {
+    console.log('TypeError')
+  }
+try{
 	this.PrimaryTextureInclusionCharacter = this.horizon.PrimaryTextureInclusionCharacter.id;
-
+} catch(TypeError) {
+    console.log('TypeError')
+  }
+try{
 	this.SecondaryTexture = this.horizon.SecondaryTexture.id;
+  } catch(TypeError) {
+    console.log('TypeError')
+  }
+try{
 	this.SecondaryTextureInclusionSize = this.horizon.SecondaryTextureInclusionSize.id;
+  } catch(TypeError) {
+    console.log('TypeError')
+  }
+try{
 	this.SecondaryTextureInclusionFrequency = this.horizon.SecondaryTextureInclusionFrequency.id;
+  } catch(TypeError) {
+    console.log('TypeError')
+  }
+try{
 	this.SecondaryTextureInclusionCharacter = this.horizon.SecondaryTextureInclusionCharacter.id;
-
+  } catch(TypeError) {
+    console.log('TypeError')
+  }
+try{
 	this.TertiaryTexture = this.horizon.TertiaryTexture.id;
+  } catch(TypeError) {
+    console.log('TypeError')
+  }
+try{
 	this.TertiaryTextureInclusionSize = this.horizon.TertiaryTextureInclusionSize.id;
+  } catch(TypeError) {
+    console.log('TypeError')
+  }
+try{
 	this.TertiaryTextureInclusionFrequency = this.horizon.TertiaryTextureInclusionFrequency.id;
+} catch(TypeError) {
+    console.log('TypeError')
+  }
+try{
 	this.TertiaryTextureInclusionCharacter = this.horizon.TertiaryTextureInclusionCharacter.id;
 	}
 	catch(TypeError) {
@@ -79,17 +121,17 @@ export class EdittexturePage {
       TestPit: [this.TestPit],
       Horizon: [this.Horizon],
 	    PrimaryTexture :['', Validators.required],
-		SecondaryTexture : ['', Validators.required],
-		TertiaryTexture : ['', Validators.required],
-		PrimaryTextureInclusionSize :['', Validators.required],
-		SecondaryTextureInclusionSize :['', Validators.required],
-		TertiaryTextureInclusionSize : ['', Validators.required],
-		PrimaryTextureInclusionFrequency : ['', Validators.required],
-		SecondaryTextureInclusionFrequency :['', Validators.required],	
-		TertiaryTextureInclusionFrequency :['', Validators.required],	
-		PrimaryTextureInclusionCharacter : ['', Validators.required],
-		SecondaryTextureInclusionCharacter :['', Validators.required],	
-		TertiaryTextureInclusionCharacter :['', Validators.required],	
+		SecondaryTexture : [''],
+		TertiaryTexture : [''],
+		PrimaryTextureInclusionSize :[''],
+		SecondaryTextureInclusionSize :[''],
+		TertiaryTextureInclusionSize : [''],
+		PrimaryTextureInclusionFrequency : [''],
+		SecondaryTextureInclusionFrequency :[''],	
+		TertiaryTextureInclusionFrequency :[''],	
+		PrimaryTextureInclusionCharacter : [''],
+		SecondaryTextureInclusionCharacter :[''],	
+		TertiaryTextureInclusionCharacter :[''],	
     });
   }
 

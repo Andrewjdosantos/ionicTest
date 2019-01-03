@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Addtestpit</ion-title>
+    <ion-title>Consistency</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -15,7 +15,8 @@
 <!-- Add origin to horizon descriptor -->
 <ion-content padding>
 <form [formGroup]="todo" (ngSubmit)="postDataLine()">
-	 <ion-item>
+
+	 <ion-item >
     <ion-label>Primary Cohesive</ion-label>
     <ion-toggle checked={{PrimaryCohesive}} [(ngModel)]="PrimaryCohesive" formControlName="PrimaryCohesive" (ionChange)="notify($event.checked,1)"></ion-toggle>
   </ion-item>
@@ -25,17 +26,29 @@
 	    <ion-option *ngFor="let value of PrimConsistencyOptions" [value]="value.id" selected="value.id == PrimaryCohesiveCharacter">{{value.ConsistencyName}}</ion-option>
 	  </ion-select>
 	</ion-item>
-  <ion-item>
+  <br>
+  <ion-item [hidden]="!todo.controls.PrimaryCohesiveCharacter.value">
     <ion-label>Secondary Cohesive</ion-label>
     <ion-toggle ion-toggle-text="online;offline" checked={{SecondaryCohesive}} [(ngModel)]="SecondaryCohesive" formControlName="SecondaryCohesive" (ionChange)="notify($event.checked,0)"></ion-toggle>
   </ion-item>
-	<ion-item>
+	<ion-item [hidden]="!todo.controls.PrimaryCohesiveCharacter.value">
 	  <ion-label>Secondary Consistency</ion-label>
 	  <ion-select [(ngModel)]="SecondaryCohesiveCharacter" formControlName="SecondaryCohesiveCharacter">
 	    <ion-option *ngFor="let value of SecConsistencyOptions" [value]="value.id" selected="value.id == SecondaryCohesiveCharacter">{{value.ConsistencyName}}</ion-option>
 	  </ion-select>
 	</ion-item>
-
+  <ion-item >
+    <ion-label>Secondary Consistency</ion-label>
+    <ion-select [(ngModel)]="ConsistencyVariation" formControlName="ConsistencyVariation">
+      <ion-option *ngFor="let value of AllConsVariants" [value]="value.id" selected="value.id == ConsVar.id">{{value.Name}}</ion-option>
+    </ion-select>
+  </ion-item>
+<!--   <ion-item [hidden]="!todo.controls.SecondaryCohesiveCharacter.value">
+    <ion-label>Consistency Variant</ion-label>
+    <ion-select [(ngModel)]="ConsistencyVariation" formControlName="ConsistencyVariation">
+      <ion-option *ngFor="let value of AllConsVariants" [value]="value.id" selected="value.id == ConsVar">{{value.Name}}</ion-option>
+    </ion-select>
+  </ion-item> -->
     <button ion-button type="submit" >Submit</button>
   </form>
 </ion-content>

@@ -65,17 +65,23 @@ export class EditcolourPage {
       TestPit: [this.TestPit],
       Horizon: [this.Horizon],
       PrimaryColour :['', Validators.required],
-	  SecondaryColour : ['', Validators.required],
-	  TertiaryColour :['', Validators.required],
-	  PrimaryInclusionColour :['', Validators.required],
-	  SecondaryInclusionColour :['', Validators.required],
-	  TertiaryInclusionColour : ['', Validators.required],
-	  PrimaryInclusionCharacter : ['', Validators.required],
-	  SecondaryInclusionCharacter :['', Validators.required],	
-	  TertiaryInclusionCharacter :['', Validators.required],
+	  SecondaryColour : [''],
+	  TertiaryColour :[''],
+	  PrimaryInclusionColour :[''],
+	  SecondaryInclusionColour :[''],
+	  TertiaryInclusionColour : [''],
+	  PrimaryInclusionCharacter : [''],
+	  SecondaryInclusionCharacter :[''],	
+	  TertiaryInclusionCharacter :[''],
     });
   }
 
+ logDrag(event){
+  console.log(this.todo)
+  console.log(this.todo['value'][event])
+  this.todo['value'][event] = null
+  // this.todo['controls'][event]['value'] = undefined
+ }
 
   getPrimColDataSelect(FieldName) {
     this.restProvider.getDataSelect(FieldName)

@@ -21,6 +21,7 @@ export class ConsistencyeditPage {
 	Horizon : any;
 	Project :any;
 	TestPit : any;
+	ConsVar :any;
 	PrimaryCohesiveCharacter :any;
 	SecondaryCohesiveCharacter : any;
 	PrimaryCohesive : any;
@@ -28,22 +29,48 @@ export class ConsistencyeditPage {
 	PrimConsistencyOptions :any;
 	SecConsistencyOptions :any;
 	AllConsOptions: any;
+	AllConsVariants:any;
   constructor(public navCtrl: NavController,public restProvider: RestProvider, public navParams: NavParams, private formBuilder: FormBuilder) {
     this.horizon = navParams.get("horizon");
     this.id = this.horizon.id;
     this.Horizon = this.horizon.Horizon
     this.Project = this.horizon.Project.id
     this.TestPit = this.horizon.TestPit.id
+    this.getConsVariantDataSelect('ConsistencyVariant')
     try {
 	this.PrimaryCohesiveCharacter = this.horizon.PrimaryCohesiveCharacter.id;
-	this.SecondaryCohesiveCharacter = this.horizon.SecondaryCohesiveCharacter.id;
-	this.PrimaryCohesive = this.horizon.PrimaryCohesiveCharacter.Cohesive;
-	this.SecondaryCohesive = this.horizon.SecondaryCohesiveCharacter.Cohesive;
-	}
+}
 	catch(TypeError) {
 		console.log('error')
 	}
+	try {
+	this.SecondaryCohesiveCharacter = this.horizon.SecondaryCohesiveCharacter.id;
+}
+	catch(TypeError) {
+		console.log('error')
+	}
+	try {
+	this.PrimaryCohesive = this.horizon.PrimaryCohesiveCharacter.Cohesive;
+}
+	catch(TypeError) {
+		console.log('error')
+	}
+	try {
+	this.SecondaryCohesive = this.horizon.SecondaryCohesiveCharacter.Cohesive;
+}
+	catch(TypeError) {
+		console.log('error')
+	}
+	// try{	
+	this.ConsVar = this.horizon.ConsistencyVariation.id;
+	console.log('ConsVar')
+	console.log(this.ConsVar)
+	// }
+	// catch(TypeError) {
+	// 	console.log(this.horizon)
+	// }
 	this.getConsDataSelect('Consistency');
+	
 	console.log(this.PrimaryCohesive)
 	// this.notify(this.PrimaryCohesive,1);
 	// this.notify(this.SecondaryCohesive,0);
@@ -53,9 +80,10 @@ export class ConsistencyeditPage {
       TestPit: [this.TestPit],
       Horizon: [this.Horizon],
       PrimaryCohesiveCharacter :['', Validators.required],
-	  SecondaryCohesiveCharacter : ['', Validators.required],
-      PrimaryCohesive :['', Validators.required],
-	  SecondaryCohesive : ['', Validators.required],
+	  SecondaryCohesiveCharacter : [''],
+      PrimaryCohesive :[''],
+	  SecondaryCohesive : [''],
+	  ConsistencyVariation : ['']
     });
   }
 
@@ -69,6 +97,14 @@ export class ConsistencyeditPage {
     }).then(data => {
 		this.notify(this.PrimaryCohesive,1)
 		this.notify(this.SecondaryCohesive,0)
+    })
+  }
+
+  getConsVariantDataSelect(FieldName) {
+    this.restProvider.getDataSelect(FieldName)
+    .then(data => {
+      this.AllConsVariants = data;
+      // console.log(this.AllConsVariants)
     })
   }
 
