@@ -24,11 +24,12 @@ export class ListTestPitsPage {
 
   constructor(public navCtrl: NavController,public restProvider: RestProvider, public navParams: NavParams, private formBuilder: FormBuilder) {
   	this.project = navParams.get("project");
+    console.log(this.project)
   	this.getTestPits(String(this.project.id));
   }
 
-   goAnOtherPage(params){
-  	this.navCtrl.push(ListhorizonsPage,{project:params});
+   goAnOtherPage(params,project){
+  	this.navCtrl.push(ListhorizonsPage,{project:params,projectdets:project});
   }
 
   getTestPits(filter) {

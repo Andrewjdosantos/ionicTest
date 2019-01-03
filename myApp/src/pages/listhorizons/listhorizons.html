@@ -24,11 +24,11 @@
   <ion-list inset>
 
             <ion-list-header>
-  Barry Marais St : TP{{TestPit}}
+  {{ProjectDetails}} : TP{{TestPit}} <!-- barry comes from porject name -->
 </ion-list-header>
     <ion-item-sliding *ngFor="let horizon of dataline">
               <ion-item (click)="showPageModal(horizon)">
-      <h2>Horizon:{{horizon.Horizon}}</h2>
+      <h2>{{horizon.PitDepth}} m</h2>
 <!--       <button (click)="goAnOtherPage(horizon)" ion-button>Edit Horizon</button>
       <button (click)="showPageModal(horizon)" ion-button>---</button> -->
       </ion-item>

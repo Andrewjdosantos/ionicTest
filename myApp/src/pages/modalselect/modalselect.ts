@@ -26,6 +26,7 @@ export class ModalselectPage {
   horizon : any;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   this.horizon = navParams.get("horizon")
+  // console.log(this.horizon)
   }
 
   ionViewDidLoad() {

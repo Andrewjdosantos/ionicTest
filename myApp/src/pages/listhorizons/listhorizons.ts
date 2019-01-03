@@ -23,13 +23,14 @@ export class ListhorizonsPage {
 	dataline: any;
   TestPitObject:any;
   Project:any;
+  ProjectDetails:any;
   constructor(public modalCtrl: ModalController,public navCtrl: NavController,public restProvider: RestProvider, public navParams: NavParams, private formBuilder: FormBuilder) {
   	
     this.Project = navParams.get("project").TestPitProject;
   	this.TestPit = navParams.get("project").Name;
     this.TestPitObject = navParams.get("project");
-
-  	// console.log(this.TestPitObject)
+    this.ProjectDetails = navParams.get("projectdets")['ProjectName'];
+  	
   	this.getDataLine(this.TestPitObject.id);
   }
 
@@ -59,6 +60,7 @@ export class ListhorizonsPage {
     this.restProvider.getDataLine(filterstring)
     .then(data => {
       this.dataline = data;
+      
       console.log(data)
       
     });

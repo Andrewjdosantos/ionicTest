@@ -30,7 +30,7 @@
   {{project.ProjectName}}
 </ion-list-header>
     <ion-item-sliding *ngFor="let testpit of dataline">
-              <ion-item (click)="goAnOtherPage(testpit)">
+              <ion-item (click)="goAnOtherPage(testpit,project)">
       TP{{testpit.Name}}
 <!--       <button (click)="goAnOtherPage(horizon)" ion-button>Edit Horizon</button>
       <button (click)="showPageModal(horizon)" ion-button>---</button> -->
