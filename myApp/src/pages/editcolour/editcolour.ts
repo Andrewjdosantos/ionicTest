@@ -48,13 +48,45 @@ export class EditcolourPage {
     this.TestPit = this.horizon.TestPit.id
     try {
 	this.PrimaryColour = this.horizon.PrimaryColour.id;
+    }
+  catch(TypeError) {
+  }
+   try {
 	this.SecondaryColour = this.horizon.SecondaryColour.id;
+      }
+  catch(TypeError) {
+  }
+   try {
 	this.TertiaryColour = this.horizon.TertiaryColour.id;
+      }
+  catch(TypeError) {
+  }
+   try {
 	this.PrimaryInclusionColour = this.horizon.PrimaryInclusionColour.id;
+      }
+  catch(TypeError) {
+  }
+   try {
 	this.SecondaryInclusionColour = this.horizon.SecondaryInclusionColour.id;
+      }
+  catch(TypeError) {
+  }
+   try {
 	this.TertiaryInclusionColour = this.horizon.TertiaryInclusionColour.id;
+      }
+  catch(TypeError) {
+  }
+   try {
 	this.PrimaryInclusionCharacter = this.horizon.PrimaryInclusionCharacter.id;
+      }
+  catch(TypeError) {
+  }
+   try {
 	this.SecondaryInclusionCharacter = this.horizon.SecondaryInclusionCharacter.id;
+      }
+  catch(TypeError) {
+  }
+   try {
 	this.TertiaryInclusionCharacter = this.horizon.TertiaryInclusionCharacter.id;
 	}
 	catch(TypeError) {
@@ -76,10 +108,13 @@ export class EditcolourPage {
     });
   }
 
- logDrag(event){
-  console.log(this.todo)
-  console.log(this.todo['value'][event])
-  this.todo['value'][event] = null
+getValues(element)
+
+ DeleteElement(FormElement){
+  console.log(FormElement)
+  // console.log(this.todo['value'][FormElement])
+  this.todo['value'][FormElement] = null
+  this[FormElement] = null
   // this.todo['controls'][event]['value'] = undefined
  }
 

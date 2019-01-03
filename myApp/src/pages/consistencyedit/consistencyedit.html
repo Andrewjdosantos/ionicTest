@@ -40,7 +40,7 @@
   <ion-item >
     <ion-label>Secondary Consistency</ion-label>
     <ion-select [(ngModel)]="ConsistencyVariation" formControlName="ConsistencyVariation">
-      <ion-option *ngFor="let value of AllConsVariants" [value]="value.id" selected="value.id == ConsVar.id">{{value.Name}}</ion-option>
+      <ion-option *ngFor="let value of AllConsVariants" [value]="value.id" selected="value.id == ConsistencyVariation">{{value.Name}}</ion-option>
     </ion-select>
   </ion-item>
 <!--   <ion-item [hidden]="!todo.controls.SecondaryCohesiveCharacter.value">

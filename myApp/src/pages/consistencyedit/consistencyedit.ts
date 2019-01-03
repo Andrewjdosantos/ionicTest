@@ -21,7 +21,7 @@ export class ConsistencyeditPage {
 	Horizon : any;
 	Project :any;
 	TestPit : any;
-	ConsVar :any;
+	ConsistencyVariation :any;
 	PrimaryCohesiveCharacter :any;
 	SecondaryCohesiveCharacter : any;
 	PrimaryCohesive : any;
@@ -36,7 +36,7 @@ export class ConsistencyeditPage {
     this.Horizon = this.horizon.Horizon
     this.Project = this.horizon.Project.id
     this.TestPit = this.horizon.TestPit.id
-    this.getConsVariantDataSelect('ConsistencyVariant')
+    
     try {
 	this.PrimaryCohesiveCharacter = this.horizon.PrimaryCohesiveCharacter.id;
 }
@@ -62,15 +62,15 @@ export class ConsistencyeditPage {
 		console.log('error')
 	}
 	// try{	
-	this.ConsVar = this.horizon.ConsistencyVariation.id;
+	this.ConsistencyVariation = this.horizon.ConsistencyVariation.id;
 	console.log('ConsVar')
-	console.log(this.ConsVar)
+	console.log(this.horizon.ConsistencyVariation.id)
 	// }
 	// catch(TypeError) {
 	// 	console.log(this.horizon)
 	// }
 	this.getConsDataSelect('Consistency');
-	
+	this.getConsVariantDataSelect('ConsistencyVariant');
 	console.log(this.PrimaryCohesive)
 	// this.notify(this.PrimaryCohesive,1);
 	// this.notify(this.SecondaryCohesive,0);
@@ -104,7 +104,7 @@ export class ConsistencyeditPage {
     this.restProvider.getDataSelect(FieldName)
     .then(data => {
       this.AllConsVariants = data;
-      // console.log(this.AllConsVariants)
+      console.log(this.AllConsVariants)
     })
   }
 
