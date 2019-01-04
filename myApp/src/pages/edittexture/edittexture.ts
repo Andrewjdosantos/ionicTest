@@ -41,19 +41,30 @@ export class EdittexturePage {
 	TextureInclusionSizeOptions :any;
 	TextureInclusionFreqOptions :any;
 	TextureInclusionCharacterOptions :any;
+
 	TextureClassificationsOptions :any;
   SecTextureClassificationsOptions :any;
   TertTextureClassificationsOptions :any;
+
+  Angularity :any;
+  Fabric: any;
+  AngularityOptions :any;
+  FabricOptions :any;
+
+  requiresMoreInfo:any;
   constructor(public navCtrl: NavController,public restProvider: RestProvider, public navParams: NavParams, private formBuilder: FormBuilder) {
     this.horizon = navParams.get("horizon");
     this.getTextInclSizeDataSelect('TextureInclusionSize');
     this.getTextIncFreqDataSelect('TextureInclusionFreq');
     this.getTextIncCharDataSelect('TextureInclusionCharacter');
     this.getTextClassDataSelect('TextureClassifications');
+    this.getAngDataSelect('AngularityClass');
+    this.getFabricDataSelect('FabricClass');
     this.id = this.horizon.id;
     this.Horizon = this.horizon.Horizon
     this.Project = this.horizon.Project.id
     this.TestPit = this.horizon.TestPit.id
+    this.requiresMoreInfo = false
     try {
 	this.PrimaryTexture = this.horizon.PrimaryTexture.id;
 } catch(TypeError) {
@@ -132,14 +143,44 @@ try{
 		PrimaryTextureInclusionCharacter : [''],
 		SecondaryTextureInclusionCharacter :[''],	
 		TertiaryTextureInclusionCharacter :[''],	
+    Angularity :[''],
+    Fabric :[''],
     });
   }
 
+  checkReqInfo(){
+    console.log(this.todo.controls.PrimaryTexture.value)
+    console.log(this.TextureClassificationsOptions)
+    try{
+    this.requiresMoreInfo = this.TextureClassificationsOptions.filter( element => element.id == this.todo.controls.PrimaryTexture.value)[0]['ReqExtraInfo']
+    console.log(this.requiresMoreInfo)
+    if (this.requiresMoreInfo == False){
+      this.todo.controls.Angularity.value = null;
+      this.todo.controls.Fabric.value = null;
+    }
+  }catch(TypeError){
+    console.log('no option')
+  }
+  }
 
   getTextInclSizeDataSelect(FieldName) {
     this.restProvider.getDataSelect(FieldName)
     .then(data => {
       this.TextureInclusionSizeOptions = data;
+    });
+  }
+
+  getAngDataSelect(FieldName) {
+    this.restProvider.getDataSelect(FieldName)
+    .then(data => {
+      this.AngularityOptions = data;
+    });
+  }
+
+  getFabricDataSelect(FieldName) {
+    this.restProvider.getDataSelect(FieldName)
+    .then(data => {
+      this.FabricOptions = data;
     });
   }
 
@@ -165,7 +206,6 @@ try{
       this.TextureClassificationsOptions = this.data.filter( element => element.Primary == true)
       this.SecTextureClassificationsOptions = this.data.filter( element => element.Secondary == true)
       this.TertTextureClassificationsOptions = this.data.filter( element => element.Tertiary == true)
-    
     });
   }
 

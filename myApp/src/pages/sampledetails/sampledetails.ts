@@ -37,10 +37,30 @@ export class SampledetailsPage {
     this.Horizon = this.horizon.Horizon
     try {
     this.PrimarySampleType = this.horizon.PrimarySampleType
+      }
+    catch(TypeError) {
+  }
+     try {
     this.SecondarySampleType = this.horizon.SecondarySampleType
+      }
+    catch(TypeError) {
+  }
+     try {
     this.TertiarySampleType = this.horizon.TertiarySampleType
+      }
+    catch(TypeError) {
+  }
+     try {
     this.PrimarySampleNumber = this.horizon.PrimarySampleNumber
+      }
+    catch(TypeError) {
+  }
+     try {
     this.SecondarySampleNumber = this.horizon.SecondarySampleNumber
+      }
+    catch(TypeError) {
+  }
+     try {
     this.TertiarySampleNumber = this.horizon.TertiarySampleNumber
 	}
     catch(TypeError) {

@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Addtestpit</ion-title>
+    <ion-title>Origin</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -16,25 +16,25 @@
 <ion-content padding>
 <form [formGroup]="todo" (ngSubmit)="postDataLine()">
 	<ion-item>
-	  <ion-label>Origin</ion-label>
+	  <ion-label>Class</ion-label>
 	  <ion-select #C (ionChange)="FilterType(C.value)" [(ngModel)]="PrimaryOrigin" formControlName="PrimaryOrigin">
 	    <ion-option *ngFor="let value of OriginOptions" [value]="value.id" selected="value.id == PrimaryOrigin">{{value.OriginName}}</ion-option>
 	  </ion-select>
 	</ion-item>
 	<ion-item>
-	  <ion-label>Origin Type</ion-label>
+	  <ion-label>Origin Category 1</ion-label>
 	  <ion-select #D (ionChange)="FilterChar(D.value)" [(ngModel)]="PrimaryOriginTyoe" formControlName="PrimaryOriginTyoe">
 	    <ion-option *ngFor="let value of OriginTypeOptions" [value]="value.id" selected="value.id == PrimaryOriginTyoe">{{value.OriginTypeName}}</ion-option>
 	  </ion-select>
 	</ion-item>
 	<ion-item>
-	  <ion-label>Origin Character</ion-label>
+	  <ion-label>Origin Category 2</ion-label>
 	  <ion-select [(ngModel)]="PrimaryOriginCharacter" formControlName="PrimaryOriginCharacter">
 	    <ion-option *ngFor="let value of OriginCharacterOptions" [value]="value.id" selected="value.id == PrimaryOriginCharacter">{{value.OriginCharacterName}}</ion-option>
 	  </ion-select>
 	</ion-item>
 		 <ion-item>
-    <ion-label>Origin Reworked</ion-label>
+    <ion-label>Reworked</ion-label>
     <ion-toggle checked={{OriginReworked}} [(ngModel)]="OriginReworked" formControlName="OriginReworked" ></ion-toggle>
   </ion-item>
     <button ion-button type="submit" >Submit</button>

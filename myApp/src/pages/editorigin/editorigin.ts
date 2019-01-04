@@ -39,8 +39,23 @@ export class EditoriginPage {
     this.TestPit = this.horizon.TestPit.id
     try {
 	this.PrimaryOrigin = this.horizon.PrimaryOrigin.id;
+		}
+	catch(TypeError) {
+		console.log('error')
+	}
+	try {
 	this.PrimaryOriginTyoe = this.horizon.PrimaryOriginTyoe.id;
+			}
+	catch(TypeError) {
+		console.log('error')
+	}
+	try {
 	this.PrimaryOriginCharacter = this.horizon.PrimaryOriginCharacter.id;
+			}
+	catch(TypeError) {
+		console.log('error')
+	}
+	try {
 	this.OriginReworked = this.horizon.OriginReworked;
 	}
 	catch(TypeError) {

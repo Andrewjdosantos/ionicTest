@@ -25,6 +25,7 @@ import { EditoriginPage } from '../pages/editorigin/editorigin';
 import { EditgroundwaterPage } from '../pages/editgroundwater/editgroundwater';
 import { EditpedocretePage } from '../pages/editpedocrete/editpedocrete';
 import { SampledetailsPage } from '../pages/sampledetails/sampledetails';
+import { EditbioPage } from '../pages/editbio/editbio';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -53,7 +54,8 @@ import { RestProvider } from '../providers/rest/rest';
     EditoriginPage,
     EditgroundwaterPage,
     EditpedocretePage,
-    SampledetailsPage
+    SampledetailsPage,
+    EditbioPage
   ],
   imports: [
     BrowserModule,
@@ -83,7 +85,8 @@ import { RestProvider } from '../providers/rest/rest';
     EditoriginPage,
     EditgroundwaterPage,
     EditpedocretePage,
-    SampledetailsPage
+    SampledetailsPage,
+    EditbioPage
   ],
   providers: [
     StatusBar,

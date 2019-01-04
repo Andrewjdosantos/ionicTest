@@ -14,10 +14,24 @@
   <form [formGroup]="todo" (ngSubmit)="postDataLine()">
     <ion-item>
       <ion-label>Primary Texture Classification</ion-label>
-      <ion-select [(ngModel)]="PrimaryTexture" formControlName="PrimaryTexture">
+      <ion-select (ionChange)="checkReqInfo()" [(ngModel)]="PrimaryTexture" formControlName="PrimaryTexture">
         <ion-option *ngFor="let value of TextureClassificationsOptions" [value]="value.id" selected="value.id == PrimaryTexture">{{value.TextureClassificationName}}</ion-option>
       </ion-select>
     </ion-item>
+    <ion-item [hidden]="!requiresMoreInfo">
+      <ion-label>Angularity</ion-label>
+      <ion-select [(ngModel)]="Angularity" formControlName="Angularity">
+        <ion-option *ngFor="let value of AngularityOptions" [value]="value.id" selected="value.id == Angularity">{{value.Name}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item [hidden]="!requiresMoreInfo">
+      <ion-label>Fabric</ion-label>
+      <ion-select [(ngModel)]="Fabric" formControlName="Fabric">
+        <ion-option *ngFor="let value of FabricOptions" [value]="value.id" selected="value.id == Fabric">{{value.Name}}</ion-option>
+      </ion-select>
+    </ion-item>
+
     <ion-item [hidden]="!todo.controls.PrimaryTexture.value">
       <ion-label>Secondary Texture Classification</ion-label>
       <ion-select [(ngModel)]="SecondaryTexture" formControlName="SecondaryTexture">

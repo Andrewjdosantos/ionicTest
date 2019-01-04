@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Addtestpit</ion-title>
+    <ion-title>Groundwater</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -15,21 +15,27 @@
 <!-- Add origin to horizon descriptor -->
 <ion-content padding>
 <form [formGroup]="todo" (ngSubmit)="postDataLine()">
+  <ion-list>
     <ion-item>
-      <ion-icon item-left name="pin"></ion-icon>
-      <ion-label>GroundWaterDescriptors</ion-label>
+      <ion-label>Depth</ion-label>
+      <ion-input text-right value={{GroundwaterSeepageDepth}} [max]=5 type="number" formControlName="GroundwaterSeepageDepth"></ion-input>
+    </ion-item>
+  </ion-list>
+<ion-list>
+<ion-list-header>
+  Seepage Rate
+</ion-list-header>
+    <ion-item>
+      <ion-label>Estimate Rate</ion-label>
       <ion-select  [(ngModel)]="GroundWaterDescriptors" formControlName="GroundWaterDescriptors">
        <ion-option  *ngFor="let value of GWDescritpros"  [value]="value.id"  selected="value.id == GroundWaterDescriptors">{{value.DescriptorName}}</ion-option>
       </ion-select>
     </ion-item>
     <ion-item>
-      <ion-label>Groundwater Seepager Depth</ion-label>
-      <ion-input value={{GroundwaterSeepageDepth}} [max]=5 type="number" formControlName="GroundwaterSeepageDepth"></ion-input>
+      <ion-label>Measured Rate</ion-label>
+      <ion-input text-right value={{GroundwaterSeepageRate}} [max]=5 type="number" formControlName="GroundwaterSeepageRate"></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-label>Groundwater Seepage Rate</ion-label>
-      <ion-input value={{GroundwaterSeepageRate}} [max]=5 type="number" formControlName="GroundwaterSeepageRate"></ion-input>
-    </ion-item>
+  </ion-list>
     <button ion-button type="submit" [disabled]="!todo.valid">Submit</button>
   </form>
 </ion-content>

@@ -10,6 +10,7 @@ import { EditoriginPage } from '../editorigin/editorigin';
 import { EditgroundwaterPage } from '../editgroundwater/editgroundwater';
 import { EditpedocretePage } from '../editpedocrete/editpedocrete';
 import { SampledetailsPage } from '../sampledetails/sampledetails';
+import { EditbioPage } from '../editbio/editbio';
 /**
  * Generated class for the ModalselectPage page.
  *
@@ -72,6 +73,9 @@ export class ModalselectPage {
     this.navCtrl.push(SampledetailsPage,{horizon:params});
   };
 
+  gotoBioEditPage(params,horizon){
+    this.navCtrl.push(EditbioPage,{horizon:params});
+  };
 
 closeModal() {
         this.navCtrl.pop();

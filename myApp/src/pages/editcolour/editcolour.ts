@@ -108,8 +108,6 @@ export class EditcolourPage {
     });
   }
 
-getValues(element)
-
  DeleteElement(FormElement){
   console.log(FormElement)
   // console.log(this.todo['value'][FormElement])

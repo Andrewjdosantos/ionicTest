@@ -39,6 +39,21 @@ export class EditpedocretePage {
     this.Horizon = this.horizon.Horizon
     this.Project = this.horizon.Project.id
     this.TestPit = this.horizon.TestPit.id
+        try {
+    this.PedocreteType = this.horizon.PedocreteType.id
+      }
+    catch(TypeError) {
+  }
+    try {
+    this.PedocreteFrequency = this.horizon.PedocreteFrequency.id
+          }
+    catch(TypeError) {
+  }
+    try {
+    this.PedocreteCharacter = this.horizon.PedocreteCharacter.id
+          }
+    catch(TypeError) {
+  }  
  //    try {
 	// this.PrimaryTexture = this.horizon.PrimaryTexture.id;
 	// this.PrimaryTextureInclusionSize = this.horizon.PrimaryTextureInclusionSize.id;

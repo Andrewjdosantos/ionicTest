@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Addtestpit</ion-title>
+    <ion-title>Pedocrete</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -16,22 +16,19 @@
 <ion-content padding>
 <form [formGroup]="todo" (ngSubmit)="postDataLine()">
     <ion-item>
-      <ion-icon item-left name="pin"></ion-icon>
-      <ion-label>Pedocrete Type</ion-label>
+      <ion-label>Type</ion-label>
       <ion-select  [(ngModel)]="PedocreteType" formControlName="PedocreteType">
        <ion-option  *ngFor="let value of PedocreteTypeOptions"  [value]="value.id"  selected="value.id == PedocreteType">{{value.Name}}</ion-option>
       </ion-select>
     </ion-item>
     <ion-item>
-      <ion-icon item-left name="pin"></ion-icon>
-      <ion-label>PedocreteFrequency</ion-label>
+      <ion-label>Frequency</ion-label>
       <ion-select  [(ngModel)]="PedocreteFrequency" formControlName="PedocreteFrequency">
        <ion-option  *ngFor="let value of PedocreteFrequencyOptions"  [value]="value.id"  selected="value.id == PedocreteFrequency">{{value.Name}}</ion-option>
       </ion-select>
     </ion-item>
     <ion-item>
-      <ion-icon item-left name="pin"></ion-icon>
-      <ion-label>Pedocrete Character</ion-label>
+      <ion-label>Character</ion-label>
       <ion-select  [(ngModel)]="PedocreteCharacter" formControlName="PedocreteCharacter">
        <ion-option  *ngFor="let value of PedocreteCharacterOptions"  [value]="value.id"  selected="value.id == PedocreteCharacter">{{value.Name}}</ion-option>
       </ion-select>
