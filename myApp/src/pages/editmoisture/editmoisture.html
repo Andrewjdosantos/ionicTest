@@ -14,7 +14,8 @@
 
 <!-- Add origin to horizon descriptor -->
 <ion-content padding>
-<form [formGroup]="todo" (ngSubmit)="postDataLine()">
+<form [formGroup]="todo">
+  <ion-list>
   <ion-item-sliding (ionSwipe)="DeleteElement('PrimMoisture')">
     <ion-item>
       <!-- <ion-icon item-left name="pin"></ion-icon> -->
@@ -45,6 +46,7 @@
       <ion-label>Variation Character</ion-label>
       <ion-textarea value={{MoistureVariant}} [max]=5 type="text" formControlName="MoistureVariant"></ion-textarea>
     </ion-item>
-    <button ion-button type="submit" [disabled]="!todo.valid">Submit</button>
+  </ion-list>
+    <button ion-button type="submit" (click)="postDataLine()" [disabled]="!todo.valid">Submit</button>
   </form>
 </ion-content>
