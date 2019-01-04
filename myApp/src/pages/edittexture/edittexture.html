@@ -14,33 +14,33 @@
   <form [formGroup]="todo" (ngSubmit)="postDataLine()">
     <ion-item>
       <ion-label>Primary Texture Classification</ion-label>
-      <ion-select (ionChange)="checkReqInfo()" [(ngModel)]="PrimaryTexture" formControlName="PrimaryTexture" interface="popover">
+      <ion-select interface="popover" interface="popover" (ionChange)="checkReqInfo()" [(ngModel)]="PrimaryTexture" formControlName="PrimaryTexture" interface="popover">
         <ion-option *ngFor="let value of TextureClassificationsOptions" [value]="value.id" selected="value.id == PrimaryTexture">{{value.TextureClassificationName}}</ion-option>
       </ion-select>
     </ion-item>
     <ion-item [hidden]="!requiresMoreInfo">
       <ion-label>Angularity</ion-label>
-      <ion-select [(ngModel)]="Angularity" formControlName="Angularity">
+      <ion-select interface="popover" interface="popover" [(ngModel)]="Angularity" formControlName="Angularity">
         <ion-option *ngFor="let value of AngularityOptions" [value]="value.id" selected="value.id == Angularity">{{value.Name}}</ion-option>
       </ion-select>
     </ion-item>
 
     <ion-item [hidden]="!requiresMoreInfo">
       <ion-label>Fabric</ion-label>
-      <ion-select [(ngModel)]="Fabric" formControlName="Fabric">
+      <ion-select interface="popover" interface="popover" [(ngModel)]="Fabric" formControlName="Fabric">
         <ion-option *ngFor="let value of FabricOptions" [value]="value.id" selected="value.id == Fabric">{{value.Name}}</ion-option>
       </ion-select>
     </ion-item>
 
     <ion-item [hidden]="!todo.controls.PrimaryTexture.value">
       <ion-label>Secondary Texture Classification</ion-label>
-      <ion-select [(ngModel)]="SecondaryTexture" formControlName="SecondaryTexture">
+      <ion-select interface="popover" interface="popover" [(ngModel)]="SecondaryTexture" formControlName="SecondaryTexture">
         <ion-option *ngFor="let value of SecTextureClassificationsOptions" [value]="value.id" selected="value.id == SecondaryTexture">{{value.TextureClassificationName}}</ion-option>
       </ion-select>
     </ion-item>
     <ion-item [hidden]="!todo.controls.SecondaryTexture.value">
       <ion-label>Tertiary Texture Classification</ion-label>
-      <ion-select [(ngModel)]="TertiaryTexture" formControlName="TertiaryTexture">
+      <ion-select interface="popover" interface="popover" [(ngModel)]="TertiaryTexture" formControlName="TertiaryTexture">
         <ion-option *ngFor="let value of TertTextureClassificationsOptions" [value]="value.id" selected="value.id == TertiaryTexture">{{value.TextureClassificationName}}</ion-option>
       </ion-select>
     </ion-item>
@@ -51,57 +51,57 @@
       </ion-list-header>
       <ion-item [hidden]="!todo.controls.PrimaryTexture.value">
         <ion-label>Primary Inclusion Size</ion-label>
-        <ion-select [(ngModel)]="PrimaryTextureInclusionSize" formControlName="PrimaryTextureInclusionSize">
+        <ion-select interface="popover" interface="popover" [(ngModel)]="PrimaryTextureInclusionSize" formControlName="PrimaryTextureInclusionSize">
           <ion-option *ngFor="let value of TextureInclusionSizeOptions" [value]="value.id" selected="value.id == PrimaryTextureInclusionSize">{{value.TextureInclusionSizeName}}</ion-option>
         </ion-select>
       </ion-item>
       <ion-item [hidden]="!todo.controls.PrimaryTextureInclusionSize.value">
         <ion-label>Primary Texture Inclusion Frequency</ion-label>
-        <ion-select [(ngModel)]="PrimaryTextureInclusionFrequency" formControlName="PrimaryTextureInclusionFrequency">
+        <ion-select interface="popover" interface="popover" [(ngModel)]="PrimaryTextureInclusionFrequency" formControlName="PrimaryTextureInclusionFrequency">
           <ion-option *ngFor="let value of TextureInclusionFreqOptions" [value]="value.id" selected="value.id == PrimaryTextureInclusionFrequency">{{value.TextureInclusionFreqName}}</ion-option>
         </ion-select>
       </ion-item>
       <ion-item [hidden]="!todo.controls.PrimaryTextureInclusionSize.value">
         <ion-label>Primary Texture Inclusion Character</ion-label>
-        <ion-select [(ngModel)]="PrimaryTextureInclusionCharacter" formControlName="PrimaryTextureInclusionCharacter">
+        <ion-select interface="popover" interface="popover" [(ngModel)]="PrimaryTextureInclusionCharacter" formControlName="PrimaryTextureInclusionCharacter">
           <ion-option *ngFor="let value of TextureInclusionCharacterOptions" [value]="value.id" selected="value.id == PrimaryTextureInclusionCharacter">{{value.TextureInclusionCharacter}}</ion-option>
         </ion-select>
       </ion-item>
       <br>
       <ion-item [hidden]="!todo.controls.PrimaryTextureInclusionSize.value">
         <ion-label>Secondary Inclusion Size</ion-label>
-        <ion-select [(ngModel)]="SecondaryTextureInclusionSize" formControlName="SecondaryTextureInclusionSize">
+        <ion-select interface="popover" interface="popover" [(ngModel)]="SecondaryTextureInclusionSize" formControlName="SecondaryTextureInclusionSize">
           <ion-option *ngFor="let value of TextureInclusionSizeOptions" [value]="value.id" selected="value.id == SecondaryTextureInclusionSize">{{value.TextureInclusionSizeName}}</ion-option>
         </ion-select>
       </ion-item>
       <ion-item [hidden]="!todo.controls.SecondaryTextureInclusionSize.value">
         <ion-label>Secondary Texture Inclusion Frequency</ion-label>
-        <ion-select [(ngModel)]="SecondaryTextureInclusionFrequency" formControlName="SecondaryTextureInclusionFrequency">
+        <ion-select interface="popover" interface="popover" [(ngModel)]="SecondaryTextureInclusionFrequency" formControlName="SecondaryTextureInclusionFrequency">
           <ion-option *ngFor="let value of TextureInclusionFreqOptions" [value]="value.id" selected="value.id == SecondaryTextureInclusionFrequency">{{value.TextureInclusionFreqName}}</ion-option>
         </ion-select>
       </ion-item>
       <ion-item [hidden]="!todo.controls.SecondaryTextureInclusionSize.value">
         <ion-label>Secondary Texture Inclusion Character</ion-label>
-        <ion-select [(ngModel)]="SecondaryTextureInclusionCharacter" formControlName="SecondaryTextureInclusionCharacter">
+        <ion-select interface="popover" interface="popover" [(ngModel)]="SecondaryTextureInclusionCharacter" formControlName="SecondaryTextureInclusionCharacter">
           <ion-option *ngFor="let value of TextureInclusionCharacterOptions" [value]="value.id" selected="value.id == SecondaryTextureInclusionCharacter">{{value.TextureInclusionCharacter}}</ion-option>
         </ion-select>
       </ion-item>
       <br>
       <ion-item [hidden]="!todo.controls.SecondaryTextureInclusionSize.value">
         <ion-label>Tertiary Inclusion Size</ion-label>
-        <ion-select [(ngModel)]="TertiaryTextureInclusionSize" formControlName="TertiaryTextureInclusionSize">
+        <ion-select interface="popover" interface="popover" [(ngModel)]="TertiaryTextureInclusionSize" formControlName="TertiaryTextureInclusionSize">
           <ion-option *ngFor="let value of TextureInclusionSizeOptions" [value]="value.id" selected="value.id == TertiaryTextureInclusionSize">{{value.TextureInclusionSizeName}}</ion-option>
         </ion-select>
       </ion-item>
       <ion-item [hidden]="!todo.controls.TertiaryTextureInclusionSize.value">
         <ion-label>Tertiary Texture Inclusion Frequency</ion-label>
-        <ion-select [(ngModel)]="TertiaryTextureInclusionFrequency" formControlName="TertiaryTextureInclusionFrequency">
+        <ion-select interface="popover" interface="popover" [(ngModel)]="TertiaryTextureInclusionFrequency" formControlName="TertiaryTextureInclusionFrequency">
           <ion-option *ngFor="let value of TextureInclusionFreqOptions" [value]="value.id" selected="value.id == TertiaryTextureInclusionFrequency">{{value.TextureInclusionFreqName}}</ion-option>
         </ion-select>
       </ion-item>
       <ion-item [hidden]="!todo.controls.TertiaryTextureInclusionSize.value">
         <ion-label>Tertiary Texture Inclusion Character</ion-label>
-        <ion-select [(ngModel)]="TertiaryTextureInclusionCharacter" formControlName="TertiaryTextureInclusionCharacter">
+        <ion-select interface="popover" interface="popover" [(ngModel)]="TertiaryTextureInclusionCharacter" formControlName="TertiaryTextureInclusionCharacter">
           <ion-option *ngFor="let value of TextureInclusionCharacterOptions" [value]="value.id" selected="value.id == TertiaryTextureInclusionCharacter">{{value.TextureInclusionCharacter}}</ion-option>
         </ion-select>
       </ion-item>

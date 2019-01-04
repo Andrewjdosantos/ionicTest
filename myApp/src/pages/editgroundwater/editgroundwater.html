@@ -27,7 +27,7 @@
 </ion-list-header>
     <ion-item>
       <ion-label>Estimate Rate</ion-label>
-      <ion-select  [(ngModel)]="GroundWaterDescriptors" formControlName="GroundWaterDescriptors">
+      <ion-select interface="popover" interface="popover" [(ngModel)]="GroundWaterDescriptors" formControlName="GroundWaterDescriptors">
        <ion-option  *ngFor="let value of GWDescritpros"  [value]="value.id"  selected="value.id == GroundWaterDescriptors">{{value.DescriptorName}}</ion-option>
       </ion-select>
     </ion-item>

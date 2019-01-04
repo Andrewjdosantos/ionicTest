@@ -22,7 +22,7 @@ Colour
 <ion-item-sliding (ionSwipe)="DeleteElement('PrimaryColour')">
   <ion-item>
     <ion-label>Primary</ion-label>
-    <ion-select [(ngModel)]="PrimaryColour" formControlName="PrimaryColour">
+    <ion-select interface="popover" interface="popover"[(ngModel)]="PrimaryColour" formControlName="PrimaryColour">
  <!--      <ion-option [value]=''>-----</ion-option> -->
       <ion-option *ngFor="let value of PrimColourOptions" [value]="value.id" selected="value.id == PrimaryColour">{{value.ColourName}}</ion-option>
     </ion-select>
@@ -34,7 +34,7 @@ Colour
 <ion-item-sliding (ionSwipe)="DeleteElement('SecondaryColour')">
     <ion-item [hidden]="!todo.controls.PrimaryColour.value">
       <ion-label>Secondary</ion-label>
-      <ion-select  [(ngModel)]="SecondaryColour" formControlName="SecondaryColour">
+      <ion-select interface="popover" interface="popover" [(ngModel)]="SecondaryColour" formControlName="SecondaryColour">
        <ion-option  *ngFor="let value of SecColourOptions"  [value]="value.id"  selected="value.id == SecondaryColour">{{value.ColourName}}</ion-option>
       </ion-select>
     </ion-item>
@@ -46,7 +46,7 @@ Colour
 <ion-item-sliding (ionSwipe)="DeleteElement('TertiaryColour')">
     <ion-item [hidden]="!todo.controls.PrimaryColour.value">
       <ion-label>Tertiary</ion-label>
-      <ion-select  [(ngModel)]="TertiaryColour" formControlName="TertiaryColour">
+      <ion-select interface="popover" interface="popover" [(ngModel)]="TertiaryColour" formControlName="TertiaryColour">
        <ion-option  *ngFor="let value of TertColourOptions"  [value]="value.id"  selected="value.id == TertiaryColour">{{value.ColourName}}</ion-option>
       </ion-select>
     </ion-item>
@@ -63,7 +63,7 @@ Colour
 <ion-item-sliding (ionSwipe)="DeleteElement('PrimaryInclusionCharacter')">
 <ion-item [hidden]="!todo.controls.PrimaryColour.value">
   <ion-label>Character</ion-label>
-  <ion-select [(ngModel)]="PrimaryInclusionCharacter" formControlName="PrimaryInclusionCharacter">
+  <ion-select interface="popover" interface="popover"[(ngModel)]="PrimaryInclusionCharacter" formControlName="PrimaryInclusionCharacter">
     <ion-option *ngFor="let value of InclusionOptions" [value]="value.id" selected="value.id == PrimaryInclusionCharacter">{{value.IncCharacterName}}</ion-option>
   </ion-select>
 </ion-item>
@@ -75,7 +75,7 @@ Colour
 <ion-item-sliding (ionSwipe)="DeleteElement('PrimaryInclusionColour')">
 <ion-item [hidden]="!todo.controls.PrimaryInclusionCharacter.value">
   <ion-label>Colour</ion-label>
-  <ion-select [(ngModel)]="PrimaryInclusionColour" formControlName="PrimaryInclusionColour">
+  <ion-select interface="popover" interface="popover"[(ngModel)]="PrimaryInclusionColour" formControlName="PrimaryInclusionColour">
     <ion-option *ngFor="let value of PrimColourOptions" [value]="value.id" selected="value.id == PrimaryInclusionColour">{{value.ColourName}}</ion-option>
   </ion-select>
 </ion-item>
@@ -88,7 +88,7 @@ Colour
 <ion-item-sliding (ionSwipe)="DeleteElement('PrimaryInclusionCharacter')">
     <ion-item [hidden]="!todo.controls.PrimaryInclusionCharacter.value">
       <ion-label>Secondary Character</ion-label>
-      <ion-select  [(ngModel)]="SecondaryInclusionCharacter" formControlName="SecondaryInclusionCharacter">
+      <ion-select interface="popover" interface="popover" [(ngModel)]="SecondaryInclusionCharacter" formControlName="SecondaryInclusionCharacter">
        <ion-option  *ngFor="let value of InclusionOptions"  [value]="value.id"  selected="value.id == SecondaryInclusionCharacter">{{value.IncCharacterName}}</ion-option>
       </ion-select>
     </ion-item>
@@ -100,7 +100,7 @@ Colour
 
       <ion-item [hidden]="!todo.controls.SecondaryInclusionCharacter.value">
       <ion-label>Secondary Colour</ion-label>
-      <ion-select  [(ngModel)]="SecondaryInclusionColour" formControlName="SecondaryInclusionColour">
+      <ion-select interface="popover" interface="popover" [(ngModel)]="SecondaryInclusionColour" formControlName="SecondaryInclusionColour">
         <ion-option [value]="null">-----</ion-option>
        <ion-option  *ngFor="let value of PrimColourOptions"  [value]="value.id"  selected="value.id == SecondaryInclusionColour">{{value.ColourName}}</ion-option>
       </ion-select>
@@ -108,13 +108,13 @@ Colour
 <br>
     <ion-item [hidden]="!todo.controls.SecondaryInclusionCharacter.value">
       <ion-label>Tertiary Character</ion-label>
-      <ion-select  [(ngModel)]="TertiaryInclusionCharacter" formControlName="TertiaryInclusionCharacter">
+      <ion-select interface="popover" interface="popover" [(ngModel)]="TertiaryInclusionCharacter" formControlName="TertiaryInclusionCharacter">
        <ion-option  *ngFor="let value of InclusionOptions"  [value]="value.id"  selected="value.id == TertiaryInclusionCharacter">{{value.IncCharacterName}}</ion-option>
       </ion-select>
     </ion-item>
       <ion-item [hidden]="!todo.controls.TertiaryInclusionCharacter.value">
       <ion-label>Tertiary Colour</ion-label>
-      <ion-select  [(ngModel)]="TertiaryInclusionColour" formControlName="TertiaryInclusionColour">
+      <ion-select interface="popover" interface="popover" [(ngModel)]="TertiaryInclusionColour" formControlName="TertiaryInclusionColour">
        <ion-option  *ngFor="let value of PrimColourOptions"  [value]="value.id"  selected="value.id == TertiaryInclusionColour">{{value.ColourName}}</ion-option>
       </ion-select>
     </ion-item>

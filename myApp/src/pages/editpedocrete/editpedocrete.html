@@ -17,19 +17,19 @@
 <form [formGroup]="todo" (ngSubmit)="postDataLine()">
     <ion-item>
       <ion-label>Type</ion-label>
-      <ion-select  [(ngModel)]="PedocreteType" formControlName="PedocreteType">
+      <ion-select interface="popover" interface="popover" [(ngModel)]="PedocreteType" formControlName="PedocreteType">
        <ion-option  *ngFor="let value of PedocreteTypeOptions"  [value]="value.id"  selected="value.id == PedocreteType">{{value.Name}}</ion-option>
       </ion-select>
     </ion-item>
     <ion-item>
       <ion-label>Frequency</ion-label>
-      <ion-select  [(ngModel)]="PedocreteFrequency" formControlName="PedocreteFrequency">
+      <ion-select interface="popover" interface="popover" [(ngModel)]="PedocreteFrequency" formControlName="PedocreteFrequency">
        <ion-option  *ngFor="let value of PedocreteFrequencyOptions"  [value]="value.id"  selected="value.id == PedocreteFrequency">{{value.Name}}</ion-option>
       </ion-select>
     </ion-item>
     <ion-item>
       <ion-label>Character</ion-label>
-      <ion-select  [(ngModel)]="PedocreteCharacter" formControlName="PedocreteCharacter">
+      <ion-select interface="popover" interface="popover" [(ngModel)]="PedocreteCharacter" formControlName="PedocreteCharacter">
        <ion-option  *ngFor="let value of PedocreteCharacterOptions"  [value]="value.id"  selected="value.id == PedocreteCharacter">{{value.Name}}</ion-option>
       </ion-select>
     </ion-item>

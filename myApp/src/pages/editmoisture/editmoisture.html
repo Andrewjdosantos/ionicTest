@@ -15,20 +15,32 @@
 <!-- Add origin to horizon descriptor -->
 <ion-content padding>
 <form [formGroup]="todo" (ngSubmit)="postDataLine()">
+  <ion-item-sliding (ionSwipe)="DeleteElement('PrimMoisture')">
     <ion-item>
       <!-- <ion-icon item-left name="pin"></ion-icon> -->
       <ion-label>Primary Moisture</ion-label>
-      <ion-select  [(ngModel)]="PrimMoisture" formControlName="PrimaryMoisture">
+      <ion-selectinterface="popover" interface="popover"  [(ngModel)]="PrimMoisture" formControlName="PrimaryMoisture">
        <ion-option  *ngFor="let value of MoistureOptions"  [value]="value.id"  selected="value.id == PrimMoisture">{{value.MoistureName}}</ion-option>
       </ion-select>
     </ion-item>
+      <ion-item-options>
+    <button ion-button expandable (click)="DeleteElement('PrimMoisture')">Delete</button>
+  </ion-item-options>
+</ion-item-sliding>
+
+<ion-item-sliding (ionSwipe)="DeleteElement('SecMoisture')">
     <ion-item [hidden]="!todo.controls.PrimaryMoisture.value" >
       <!-- <ion-icon item-left name="pin"></ion-icon> -->
       <ion-label>Secondary Moisture</ion-label>
-      <ion-select  [(ngModel)]="SecMoisture" formControlName="SecondaryMoisture">
+      <ion-selectinterface="popover" interface="popover"  [(ngModel)]="SecMoisture" formControlName="SecondaryMoisture">
        <ion-option  *ngFor="let val of MoistureOptions"  [value]="val.id"  selected="val.id == SecMoisture">{{val.MoistureName}}</ion-option>
       </ion-select>
     </ion-item>
+      <ion-item-options>
+    <button ion-button expandable (click)="DeleteElement('SecMoisture')">Delete</button>
+  </ion-item-options>
+</ion-item-sliding>
+
     <ion-item [hidden]="!todo.controls.SecondaryMoisture.value">
       <ion-label>Variation Character</ion-label>
       <ion-textarea value={{MoistureVariant}} [max]=5 type="text" formControlName="MoistureVariant"></ion-textarea>

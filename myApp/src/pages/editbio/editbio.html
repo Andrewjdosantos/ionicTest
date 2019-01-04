@@ -19,7 +19,7 @@
 <ion-item-sliding (ionSwipe)="DeleteElement('BiologicalType')">
     <ion-item>
       <ion-label>Type</ion-label>
-      <ion-select  [(ngModel)]="BiologicalType" formControlName="BiologicalType">
+      <ion-select interface="popover" interface="popover" [(ngModel)]="BiologicalType" formControlName="BiologicalType">
        <ion-option  *ngFor="let value of BiologicalTypeOptions"  [value]="value.id"  selected="value.id == BiologicalType">{{value.Name}}</ion-option>
       </ion-select>
     </ion-item>
@@ -32,7 +32,7 @@
 <ion-item-sliding (ionSwipe)="DeleteElement('BiologicalFrequency')">
     <ion-item>
       <ion-label>Frequency</ion-label>
-      <ion-select  [(ngModel)]="BiologicalFrequency" formControlName="BiologicalFrequency">
+      <ion-select interface="popover" interface="popover" [(ngModel)]="BiologicalFrequency" formControlName="BiologicalFrequency">
        <ion-option  *ngFor="let value of BiologicalFrequencyOptions"  [value]="value.id"  selected="value.id == BiologicalFrequency">{{value.Name}}</ion-option>
       </ion-select>
     </ion-item>

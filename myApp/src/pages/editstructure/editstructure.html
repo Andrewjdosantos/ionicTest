@@ -17,26 +17,26 @@
 <form [formGroup]="todo" (ngSubmit)="postDataLine()">
 	<ion-item>
 	  <ion-label>Character</ion-label>
-	  <ion-select #C (ionChange)="Filter(C.value,1)" [(ngModel)]="PrimFilter" formControlName="PrimFilter">
+	  <ion-selectinterface="popover" interface="popover" #C (ionChange)="Filter(C.value,1)" [(ngModel)]="PrimFilter" formControlName="PrimFilter">
 	    <ion-option *ngFor="let value of StructureOptions" [value]="value.id" selected="value.id == StructureOptions">{{value}}</ion-option>
 	  </ion-select>
 	</ion-item>
 	<ion-item>
 	  <ion-label>Structure</ion-label>
-	  <ion-select [(ngModel)]="PrimaryStructure" formControlName="PrimaryStructure">
+	  <ion-selectinterface="popover" interface="popover" [(ngModel)]="PrimaryStructure" formControlName="PrimaryStructure">
 	    <ion-option *ngFor="let value of PrimStructureOptions" [value]="value.id" selected="value.id == PrimStructureOptions">{{value.SecondaryClassification}}</ion-option>
 	  </ion-select>
 	</ion-item>
 	<br>
 	<ion-item [hidden]="!todo.controls.PrimaryStructure.value">
 	  <ion-label>Secondary Character</ion-label>
-	  <ion-select #D (ionChange)="Filter(D.value,0)" [(ngModel)]="SecFilter" formControlName="SecFilter">
+	  <ion-selectinterface="popover" interface="popover" #D (ionChange)="Filter(D.value,0)" [(ngModel)]="SecFilter" formControlName="SecFilter">
 	    <ion-option *ngFor="let value of StructureOptions" [value]="value.id" selected="value.id == StructureOptions">{{value}}</ion-option>
 	  </ion-select>
 	</ion-item>
 	<ion-item [hidden]="!todo.controls.PrimaryStructure.value">
 	  <ion-label>Secondary Structure</ion-label>
-	  <ion-select [(ngModel)]="SecondaryStructure" formControlName="SecondaryStructure">
+	  <ion-selectinterface="popover" interface="popover" [(ngModel)]="SecondaryStructure" formControlName="SecondaryStructure">
 	    <ion-option *ngFor="let value of SecStructureOptions" [value]="value.id" selected="value.id == SecStructureOptions">{{value.SecondaryClassification}}</ion-option>
 	  </ion-select>
 	</ion-item>
