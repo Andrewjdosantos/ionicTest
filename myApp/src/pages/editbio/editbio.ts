@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { RestProvider } from '../../providers/rest/rest';
+import { SampledetailsPage } from '../sampledetails/sampledetails';
 
 /**
  * Generated class for the EditbioPage page.
@@ -65,6 +66,14 @@ export class EditbioPage {
   this[FormElement] = null
   // this.todo['controls'][event]['value'] = undefined
  }
+ 
+ DeleteElement(FormElement){
+  console.log(FormElement)
+  // console.log(this.todo['value'][FormElement])
+  this.todo['value'][FormElement] = null
+  this[FormElement] = null
+  // this.todo['controls'][event]['value'] = undefined
+ }
 
   getBioTypeDataSelect(FieldName) {
     this.restProvider.getDataSelect(FieldName)
@@ -80,7 +89,9 @@ export class EditbioPage {
     });
   }
 
-
+  gotoNextPage(params){
+    this.navCtrl.push(SampledetailsPage,{horizon:params});
+  };
 
   postDataLine() {
     // console.log(JSON.stringify(this.todo.value))

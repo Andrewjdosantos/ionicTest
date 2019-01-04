@@ -58,10 +58,15 @@ export class EditmoisturePage {
       MoistureVariant: [''],
     });
     console.log(this.todo)
-
-
-
   }
+ 
+ DeleteElement(FormElement){
+  console.log(FormElement)
+  // console.log(this.todo['value'][FormElement])
+  this.todo['value'][FormElement] = null
+  this[FormElement] = null
+  // this.todo['controls'][event]['value'] = undefined
+ }
  
   ionViewDidLoad() {
     console.log('ionViewDidLoad EditmoisturePage');

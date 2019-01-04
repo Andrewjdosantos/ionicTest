@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { RestProvider } from '../../providers/rest/rest';
+import { EditpedocretePage } from '../editpedocrete/editpedocrete';
 /**
  * Generated class for the EditgroundwaterPage page.
  *
@@ -63,6 +64,10 @@ export class EditgroundwaterPage {
       this.GWDescritpros = data;
     });
   }
+
+  gotoNextPage(params){
+    this.navCtrl.push(EditpedocretePage,{horizon:params});
+  };
 
   postDataLine() {
     // console.log(JSON.stringify(this.todo.value))

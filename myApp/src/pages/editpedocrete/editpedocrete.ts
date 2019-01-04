@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { RestProvider } from '../../providers/rest/rest';
+import { EditbioPage } from '../editbio/editbio';
 /**
  * Generated class for the EditpedocretePage page.
  *
@@ -84,6 +85,13 @@ export class EditpedocretePage {
     });
   }
 
+ DeleteElement(FormElement){
+  console.log(FormElement)
+  // console.log(this.todo['value'][FormElement])
+  this.todo['value'][FormElement] = null
+  this[FormElement] = null
+  // this.todo['controls'][event]['value'] = undefined
+ }
 
   getTextInclSizeDataSelect(FieldName) {
     this.restProvider.getDataSelect(FieldName)
@@ -106,7 +114,9 @@ export class EditpedocretePage {
     });
   }
 
-
+  gotoNextPage(params){
+    this.navCtrl.push(EditbioPage,{horizon:params});
+  };
 
   postDataLine() {
     // console.log(JSON.stringify(this.todo.value))
