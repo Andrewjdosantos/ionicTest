@@ -15,24 +15,42 @@
 <!-- Add origin to horizon descriptor -->
 <ion-content padding>
 <form [formGroup]="todo" (ngSubmit)="postDataLine()">
+  <ion-item-sliding (ionSwipe)="DeleteElement('PedocreteType')">
     <ion-item>
       <ion-label>Type</ion-label>
       <ion-select interface="popover" interface="popover" [(ngModel)]="PedocreteType" formControlName="PedocreteType">
        <ion-option  *ngFor="let value of PedocreteTypeOptions"  [value]="value.id"  selected="value.id == PedocreteType">{{value.Name}}</ion-option>
       </ion-select>
     </ion-item>
+  <ion-item-options>
+    <button ion-button expandable (click)="DeleteElement('PedocreteType')">Delete</button>
+  </ion-item-options>
+</ion-item-sliding>
+
+  <ion-item-sliding (ionSwipe)="DeleteElement('PedocreteFrequency')">
     <ion-item>
       <ion-label>Frequency</ion-label>
       <ion-select interface="popover" interface="popover" [(ngModel)]="PedocreteFrequency" formControlName="PedocreteFrequency">
        <ion-option  *ngFor="let value of PedocreteFrequencyOptions"  [value]="value.id"  selected="value.id == PedocreteFrequency">{{value.Name}}</ion-option>
       </ion-select>
     </ion-item>
+          <ion-item-options>
+    <button ion-button expandable (click)="DeleteElement('PedocreteFrequency')">Delete</button>
+  </ion-item-options>
+</ion-item-sliding>
+
+  <ion-item-sliding (ionSwipe)="DeleteElement('PedocreteCharacter')">
     <ion-item>
       <ion-label>Character</ion-label>
       <ion-select interface="popover" interface="popover" [(ngModel)]="PedocreteCharacter" formControlName="PedocreteCharacter">
        <ion-option  *ngFor="let value of PedocreteCharacterOptions"  [value]="value.id"  selected="value.id == PedocreteCharacter">{{value.Name}}</ion-option>
       </ion-select>
     </ion-item>
+          <ion-item-options>
+    <button ion-button expandable (click)="DeleteElement('PedocreteCharacter')">Delete</button>
+  </ion-item-options>
+</ion-item-sliding>
+
     <button ion-button type="submit" >Submit</button>
   </form>
 </ion-content>

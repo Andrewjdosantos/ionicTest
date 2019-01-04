@@ -15,31 +15,54 @@
 <!-- Add origin to horizon descriptor -->
 <ion-content padding>
 <form [formGroup]="todo" (ngSubmit)="postDataLine()">
+	  <ion-item-sliding (ionSwipe)="DeleteElement('PrimFilter')">
 	<ion-item>
 	  <ion-label>Character</ion-label>
-	  <ion-selectinterface="popover" interface="popover" #C (ionChange)="Filter(C.value,1)" [(ngModel)]="PrimFilter" formControlName="PrimFilter">
+	  <ion-select interface="popover" interface="popover" #C (ionChange)="Filter(C.value,1)" [(ngModel)]="PrimFilter" formControlName="PrimFilter">
 	    <ion-option *ngFor="let value of StructureOptions" [value]="value.id" selected="value.id == StructureOptions">{{value}}</ion-option>
-	  </ion-select>
-	</ion-item>
+</ion-select>
+    </ion-item>
+  <ion-item-options>
+    <button ion-button expandable (click)="DeleteElement('PrimFilter')">Delete</button>
+  </ion-item-options>
+</ion-item-sliding>
+
+ <ion-item-sliding (ionSwipe)="DeleteElement('PrimaryStructure')">
 	<ion-item>
 	  <ion-label>Structure</ion-label>
-	  <ion-selectinterface="popover" interface="popover" [(ngModel)]="PrimaryStructure" formControlName="PrimaryStructure">
+	  <ion-select interface="popover" interface="popover" [(ngModel)]="PrimaryStructure" formControlName="PrimaryStructure">
 	    <ion-option *ngFor="let value of PrimStructureOptions" [value]="value.id" selected="value.id == PrimStructureOptions">{{value.SecondaryClassification}}</ion-option>
-	  </ion-select>
-	</ion-item>
+</ion-select>
+    </ion-item>
+  <ion-item-options>
+    <button ion-button expandable (click)="DeleteElement('PrimaryStructure')">Delete</button>
+  </ion-item-options>
+</ion-item-sliding>
+
 	<br>
+ <ion-item-sliding (ionSwipe)="DeleteElement('SecFilter')">	
 	<ion-item [hidden]="!todo.controls.PrimaryStructure.value">
 	  <ion-label>Secondary Character</ion-label>
-	  <ion-selectinterface="popover" interface="popover" #D (ionChange)="Filter(D.value,0)" [(ngModel)]="SecFilter" formControlName="SecFilter">
+	  <ion-select interface="popover" interface="popover" #D (ionChange)="Filter(D.value,0)" [(ngModel)]="SecFilter" formControlName="SecFilter">
 	    <ion-option *ngFor="let value of StructureOptions" [value]="value.id" selected="value.id == StructureOptions">{{value}}</ion-option>
-	  </ion-select>
-	</ion-item>
+</ion-select>
+    </ion-item>
+  <ion-item-options>
+    <button ion-button expandable (click)="DeleteElement('SecFilter')">Delete</button>
+  </ion-item-options>
+</ion-item-sliding>
+
+ <ion-item-sliding (ionSwipe)="DeleteElement('SecondaryStructure')">
 	<ion-item [hidden]="!todo.controls.PrimaryStructure.value">
 	  <ion-label>Secondary Structure</ion-label>
-	  <ion-selectinterface="popover" interface="popover" [(ngModel)]="SecondaryStructure" formControlName="SecondaryStructure">
+	  <ion-select interface="popover" interface="popover" [(ngModel)]="SecondaryStructure" formControlName="SecondaryStructure">
 	    <ion-option *ngFor="let value of SecStructureOptions" [value]="value.id" selected="value.id == SecStructureOptions">{{value.SecondaryClassification}}</ion-option>
-	  </ion-select>
-	</ion-item>
+</ion-select>
+    </ion-item>
+  <ion-item-options>
+    <button ion-button expandable (click)="DeleteElement('SecondaryStructure')">Delete</button>
+  </ion-item-options>
+</ion-item-sliding>
 
     <button ion-button type="submit" >Submit</button>
   </form>

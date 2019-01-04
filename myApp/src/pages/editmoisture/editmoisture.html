@@ -19,7 +19,7 @@
     <ion-item>
       <!-- <ion-icon item-left name="pin"></ion-icon> -->
       <ion-label>Primary Moisture</ion-label>
-      <ion-selectinterface="popover" interface="popover"  [(ngModel)]="PrimMoisture" formControlName="PrimaryMoisture">
+      <ion-select interface="popover" interface="popover"  [(ngModel)]="PrimMoisture" formControlName="PrimaryMoisture">
        <ion-option  *ngFor="let value of MoistureOptions"  [value]="value.id"  selected="value.id == PrimMoisture">{{value.MoistureName}}</ion-option>
       </ion-select>
     </ion-item>
@@ -32,7 +32,7 @@
     <ion-item [hidden]="!todo.controls.PrimaryMoisture.value" >
       <!-- <ion-icon item-left name="pin"></ion-icon> -->
       <ion-label>Secondary Moisture</ion-label>
-      <ion-selectinterface="popover" interface="popover"  [(ngModel)]="SecMoisture" formControlName="SecondaryMoisture">
+      <ion-select interface="popover" interface="popover"  [(ngModel)]="SecMoisture" formControlName="SecondaryMoisture">
        <ion-option  *ngFor="let val of MoistureOptions"  [value]="val.id"  selected="val.id == SecMoisture">{{val.MoistureName}}</ion-option>
       </ion-select>
     </ion-item>

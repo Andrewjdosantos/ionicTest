@@ -85,7 +85,7 @@ Colour
 </ion-item-sliding>
 
 <br>
-<ion-item-sliding (ionSwipe)="DeleteElement('PrimaryInclusionCharacter')">
+<ion-item-sliding (ionSwipe)="DeleteElement('SecondaryInclusionCharacter')">
     <ion-item [hidden]="!todo.controls.PrimaryInclusionCharacter.value">
       <ion-label>Secondary Character</ion-label>
       <ion-select interface="popover" interface="popover" [(ngModel)]="SecondaryInclusionCharacter" formControlName="SecondaryInclusionCharacter">
@@ -93,11 +93,11 @@ Colour
       </ion-select>
     </ion-item>
   <ion-item-options>
-    <button ion-button expandable (click)="DeleteElement('PrimaryInclusionCharacter')">Delete</button>
+    <button ion-button expandable (click)="DeleteElement('SecondaryInclusionCharacter')">Delete</button>
   </ion-item-options>
 </ion-item-sliding>
 
-
+  <ion-item-sliding (ionSwipe)="DeleteElement('SecondaryInclusionColour')">
       <ion-item [hidden]="!todo.controls.SecondaryInclusionCharacter.value">
       <ion-label>Secondary Colour</ion-label>
       <ion-select interface="popover" interface="popover" [(ngModel)]="SecondaryInclusionColour" formControlName="SecondaryInclusionColour">
@@ -105,7 +105,14 @@ Colour
        <ion-option  *ngFor="let value of PrimColourOptions"  [value]="value.id"  selected="value.id == SecondaryInclusionColour">{{value.ColourName}}</ion-option>
       </ion-select>
     </ion-item>
+  <ion-item-options>
+    <button ion-button expandable (click)="DeleteElement('SecondaryInclusionColour')">Delete</button>
+  </ion-item-options>
+</ion-item-sliding>
+
+
 <br>
+<ion-item-sliding (ionSwipe)="DeleteElement('TertiaryInclusionCharacter')">
     <ion-item [hidden]="!todo.controls.SecondaryInclusionCharacter.value">
       <ion-label>Tertiary Character</ion-label>
       <ion-select interface="popover" interface="popover" [(ngModel)]="TertiaryInclusionCharacter" formControlName="TertiaryInclusionCharacter">
@@ -118,6 +125,11 @@ Colour
        <ion-option  *ngFor="let value of PrimColourOptions"  [value]="value.id"  selected="value.id == TertiaryInclusionColour">{{value.ColourName}}</ion-option>
       </ion-select>
     </ion-item>
+  <ion-item-options>
+    <button ion-button expandable (click)="DeleteElement('TertiaryInclusionCharacter')">Delete</button>
+  </ion-item-options>
+</ion-item-sliding>
+
 </ion-list>
 
     <button ion-button (click)="postDataLine()" type="submit" >Submit</button>

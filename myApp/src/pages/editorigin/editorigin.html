@@ -15,27 +15,44 @@
 <!-- Add origin to horizon descriptor -->
 <ion-content padding>
 <form [formGroup]="todo" (ngSubmit)="postDataLine()">
+  <ion-item-sliding (ionSwipe)="DeleteElement('PrimaryOrigin')">
 	<ion-item>
 	  <ion-label>Class</ion-label>
 	  <ion-select #C (ionChange)="FilterType(C.value)" [(ngModel)]="PrimaryOrigin" formControlName="PrimaryOrigin" interface="popover">
 	    <ion-option *ngFor="let value of OriginOptions" [value]="value.id" selected="value.id == PrimaryOrigin">{{value.OriginName}}</ion-option>
 	  </ion-select>
 	</ion-item>
+      <ion-item-options>
+    <button ion-button expandable (click)="DeleteElement('PrimaryOrigin')">Delete</button>
+  </ion-item-options>
+</ion-item-sliding>
 
+  <ion-item-sliding (ionSwipe)="DeleteElement('PrimaryOriginTyoe')">
 	<ion-item>
 	  <ion-label>Origin Category 1</ion-label>
 	  <ion-select #D (ionChange)="FilterChar(D.value)" [(ngModel)]="PrimaryOriginTyoe" formControlName="PrimaryOriginTyoe" interface="popover">
 	    <ion-option *ngFor="let value of OriginTypeOptions" [value]="value.id" selected="value.id == PrimaryOriginTyoe">{{value.OriginTypeName}}</ion-option>
 	  </ion-select>
 	</ion-item>
+      <ion-item-options>
+    <button ion-button expandable (click)="DeleteElement('PrimaryOriginTyoe')">Delete</button>
+  </ion-item-options>
+</ion-item-sliding>
 
+  <ion-item-sliding (ionSwipe)="DeleteElement('PrimaryOriginCharacter')">
 	<ion-item>
 	  <ion-label>Origin Category 2</ion-label>
 	  <ion-select [(ngModel)]="PrimaryOriginCharacter" formControlName="PrimaryOriginCharacter" interface="popover" interface="popover">
 	    <ion-option *ngFor="let value of OriginCharacterOptions" [value]="value.id" selected="value.id == PrimaryOriginCharacter">{{value.OriginCharacterName}}</ion-option>
 	  </ion-select>
 	</ion-item>
-		 <ion-item>
+      <ion-item-options>
+    <button ion-button expandable (click)="DeleteElement('PrimaryOriginCharacter')">Delete</button>
+  </ion-item-options>
+</ion-item-sliding>
+
+
+  <ion-item>
     <ion-label>Reworked</ion-label>
     <ion-toggle checked={{OriginReworked}} [(ngModel)]="OriginReworked" formControlName="OriginReworked" ></ion-toggle>
   </ion-item>

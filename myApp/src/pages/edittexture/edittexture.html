@@ -12,39 +12,69 @@
 <!-- Add origin to horizon descriptor -->
 <ion-content padding>
   <form [formGroup]="todo" (ngSubmit)="postDataLine()">
+   <ion-item-sliding (ionSwipe)="DeleteElement('PrimaryTexture')">
     <ion-item>
       <ion-label>Primary Texture Classification</ion-label>
       <ion-select interface="popover" interface="popover" (ionChange)="checkReqInfo()" [(ngModel)]="PrimaryTexture" formControlName="PrimaryTexture" interface="popover">
         <ion-option *ngFor="let value of TextureClassificationsOptions" [value]="value.id" selected="value.id == PrimaryTexture">{{value.TextureClassificationName}}</ion-option>
-      </ion-select>
+            </ion-select>
     </ion-item>
+      <ion-item-options>
+    <button ion-button expandable (click)="DeleteElement('PrimaryTexture')">Delete</button>
+  </ion-item-options>
+</ion-item-sliding>
+
+   <ion-item-sliding (ionSwipe)="DeleteElement('Angularity')">
     <ion-item [hidden]="!requiresMoreInfo">
       <ion-label>Angularity</ion-label>
       <ion-select interface="popover" interface="popover" [(ngModel)]="Angularity" formControlName="Angularity">
         <ion-option *ngFor="let value of AngularityOptions" [value]="value.id" selected="value.id == Angularity">{{value.Name}}</ion-option>
-      </ion-select>
+            </ion-select>
     </ion-item>
+      <ion-item-options>
+    <button ion-button expandable (click)="DeleteElement('Angularity')">Delete</button>
+  </ion-item-options>
+</ion-item-sliding>
 
+   <ion-item-sliding (ionSwipe)="DeleteElement('Fabric')">
     <ion-item [hidden]="!requiresMoreInfo">
       <ion-label>Fabric</ion-label>
       <ion-select interface="popover" interface="popover" [(ngModel)]="Fabric" formControlName="Fabric">
         <ion-option *ngFor="let value of FabricOptions" [value]="value.id" selected="value.id == Fabric">{{value.Name}}</ion-option>
-      </ion-select>
+            </ion-select>
     </ion-item>
+      <ion-item-options>
+    <button ion-button expandable (click)="DeleteElement('Fabric')">Delete</button>
+  </ion-item-options>
+</ion-item-sliding>
 
+   <ion-item-sliding (ionSwipe)="DeleteElement('SecondaryTexture')">
     <ion-item [hidden]="!todo.controls.PrimaryTexture.value">
       <ion-label>Secondary Texture Classification</ion-label>
       <ion-select interface="popover" interface="popover" [(ngModel)]="SecondaryTexture" formControlName="SecondaryTexture">
         <ion-option *ngFor="let value of SecTextureClassificationsOptions" [value]="value.id" selected="value.id == SecondaryTexture">{{value.TextureClassificationName}}</ion-option>
-      </ion-select>
+            </ion-select>
     </ion-item>
+      <ion-item-options>
+    <button ion-button expandable (click)="DeleteElement('SecondaryTexture')">Delete</button>
+  </ion-item-options>
+</ion-item-sliding>
+
+   <ion-item-sliding (ionSwipe)="DeleteElement('TertiaryTexture')">
     <ion-item [hidden]="!todo.controls.SecondaryTexture.value">
       <ion-label>Tertiary Texture Classification</ion-label>
       <ion-select interface="popover" interface="popover" [(ngModel)]="TertiaryTexture" formControlName="TertiaryTexture">
         <ion-option *ngFor="let value of TertTextureClassificationsOptions" [value]="value.id" selected="value.id == TertiaryTexture">{{value.TextureClassificationName}}</ion-option>
       </ion-select>
     </ion-item>
+      <ion-item-options>
+    <button ion-button expandable (click)="DeleteElement('TertiaryTexture')">Delete</button>
+  </ion-item-options>
+</ion-item-sliding>
+
+
     <br>
+  <ion-item-sliding (ionSwipe)="DeleteElement('PrimaryTextureInclusionSize')">
     <ion-list>
       <ion-list-header [hidden]="!todo.controls.PrimaryTexture.value">
         Inclusions
@@ -54,57 +84,112 @@
         <ion-select interface="popover" interface="popover" [(ngModel)]="PrimaryTextureInclusionSize" formControlName="PrimaryTextureInclusionSize">
           <ion-option *ngFor="let value of TextureInclusionSizeOptions" [value]="value.id" selected="value.id == PrimaryTextureInclusionSize">{{value.TextureInclusionSizeName}}</ion-option>
         </ion-select>
-      </ion-item>
+    </ion-item>
+      <ion-item-options>
+    <button ion-button expandable (click)="DeleteElement('PrimaryTextureInclusionSize')">Delete</button>
+  </ion-item-options>
+</ion-item-sliding>
+
+  <ion-item-sliding (ionSwipe)="DeleteElement('PrimaryTextureInclusionFrequency')">
       <ion-item [hidden]="!todo.controls.PrimaryTextureInclusionSize.value">
         <ion-label>Primary Texture Inclusion Frequency</ion-label>
         <ion-select interface="popover" interface="popover" [(ngModel)]="PrimaryTextureInclusionFrequency" formControlName="PrimaryTextureInclusionFrequency">
           <ion-option *ngFor="let value of TextureInclusionFreqOptions" [value]="value.id" selected="value.id == PrimaryTextureInclusionFrequency">{{value.TextureInclusionFreqName}}</ion-option>
         </ion-select>
-      </ion-item>
+    </ion-item>
+      <ion-item-options>
+    <button ion-button expandable (click)="DeleteElement('PrimaryTextureInclusionFrequency')">Delete</button>
+  </ion-item-options>
+</ion-item-sliding>
+
+  <ion-item-sliding (ionSwipe)="DeleteElement('PrimaryTextureInclusionCharacter')">
       <ion-item [hidden]="!todo.controls.PrimaryTextureInclusionSize.value">
         <ion-label>Primary Texture Inclusion Character</ion-label>
         <ion-select interface="popover" interface="popover" [(ngModel)]="PrimaryTextureInclusionCharacter" formControlName="PrimaryTextureInclusionCharacter">
           <ion-option *ngFor="let value of TextureInclusionCharacterOptions" [value]="value.id" selected="value.id == PrimaryTextureInclusionCharacter">{{value.TextureInclusionCharacter}}</ion-option>
         </ion-select>
-      </ion-item>
+    </ion-item>
+      <ion-item-options>
+    <button ion-button expandable (click)="DeleteElement('PrimaryTextureInclusionCharacter')">Delete</button>
+  </ion-item-options>
+</ion-item-sliding>
+
+
       <br>
+  <ion-item-sliding (ionSwipe)="DeleteElement('SecondaryTextureInclusionSize')">
       <ion-item [hidden]="!todo.controls.PrimaryTextureInclusionSize.value">
         <ion-label>Secondary Inclusion Size</ion-label>
         <ion-select interface="popover" interface="popover" [(ngModel)]="SecondaryTextureInclusionSize" formControlName="SecondaryTextureInclusionSize">
           <ion-option *ngFor="let value of TextureInclusionSizeOptions" [value]="value.id" selected="value.id == SecondaryTextureInclusionSize">{{value.TextureInclusionSizeName}}</ion-option>
         </ion-select>
-      </ion-item>
+    </ion-item>
+      <ion-item-options>
+    <button ion-button expandable (click)="DeleteElement('SecondaryTextureInclusionSize')">Delete</button>
+  </ion-item-options>
+</ion-item-sliding>
+
+  <ion-item-sliding (ionSwipe)="DeleteElement('SecondaryTextureInclusionFrequency')">
       <ion-item [hidden]="!todo.controls.SecondaryTextureInclusionSize.value">
         <ion-label>Secondary Texture Inclusion Frequency</ion-label>
         <ion-select interface="popover" interface="popover" [(ngModel)]="SecondaryTextureInclusionFrequency" formControlName="SecondaryTextureInclusionFrequency">
           <ion-option *ngFor="let value of TextureInclusionFreqOptions" [value]="value.id" selected="value.id == SecondaryTextureInclusionFrequency">{{value.TextureInclusionFreqName}}</ion-option>
         </ion-select>
-      </ion-item>
+    </ion-item>
+      <ion-item-options>
+    <button ion-button expandable (click)="DeleteElement('SecondaryTextureInclusionFrequency')">Delete</button>
+  </ion-item-options>
+</ion-item-sliding>
+
+  <ion-item-sliding (ionSwipe)="DeleteElement('SecondaryTextureInclusionCharacter')">
       <ion-item [hidden]="!todo.controls.SecondaryTextureInclusionSize.value">
         <ion-label>Secondary Texture Inclusion Character</ion-label>
         <ion-select interface="popover" interface="popover" [(ngModel)]="SecondaryTextureInclusionCharacter" formControlName="SecondaryTextureInclusionCharacter">
           <ion-option *ngFor="let value of TextureInclusionCharacterOptions" [value]="value.id" selected="value.id == SecondaryTextureInclusionCharacter">{{value.TextureInclusionCharacter}}</ion-option>
         </ion-select>
-      </ion-item>
+    </ion-item>
+      <ion-item-options>
+    <button ion-button expandable (click)="DeleteElement('SecondaryTextureInclusionCharacter')">Delete</button>
+  </ion-item-options>
+</ion-item-sliding>
+
+
       <br>
+  <ion-item-sliding (ionSwipe)="DeleteElement('TertiaryTextureInclusionSize')">
       <ion-item [hidden]="!todo.controls.SecondaryTextureInclusionSize.value">
         <ion-label>Tertiary Inclusion Size</ion-label>
         <ion-select interface="popover" interface="popover" [(ngModel)]="TertiaryTextureInclusionSize" formControlName="TertiaryTextureInclusionSize">
           <ion-option *ngFor="let value of TextureInclusionSizeOptions" [value]="value.id" selected="value.id == TertiaryTextureInclusionSize">{{value.TextureInclusionSizeName}}</ion-option>
         </ion-select>
-      </ion-item>
+    </ion-item>
+      <ion-item-options>
+    <button ion-button expandable (click)="DeleteElement('TertiaryTextureInclusionSize')">Delete</button>
+  </ion-item-options>
+</ion-item-sliding>
+
+  <ion-item-sliding (ionSwipe)="DeleteElement('TertiaryTextureInclusionFrequency')">
       <ion-item [hidden]="!todo.controls.TertiaryTextureInclusionSize.value">
         <ion-label>Tertiary Texture Inclusion Frequency</ion-label>
         <ion-select interface="popover" interface="popover" [(ngModel)]="TertiaryTextureInclusionFrequency" formControlName="TertiaryTextureInclusionFrequency">
           <ion-option *ngFor="let value of TextureInclusionFreqOptions" [value]="value.id" selected="value.id == TertiaryTextureInclusionFrequency">{{value.TextureInclusionFreqName}}</ion-option>
         </ion-select>
-      </ion-item>
+    </ion-item>
+      <ion-item-options>
+    <button ion-button expandable (click)="DeleteElement('TertiaryTextureInclusionFrequency')">Delete</button>
+  </ion-item-options>
+</ion-item-sliding>
+
+  <ion-item-sliding (ionSwipe)="DeleteElement('TertiaryTextureInclusionCharacter')">
       <ion-item [hidden]="!todo.controls.TertiaryTextureInclusionSize.value">
         <ion-label>Tertiary Texture Inclusion Character</ion-label>
         <ion-select interface="popover" interface="popover" [(ngModel)]="TertiaryTextureInclusionCharacter" formControlName="TertiaryTextureInclusionCharacter">
           <ion-option *ngFor="let value of TextureInclusionCharacterOptions" [value]="value.id" selected="value.id == TertiaryTextureInclusionCharacter">{{value.TextureInclusionCharacter}}</ion-option>
         </ion-select>
-      </ion-item>
+    </ion-item>
+      <ion-item-options>
+    <button ion-button expandable (click)="DeleteElement('TertiaryTextureInclusionCharacter')">Delete</button>
+  </ion-item-options>
+</ion-item-sliding>
+
     </ion-list>
     <button ion-button type="submit">Submit</button>
   </form>
