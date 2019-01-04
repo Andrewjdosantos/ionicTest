@@ -155,8 +155,8 @@ try{
     this.requiresMoreInfo = this.TextureClassificationsOptions.filter( element => element.id == this.todo.controls.PrimaryTexture.value)[0]['ReqExtraInfo']
     console.log(this.requiresMoreInfo)
     if (this.requiresMoreInfo == False){
-      this.todo.controls.Angularity.value = null;
-      this.todo.controls.Fabric.value = null;
+      this.todo.value.Angularity = null;
+      this.todo.value.Fabric = null;
     }
   }catch(TypeError){
     console.log('no option')
