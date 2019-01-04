@@ -14,7 +14,7 @@
   <form [formGroup]="todo" (ngSubmit)="postDataLine()">
     <ion-item>
       <ion-label>Primary Texture Classification</ion-label>
-      <ion-select (ionChange)="checkReqInfo()" [(ngModel)]="PrimaryTexture" formControlName="PrimaryTexture">
+      <ion-select (ionChange)="checkReqInfo()" [(ngModel)]="PrimaryTexture" formControlName="PrimaryTexture" interface="popover">
         <ion-option *ngFor="let value of TextureClassificationsOptions" [value]="value.id" selected="value.id == PrimaryTexture">{{value.TextureClassificationName}}</ion-option>
       </ion-select>
     </ion-item>

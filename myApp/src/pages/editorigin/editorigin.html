@@ -17,19 +17,21 @@
 <form [formGroup]="todo" (ngSubmit)="postDataLine()">
 	<ion-item>
 	  <ion-label>Class</ion-label>
-	  <ion-select #C (ionChange)="FilterType(C.value)" [(ngModel)]="PrimaryOrigin" formControlName="PrimaryOrigin">
+	  <ion-select #C (ionChange)="FilterType(C.value)" [(ngModel)]="PrimaryOrigin" formControlName="PrimaryOrigin" interface="popover">
 	    <ion-option *ngFor="let value of OriginOptions" [value]="value.id" selected="value.id == PrimaryOrigin">{{value.OriginName}}</ion-option>
 	  </ion-select>
 	</ion-item>
+
 	<ion-item>
 	  <ion-label>Origin Category 1</ion-label>
-	  <ion-select #D (ionChange)="FilterChar(D.value)" [(ngModel)]="PrimaryOriginTyoe" formControlName="PrimaryOriginTyoe">
+	  <ion-select #D (ionChange)="FilterChar(D.value)" [(ngModel)]="PrimaryOriginTyoe" formControlName="PrimaryOriginTyoe" interface="popover">
 	    <ion-option *ngFor="let value of OriginTypeOptions" [value]="value.id" selected="value.id == PrimaryOriginTyoe">{{value.OriginTypeName}}</ion-option>
 	  </ion-select>
 	</ion-item>
+
 	<ion-item>
 	  <ion-label>Origin Category 2</ion-label>
-	  <ion-select [(ngModel)]="PrimaryOriginCharacter" formControlName="PrimaryOriginCharacter">
+	  <ion-select [(ngModel)]="PrimaryOriginCharacter" formControlName="PrimaryOriginCharacter" interface="popover" interface="popover">
 	    <ion-option *ngFor="let value of OriginCharacterOptions" [value]="value.id" selected="value.id == PrimaryOriginCharacter">{{value.OriginCharacterName}}</ion-option>
 	  </ion-select>
 	</ion-item>
