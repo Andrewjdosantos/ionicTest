@@ -65,6 +65,14 @@ export class EditbioPage {
   this[FormElement] = null
   // this.todo['controls'][event]['value'] = undefined
  }
+ 
+ DeleteElement(FormElement){
+  console.log(FormElement)
+  // console.log(this.todo['value'][FormElement])
+  this.todo['value'][FormElement] = null
+  this[FormElement] = null
+  // this.todo['controls'][event]['value'] = undefined
+ }
 
   getBioTypeDataSelect(FieldName) {
     this.restProvider.getDataSelect(FieldName)
