@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { RestProvider } from '../../providers/rest/rest';
-
+import { EditgroundwaterPage } from '../editgroundwater/editgroundwater';
 /**
  * Generated class for the EditoriginPage page.
  *
@@ -189,7 +189,9 @@ export class EditoriginPage {
     } 
   }
 
-
+  gotoNextPage(params){
+    this.navCtrl.push(EditgroundwaterPage,{horizon:params});
+  };
 }
 
 

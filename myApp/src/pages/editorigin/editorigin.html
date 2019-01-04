@@ -7,9 +7,15 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Origin</ion-title>
-  </ion-navbar>
-
+    <ion-title (click)='showHome(horizon)'>Origin</ion-title>
+  
+        <ion-buttons right>
+      <button (click)=gotoNextPage(horizon) ion-button icon-end>
+        Next
+        <ion-icon style='font-size: 1.8em' color="secondary" name="arrow-forward"></ion-icon>
+      </button>
+    </ion-buttons>
+    </ion-navbar>
 </ion-header>
 <!--reset all forms after filter change-->
 <!-- Add origin to horizon descriptor -->

@@ -212,7 +212,7 @@ try{
 
   gotoNextPage(params){
     this.navCtrl.push(EditoriginPage,{horizon:params});
-  };
+  }
 
   postDataLine() {
     // console.log(JSON.stringify(this.todo.value))

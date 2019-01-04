@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { RestProvider } from '../../providers/rest/rest';
+import { EditstructurePage } from '../editstructure/editstructure';
 /**
  * Generated class for the ConsistencyeditPage page.
  *
@@ -138,6 +139,10 @@ export class ConsistencyeditPage {
     } 
   }
 
+
+  gotoNextPage(params){
+    this.navCtrl.push(EditstructurePage,{horizon:params});
+  };
 
 }
 

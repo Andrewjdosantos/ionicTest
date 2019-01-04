@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { RestProvider } from '../../providers/rest/rest';
+import { ConsistencyeditPage } from '../consistencyedit/consistencyedit';
 /**
 
 /**
@@ -144,7 +145,11 @@ export class EditcolourPage {
     });
   }
 
+  gotoNextPage(params){
+    this.navCtrl.push(EditoriginPage,{horizon:params});
+  };
 
+  
   postDataLine() {
     // console.log(JSON.stringify(this.todo.value))
     if (this.id){
@@ -156,6 +161,9 @@ export class EditcolourPage {
     } 
   }
 
+  gotoNextPage(params){
+    this.navCtrl.push(ConsistencyeditPage,{horizon:params});
+  };
 
 }
 

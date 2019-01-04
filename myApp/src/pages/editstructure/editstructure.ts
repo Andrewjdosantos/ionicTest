@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { RestProvider } from '../../providers/rest/rest';
-
+import { EdittexturePage } from '../edittexture/edittexture';
 /**
  * Generated class for the EditstructurePage page.
  *
@@ -121,7 +121,9 @@ export class EditstructurePage {
     } 
   }
 
-
+  gotoNextPage(params){
+    this.navCtrl.push(EdittexturePage,{horizon:params});
+  };
 }
 
 
