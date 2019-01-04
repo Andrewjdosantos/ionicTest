@@ -15,34 +15,51 @@
 <!-- Add origin to horizon descriptor -->
 <ion-content padding>
 <form [formGroup]="todo" (ngSubmit)="postDataLine()">
-
+<ion-item-sliding (ionSwipe)="DeleteElement('PrimaryCohesive')">
 	 <ion-item >
     <ion-label>Primary Cohesive</ion-label>
     <ion-toggle checked={{PrimaryCohesive}} [(ngModel)]="PrimaryCohesive" formControlName="PrimaryCohesive" (ionChange)="notify($event.checked,1)"></ion-toggle>
   </ion-item>
 	<ion-item>
 	  <ion-label>Primary Consistency</ion-label>
-	  <ion-select [(ngModel)]="PrimaryCohesiveCharacter" formControlName="PrimaryCohesiveCharacter">
+	  <ion-select interface="popover" interface="popover" [(ngModel)]="PrimaryCohesiveCharacter" formControlName="PrimaryCohesiveCharacter">
 	    <ion-option *ngFor="let value of PrimConsistencyOptions" [value]="value.id" selected="value.id == PrimaryCohesiveCharacter">{{value.ConsistencyName}}</ion-option>
 	  </ion-select>
-	</ion-item>
+    </ion-item>
+  <ion-item-options>
+    <button ion-button expandable (click)="DeleteElement('PrimaryCohesive')">Delete</button>
+  </ion-item-options>
+</ion-item-sliding>
+
+
   <br>
+<ion-item-sliding (ionSwipe)="DeleteElement('SecondaryCohesiveCharacter')">
   <ion-item [hidden]="!todo.controls.PrimaryCohesiveCharacter.value">
     <ion-label>Secondary Cohesive</ion-label>
     <ion-toggle ion-toggle-text="online;offline" checked={{SecondaryCohesive}} [(ngModel)]="SecondaryCohesive" formControlName="SecondaryCohesive" (ionChange)="notify($event.checked,0)"></ion-toggle>
   </ion-item>
 	<ion-item [hidden]="!todo.controls.PrimaryCohesiveCharacter.value">
 	  <ion-label>Secondary Consistency</ion-label>
-	  <ion-select [(ngModel)]="SecondaryCohesiveCharacter" formControlName="SecondaryCohesiveCharacter">
+	  <ion-select interface="popover" interface="popover" [(ngModel)]="SecondaryCohesiveCharacter" formControlName="SecondaryCohesiveCharacter">
 	    <ion-option *ngFor="let value of SecConsistencyOptions" [value]="value.id" selected="value.id == SecondaryCohesiveCharacter">{{value.ConsistencyName}}</ion-option>
 	  </ion-select>
-	</ion-item>
+    </ion-item>
+  <ion-item-options>
+    <button ion-button expandable (click)="DeleteElement('SecondaryCohesiveCharacter')">Delete</button>
+  </ion-item-options>
+</ion-item-sliding>
+
+<ion-item-sliding (ionSwipe)="DeleteElement('ConsistencyVariation')">
   <ion-item >
     <ion-label>Secondary Consistency</ion-label>
-    <ion-select [(ngModel)]="ConsistencyVariation" formControlName="ConsistencyVariation">
+    <ion-select interface="popover" interface="popover" [(ngModel)]="ConsistencyVariation" formControlName="ConsistencyVariation">
       <ion-option *ngFor="let value of AllConsVariants" [value]="value.id" selected="value.id == ConsistencyVariation">{{value.Name}}</ion-option>
     </ion-select>
   </ion-item>
+  <ion-item-options>
+    <button ion-button expandable (click)="DeleteElement('ConsistencyVariation')">Delete</button>
+  </ion-item-options>
+</ion-item-sliding>
 <!--   <ion-item [hidden]="!todo.controls.SecondaryCohesiveCharacter.value">
     <ion-label>Consistency Variant</ion-label>
     <ion-select [(ngModel)]="ConsistencyVariation" formControlName="ConsistencyVariation">
