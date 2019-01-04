@@ -7,6 +7,12 @@
 <ion-header>
   <ion-navbar>
     <ion-title>Soil Texture</ion-title>
+        <ion-buttons right>
+      <button (click)=gotoNextPage(horizon) ion-button icon-end>
+        Next
+        <ion-icon style='font-size: 1.8em' color="secondary" name="arrow-forward"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 <!-- Add origin to horizon descriptor -->
@@ -74,8 +80,9 @@
 
 
     <br>
+       <ion-list>
   <ion-item-sliding (ionSwipe)="DeleteElement('PrimaryTextureInclusionSize')">
-    <ion-list>
+ 
       <ion-list-header [hidden]="!todo.controls.PrimaryTexture.value">
         Inclusions
       </ion-list-header>

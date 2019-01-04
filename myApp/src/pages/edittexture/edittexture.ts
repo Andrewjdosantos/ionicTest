@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { RestProvider } from '../../providers/rest/rest';
 import { map, filter, scan } from 'rxjs/operators';
+import { EditoriginPage } from '../editorigin/editorigin';
 /**
  * Generated class for the EdittexturePage page.
  *
@@ -209,6 +210,9 @@ try{
     });
   }
 
+  gotoNextPage(params){
+    this.navCtrl.push(EditoriginPage,{horizon:params});
+  };
 
   postDataLine() {
     // console.log(JSON.stringify(this.todo.value))
