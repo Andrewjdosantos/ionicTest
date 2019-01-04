@@ -61,14 +61,14 @@ export class ConsistencyeditPage {
 	catch(TypeError) {
 		console.log('error')
 	}
-	// try{	
+	try{	
 	this.ConsistencyVariation = this.horizon.ConsistencyVariation.id;
 	console.log('ConsVar')
 	console.log(this.horizon.ConsistencyVariation.id)
-	// }
-	// catch(TypeError) {
-	// 	console.log(this.horizon)
-	// }
+	}
+	catch(TypeError) {
+		console.log(this.horizon)
+	}
 	this.getConsDataSelect('Consistency');
 	this.getConsVariantDataSelect('ConsistencyVariant');
 	console.log(this.PrimaryCohesive)
@@ -113,7 +113,7 @@ export class ConsistencyeditPage {
 	  {
 	  	console.log(checked)
 	  	if (checked == undefined){
-	  		checked = true
+	  		checked = false
 	  	}
 	    var options =  this.AllConsOptions.filter(function(option) {
 			return option.Cohesive == checked;

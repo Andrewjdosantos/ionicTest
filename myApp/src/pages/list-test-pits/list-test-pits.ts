@@ -52,7 +52,10 @@ export class ListTestPitsPage {
   CreateTestPit(params){
     this.navCtrl.push(AddtestpitPage,{project:params});
   }
-  
+
+  EditTestpit(params,testpitid){
+    this.navCtrl.push(AddtestpitPage,{project:params,testpit:testpitid});
+  } 
   
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddprojectPage');

@@ -19,17 +19,12 @@
       <ion-label>Depth</ion-label>
       <ion-input placeholder='metres' value={{PitDepth}} [max]=5 type="number" formControlName="PitDepth"></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-label>Horizon</ion-label>
-      <ion-input placeholder='Number' value={{Horizon}} [max]=5 type="number" formControlName="Horizon"></ion-input>
-    </ion-item>
      <ion-item>
       <ion-label>Profiler</ion-label>
       <ion-input value={{Profiler}} [max]=5 type="text" formControlName="Profiler"></ion-input>
     </ion-item>
+    <br>
     <ion-item>
-
-      <ion-icon item-left name="pin"></ion-icon>
       <ion-label>Contact</ion-label>
       <ion-select  [(ngModel)]="Contact" formControlName="Contact">
        <ion-option  *ngFor="let val of ContactOptions"  [value]="val.id"  selected="val.id == Contact">{{val.ContactName}}</ion-option>

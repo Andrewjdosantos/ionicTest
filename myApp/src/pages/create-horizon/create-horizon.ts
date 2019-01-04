@@ -32,14 +32,49 @@ export class CreateHorizonPage {
   this.project = navParams.get("project");
   console.log('Project')
   console.log(this.project)
-  if (this.project.Horizon){
-    this.id = this.project.id;
-  	this.Project = this.project.TestPit.TestPitProject.id;
-  	this.TestPit = this.project.TestPit.id;
-  	this.PitDepth = this.project.PitDepth;
-  	this.Contact = this.project.Contact.id;
-  	this.Horizon = this.project.Horizon;
-  	this.Profiler = this.project.Profiler;
+  if (this.project.PitDepth){
+    try{
+      this.id = this.project.id;
+          }
+      catch(TypeError){
+        console.log('no tp')
+      }
+      try{
+      this.Project = this.project.TestPit.TestPitProject.id;
+          }
+      catch(TypeError){
+        console.log('no tp')
+      }
+      try{
+      this.TestPit = this.project.TestPit.id;
+          }
+      catch(TypeError){
+        console.log('no tp')
+      }
+      try{
+      this.PitDepth = this.project.PitDepth;
+          }
+      catch(TypeError){
+        console.log('no tp')
+      }
+      try{
+      this.Contact = this.project.Contact.id;
+          }
+      catch(TypeError){
+        console.log('no tp')
+      }
+      try{
+      this.Horizon = this.project.Horizon;
+          }
+      catch(TypeError){
+        console.log('no tp')
+      }
+      try{
+      this.Profiler = this.project.Profiler;
+      }
+      catch(TypeError){
+        console.log('no tp')
+      }
   }else{
     this.Project = this.project.TestPitProject;
     this.TestPit = this.project.id;
@@ -52,9 +87,9 @@ export class CreateHorizonPage {
       Project: [this.Project],
       TestPit: [this.TestPit],
       PitDepth: ['', Validators.required],
-      Contact: ['',Validators.required],
-      Horizon: ['',Validators.required],
-      Profiler: ['',Validators.required],
+      Contact: [''],
+      Horizon: [-1],
+      Profiler: [''],
     });
   }
 

@@ -17,10 +17,10 @@
   
 
 <ion-content padding>
-  <form [formGroup]="todo" (ngSubmit)="postNewTestPit()">
+  <form [formGroup]="todo" (ngSubmit)="postDataLine()">
     <ion-item>
       <ion-label>TP</ion-label>
-      <ion-input placeholder="Number" type="number" formControlName="Name"></ion-input>
+      <ion-input placeholder="Number" value={{TPNumber}} type="number" formControlName="Name"></ion-input>
     </ion-item>
 
   <ion-row style='text-align:center'>

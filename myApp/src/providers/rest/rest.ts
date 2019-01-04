@@ -97,6 +97,21 @@ export class RestProvider {
 	});
 	}
 
+	putDataSelect(FieldName,body,pk) {
+	return new Promise(resolve => {
+	this.http.put(this.apiUrl+'/put'+FieldName+'View/'+pk,body,
+		{  	headers: { 'Content-Type': 'application/json' }
+	}).subscribe(data => {
+		this.Success()
+		// alert('Data Added');
+	}, 
+	err => {
+		console.log(body)
+		this.Failure()
+	// alert('Data Not Added');
+	});
+	});
+	}
 
 	getDataLine(filter) {
 	return new Promise(resolve => {
