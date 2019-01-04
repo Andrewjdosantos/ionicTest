@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { RestProvider } from '../../providers/rest/rest';
+import { EditcolourPage } from '../editcolour/editcolour';
 /**
  * Generated class for the EditmoisturePage page.
  *
@@ -97,6 +98,9 @@ export class EditmoisturePage {
     } 
   }
 
+  gotoNextPage(params){
+    this.navCtrl.push(EditcolourPage,{horizon:params});
+  };
 
 }
 
