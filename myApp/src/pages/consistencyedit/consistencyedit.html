@@ -51,7 +51,7 @@
 
 <ion-item-sliding (ionSwipe)="DeleteElement('ConsistencyVariation')">
   <ion-item >
-    <ion-label>Secondary Consistency</ion-label>
+    <ion-label>Variation character</ion-label>
     <ion-select interface="popover" interface="popover" [(ngModel)]="ConsistencyVariation" formControlName="ConsistencyVariation">
       <ion-option *ngFor="let value of AllConsVariants" [value]="value.id" selected="value.id == ConsistencyVariation">{{value.Name}}</ion-option>
     </ion-select>
