@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Structure</ion-title>
+    <ion-title (click)='showPageModal(horizon)'>Structure</ion-title>
 
         <ion-buttons right>
       <button (click)=gotoNextPage(horizon) ion-button icon-end>
@@ -22,6 +22,7 @@
 <!-- Add origin to horizon descriptor -->
 <ion-content padding>
 <form [formGroup]="todo" (ngSubmit)="postDataLine()">
+  <ion-list>
 	  <ion-item-sliding (ionSwipe)="DeleteElement('PrimFilter')">
 	<ion-item>
 	  <ion-label>Character</ion-label>
@@ -70,7 +71,7 @@
     <button ion-button expandable (click)="DeleteElement('SecondaryStructure')">Delete</button>
   </ion-item-options>
 </ion-item-sliding>
-
+</ion-list>
     <button ion-button type="submit" >Submit</button>
   </form>
 </ion-content>

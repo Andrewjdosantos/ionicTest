@@ -4,6 +4,8 @@ import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { RestProvider } from '../../providers/rest/rest';
 import { map, filter, scan } from 'rxjs/operators';
 import { EditoriginPage } from '../editorigin/editorigin';
+import { ModalController } from 'ionic-angular';
+import { ModalselectPage } from '../modalselect/modalselect';
 /**
  * Generated class for the EdittexturePage page.
  *
@@ -11,7 +13,7 @@ import { EditoriginPage } from '../editorigin/editorigin';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+// @IonicPage()
 @Component({
   selector: 'page-edittexture',
   templateUrl: 'edittexture.html',
@@ -53,7 +55,7 @@ export class EdittexturePage {
   FabricOptions :any;
 
   requiresMoreInfo:any;
-  constructor(public navCtrl: NavController,public restProvider: RestProvider, public navParams: NavParams, private formBuilder: FormBuilder) {
+  constructor(public modalCtrl: ModalController,public navCtrl: NavController,public restProvider: RestProvider, public navParams: NavParams, private formBuilder: FormBuilder) {
     this.horizon = navParams.get("horizon");
     this.getTextInclSizeDataSelect('TextureInclusionSize');
     this.getTextIncFreqDataSelect('TextureInclusionFreq');
@@ -163,10 +165,10 @@ try{
     try{
     this.requiresMoreInfo = this.TextureClassificationsOptions.filter( element => element.id == this.todo.controls.PrimaryTexture.value)[0]['ReqExtraInfo']
     console.log(this.requiresMoreInfo)
-    if (this.requiresMoreInfo == false){
-      this.todo.value.Angularity = null;
-      this.todo.value.Fabric = null;
-    }
+    // if (this.requiresMoreInfo == false){
+    //   this.todo.value.Angularity = null;
+    //   this.todo.value.Fabric = null;
+    // }
   }catch(TypeError){
     console.log('no option')
   }
@@ -231,6 +233,11 @@ try{
       console.log(this.todo.value)
     });
     } 
+  }
+
+    showPageModal(params) {
+    const modal = this.modalCtrl.create(ModalselectPage,{horizon:params});
+    modal.present();
   }
 
 

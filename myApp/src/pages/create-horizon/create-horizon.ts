@@ -12,7 +12,7 @@ import { AlertController } from 'ionic-angular';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+// @IonicPage()
 @Component({
   selector: 'page-create-horizon',
   templateUrl: 'create-horizon.html',

@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { RestProvider } from '../../providers/rest/rest';
 import { ConsistencyeditPage } from '../consistencyedit/consistencyedit';
+import { ModalController } from 'ionic-angular';
+import { ModalselectPage } from '../modalselect/modalselect';
 /**
 
 /**
@@ -12,7 +14,7 @@ import { ConsistencyeditPage } from '../consistencyedit/consistencyedit';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+// @IonicPage()
 @Component({
   selector: 'page-editcolour',
   templateUrl: 'editcolour.html',
@@ -37,7 +39,7 @@ export class EditcolourPage {
   PrimColourOptions :any;
   TertColourOptions :any;
 	InclusionOptions :any;
-  constructor(public navCtrl: NavController,public restProvider: RestProvider, public navParams: NavParams, private formBuilder: FormBuilder) {
+  constructor(public modalCtrl: ModalController,public navCtrl: NavController,public restProvider: RestProvider, public navParams: NavParams, private formBuilder: FormBuilder) {
     this.horizon = navParams.get("horizon");
     this.getPrimColDataSelect('PrimColour');
     this.getSecColDataSelect('SecColour');
@@ -145,10 +147,6 @@ export class EditcolourPage {
     });
   }
 
-  gotoNextPage(params){
-    this.navCtrl.push(EditoriginPage,{horizon:params});
-  };
-
   
   postDataLine() {
     // console.log(JSON.stringify(this.todo.value))
@@ -164,6 +162,12 @@ export class EditcolourPage {
   gotoNextPage(params){
     this.navCtrl.push(ConsistencyeditPage,{horizon:params});
   };
+
+    showPageModal(params) {
+    const modal = this.modalCtrl.create(ModalselectPage,{horizon:params});
+    modal.present();
+  }
+
 
 }
 

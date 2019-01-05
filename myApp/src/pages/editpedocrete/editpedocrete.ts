@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { RestProvider } from '../../providers/rest/rest';
 import { EditbioPage } from '../editbio/editbio';
+import { ModalController } from 'ionic-angular';
+import { ModalselectPage } from '../modalselect/modalselect';
 /**
  * Generated class for the EditpedocretePage page.
  *
@@ -10,7 +12,7 @@ import { EditbioPage } from '../editbio/editbio';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+// @IonicPage()
 @Component({
   selector: 'page-editpedocrete',
   templateUrl: 'editpedocrete.html',
@@ -31,7 +33,7 @@ export class EditpedocretePage {
 	PedocreteFrequencyOptions :any;
 	PedocreteCharacterOptions :any;
 
-  constructor(public navCtrl: NavController,public restProvider: RestProvider, public navParams: NavParams, private formBuilder: FormBuilder) {
+  constructor(public modalCtrl: ModalController,public navCtrl: NavController,public restProvider: RestProvider, public navParams: NavParams, private formBuilder: FormBuilder) {
     this.horizon = navParams.get("horizon");
     this.getTextInclSizeDataSelect('PedocreteType');
     this.getTextIncFreqDataSelect('PedocreteFrequency');
@@ -127,6 +129,12 @@ export class EditpedocretePage {
       console.log(this.todo.value)
     });
     } 
+  }
+
+
+    showPageModal(params) {
+    const modal = this.modalCtrl.create(ModalselectPage,{horizon:params});
+    modal.present();
   }
 
 

@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Consistency</ion-title>
+    <ion-title (click)='showPageModal(horizon)'>Consistency</ion-title>
         <ion-buttons right>
       <button (click)=gotoNextPage(horizon) ion-button icon-end>
         Next
@@ -23,11 +23,14 @@
 <!-- Add origin to horizon descriptor -->
 <ion-content padding>
 <form [formGroup]="todo" (ngSubmit)="postDataLine()">
-<ion-item-sliding (ionSwipe)="DeleteElement('PrimaryCohesive')">
+  <ion-list>
+
 	 <ion-item >
     <ion-label>Primary Cohesive</ion-label>
     <ion-toggle checked={{PrimaryCohesive}} [(ngModel)]="PrimaryCohesive" formControlName="PrimaryCohesive" (ionChange)="notify($event.checked,1)"></ion-toggle>
   </ion-item>
+
+<ion-item-sliding (ionSwipe)="DeleteElement('PrimaryCohesive')">
 	<ion-item>
 	  <ion-label>Primary Consistency</ion-label>
 	  <ion-select interface="popover" interface="popover" [(ngModel)]="PrimaryCohesiveCharacter" formControlName="PrimaryCohesiveCharacter">
@@ -41,11 +44,12 @@
 
 
   <br>
-<ion-item-sliding (ionSwipe)="DeleteElement('SecondaryCohesiveCharacter')">
+
   <ion-item [hidden]="!todo.controls.PrimaryCohesiveCharacter.value">
     <ion-label>Secondary Cohesive</ion-label>
     <ion-toggle ion-toggle-text="online;offline" checked={{SecondaryCohesive}} [(ngModel)]="SecondaryCohesive" formControlName="SecondaryCohesive" (ionChange)="notify($event.checked,0)"></ion-toggle>
   </ion-item>
+<ion-item-sliding (ionSwipe)="DeleteElement('SecondaryCohesiveCharacter')">
 	<ion-item [hidden]="!todo.controls.PrimaryCohesiveCharacter.value">
 	  <ion-label>Secondary Consistency</ion-label>
 	  <ion-select interface="popover" interface="popover" [(ngModel)]="SecondaryCohesiveCharacter" formControlName="SecondaryCohesiveCharacter">
@@ -68,6 +72,7 @@
     <button ion-button expandable (click)="DeleteElement('ConsistencyVariation')">Delete</button>
   </ion-item-options>
 </ion-item-sliding>
+</ion-list>
 <!--   <ion-item [hidden]="!todo.controls.SecondaryCohesiveCharacter.value">
     <ion-label>Consistency Variant</ion-label>
     <ion-select [(ngModel)]="ConsistencyVariation" formControlName="ConsistencyVariation">

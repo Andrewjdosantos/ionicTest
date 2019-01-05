@@ -6,7 +6,7 @@ import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
+
 import { HomePage } from '../pages/home/home';
 import { AddprojectPage } from '../pages/addproject/addproject';
 import { AddtestpitPage } from '../pages/addtestpit/addtestpit';
@@ -26,6 +26,8 @@ import { EditgroundwaterPage } from '../pages/editgroundwater/editgroundwater';
 import { EditpedocretePage } from '../pages/editpedocrete/editpedocrete';
 import { SampledetailsPage } from '../pages/sampledetails/sampledetails';
 import { EditbioPage } from '../pages/editbio/editbio';
+import { ContactPage } from '../pages/contact/contact';
+import { CreatetestpitPage } from '../pages/createtestpit/createtestpit';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -55,7 +57,8 @@ import { RestProvider } from '../providers/rest/rest';
     EditgroundwaterPage,
     EditpedocretePage,
     SampledetailsPage,
-    EditbioPage
+    EditbioPage,
+    CreatetestpitPage
   ],
   imports: [
     BrowserModule,
@@ -86,7 +89,8 @@ import { RestProvider } from '../providers/rest/rest';
     EditgroundwaterPage,
     EditpedocretePage,
     SampledetailsPage,
-    EditbioPage
+    EditbioPage,
+    CreatetestpitPage
   ],
   providers: [
     StatusBar,

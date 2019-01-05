@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Groundwater Seepage</ion-title>
+    <ion-title (click)='showPageModal(horizon)'>Groundwater Seepage</ion-title>
     <ion-buttons right>
       <button (click)=gotoNextPage(horizon) ion-button icon-end>
         Next
@@ -31,12 +31,17 @@
 <ion-list-header>
   Seepage Rate
 </ion-list-header>
+<ion-item-sliding (ionSwipe)="DeleteElement('PrimaryOriginCharacter')">
     <ion-item>
       <ion-label>Estimate Rate</ion-label>
       <ion-select interface="popover" interface="popover" [(ngModel)]="GroundWaterDescriptors" formControlName="GroundWaterDescriptors">
        <ion-option  *ngFor="let value of GWDescritpros"  [value]="value.id"  selected="value.id == GroundWaterDescriptors">{{value.DescriptorName}}</ion-option>
       </ion-select>
     </ion-item>
+      <ion-item-options>
+    <button ion-button expandable (click)="DeleteElement('PrimaryOriginCharacter')">Delete</button>
+  </ion-item-options>
+</ion-item-sliding>
     <ion-item>
       <ion-label>Measured Rate</ion-label>
       <ion-input text-right value={{GroundwaterSeepageRate}} [max]=5 type="number" formControlName="GroundwaterSeepageRate"></ion-input>

@@ -10,7 +10,7 @@ import { AddtestpitPage } from '../addtestpit/addtestpit';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+// @IonicPage()
 @Component({
   selector: 'page-addproject',
   templateUrl: 'addproject.html',

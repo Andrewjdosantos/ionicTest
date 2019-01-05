@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title (click)='showHome(horizon)'>Origin</ion-title>
+    <ion-title (click)='showPageModal(horizon)'>Origin</ion-title>
   
         <ion-buttons right>
       <button (click)=gotoNextPage(horizon) ion-button icon-end>
@@ -21,6 +21,7 @@
 <!-- Add origin to horizon descriptor -->
 <ion-content padding>
 <form [formGroup]="todo" (ngSubmit)="postDataLine()">
+  <ion-list>
   <ion-item-sliding (ionSwipe)="DeleteElement('PrimaryOrigin')">
 	<ion-item>
 	  <ion-label>Class</ion-label>
@@ -62,6 +63,7 @@
     <ion-label>Reworked</ion-label>
     <ion-toggle checked={{OriginReworked}} [(ngModel)]="OriginReworked" formControlName="OriginReworked" ></ion-toggle>
   </ion-item>
+</ion-list>
     <button ion-button type="submit" >Submit</button>
   </form>
 </ion-content>

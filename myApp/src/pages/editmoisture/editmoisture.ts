@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { RestProvider } from '../../providers/rest/rest';
 import { EditcolourPage } from '../editcolour/editcolour';
+import { ModalController } from 'ionic-angular';
+import { ModalselectPage } from '../modalselect/modalselect';
 /**
  * Generated class for the EditmoisturePage page.
  *
@@ -10,7 +12,7 @@ import { EditcolourPage } from '../editcolour/editcolour';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+// @IonicPage()
 @Component({
   selector: 'page-editmoisture',
   templateUrl: 'editmoisture.html',
@@ -26,7 +28,7 @@ export class EditmoisturePage {
 	Horizon : any;
 	MoistureOptions :any;
 	id: any;
-  constructor(public navCtrl: NavController,public restProvider: RestProvider, public navParams: NavParams, private formBuilder: FormBuilder) {
+  constructor(public modalCtrl: ModalController,public navCtrl: NavController,public restProvider: RestProvider, public navParams: NavParams, private formBuilder: FormBuilder) {
     this.horizon = navParams.get("horizon");
     this.getDataSelect('Moisture');
     this.id = this.horizon.id;
@@ -79,13 +81,6 @@ export class EditmoisturePage {
     });
   }
 
- DeleteElement(FormElement){
-  console.log(FormElement)
-  // console.log(this.todo['value'][FormElement])
-  this.todo['value'][FormElement] = null
-  this[FormElement] = null
-  // this.todo['controls'][event]['value'] = undefined
- }
 
   postDataLine() {
     // console.log(JSON.stringify(this.todo.value))
@@ -101,6 +96,12 @@ export class EditmoisturePage {
   gotoNextPage(params){
     this.navCtrl.push(EditcolourPage,{horizon:params});
   };
+
+    showPageModal(params) {
+    const modal = this.modalCtrl.create(ModalselectPage,{horizon:params});
+    modal.present();
+  }
+
 
 }
 

@@ -18,7 +18,7 @@ import { EditbioPage } from '../editbio/editbio';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+// @IonicPage()
 @Component({
   selector: 'page-modalselect',
   templateUrl: 'modalselect.html',

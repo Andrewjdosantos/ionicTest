@@ -10,7 +10,7 @@ import { RestProvider } from '../../providers/rest/rest';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+// @IonicPage()
 @Component({
   selector: 'page-addtestpit',
   templateUrl: 'addtestpit.html',
@@ -58,7 +58,6 @@ export class AddtestpitPage {
     if (this.id){
      this.restProvider.putDataSelect('TestPit',JSON.stringify(this.todo.value),this.id)
     .then(data => {
-      // this.presentAlert()
       this.navCtrl.pop();
       console.log(this.todo.value)
     });
@@ -66,7 +65,6 @@ export class AddtestpitPage {
     else{
     this.restProvider.postDataSelect('TestPit',JSON.stringify(this.todo.value))
     .then(data => {
-      // this.presentAlert()
       this.navCtrl.pop();
       console.log(this.todo.value)
     });

@@ -13,7 +13,7 @@ import { ListhorizonsPage } from '../listhorizons/listhorizons';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+// @IonicPage()
 @Component({
   selector: 'page-list-test-pits',
   templateUrl: 'list-test-pits.html',

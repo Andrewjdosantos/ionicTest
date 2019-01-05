@@ -1,10 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {Http ,Response } from '@angular/http';
+import { Component } from '@angular/core';
+import { NavController, NavParams } from 'ionic-angular';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { AlertController } from 'ionic-angular';
+// import { ModalController } from 'ionic-angular';
+// import { ModalselectPage } from '../../pages/modalselect/modalselect';
 /*
   Generated class for the PeopleServiceProvider provider.
 
@@ -16,6 +20,8 @@ import { AlertController } from 'ionic-angular';
 
 @Injectable()
 export class RestProvider {
+
+
 
 
   // apiUrl = 'http://icefyer5004.pythonanywhere.com/api';
@@ -156,7 +162,5 @@ export class RestProvider {
 	});
 	});
 	}
-
-
 
 }

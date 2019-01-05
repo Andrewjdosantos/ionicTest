@@ -3,7 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { RestProvider } from '../../providers/rest/rest';
 import { SampledetailsPage } from '../sampledetails/sampledetails';
-
+import { ModalController } from 'ionic-angular';
+import { ModalselectPage } from '../modalselect/modalselect';
 /**
  * Generated class for the EditbioPage page.
  *
@@ -11,7 +12,7 @@ import { SampledetailsPage } from '../sampledetails/sampledetails';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+// @IonicPage()
 @Component({
   selector: 'page-editbio',
   templateUrl: 'editbio.html',
@@ -30,7 +31,7 @@ export class EditbioPage {
 	BiologicalTypeOptions :any;
 	BiologicalFrequencyOptions :any;
 
-  constructor(public navCtrl: NavController,public restProvider: RestProvider, public navParams: NavParams, private formBuilder: FormBuilder) {
+  constructor(public modalCtrl: ModalController,public navCtrl: NavController,public restProvider: RestProvider, public navParams: NavParams, private formBuilder: FormBuilder) {
     this.horizon = navParams.get("horizon");
     this.getBioTypeDataSelect('BiologicalType');
     this.getBioFreqDataSelect('BiologicalFrequency');
@@ -66,14 +67,6 @@ export class EditbioPage {
   this[FormElement] = null
   // this.todo['controls'][event]['value'] = undefined
  }
- 
- DeleteElement(FormElement){
-  console.log(FormElement)
-  // console.log(this.todo['value'][FormElement])
-  this.todo['value'][FormElement] = null
-  this[FormElement] = null
-  // this.todo['controls'][event]['value'] = undefined
- }
 
   getBioTypeDataSelect(FieldName) {
     this.restProvider.getDataSelect(FieldName)
@@ -102,6 +95,11 @@ export class EditbioPage {
       console.log(this.todo.value)
     });
     } 
+  }
+
+    showPageModal(params) {
+    const modal = this.modalCtrl.create(ModalselectPage,{horizon:params});
+    modal.present();
   }
 
 

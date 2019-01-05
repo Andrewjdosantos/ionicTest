@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { RestProvider } from '../../providers/rest/rest';
 import { EdittexturePage } from '../edittexture/edittexture';
+import { ModalController } from 'ionic-angular';
+import { ModalselectPage } from '../modalselect/modalselect';
 /**
  * Generated class for the EditstructurePage page.
  *
@@ -10,7 +12,7 @@ import { EdittexturePage } from '../edittexture/edittexture';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+// @IonicPage()
 @Component({
   selector: 'page-editstructure',
   templateUrl: 'editstructure.html',
@@ -30,7 +32,7 @@ export class EditstructurePage {
 	SecFilter :any;
 	StructureOptions: any;
 	AllStructOptions: any;
-  constructor(public navCtrl: NavController,public restProvider: RestProvider, public navParams: NavParams, private formBuilder: FormBuilder) {
+  constructor(public modalCtrl: ModalController,public navCtrl: NavController,public restProvider: RestProvider, public navParams: NavParams, private formBuilder: FormBuilder) {
     this.horizon = navParams.get("horizon");
     this.id = this.horizon.id;
     this.Horizon = this.horizon.Horizon
@@ -131,6 +133,14 @@ export class EditstructurePage {
   gotoNextPage(params){
     this.navCtrl.push(EdittexturePage,{horizon:params});
   };
+
+    showPageModal(params) {
+    const modal = this.modalCtrl.create(ModalselectPage,{horizon:params});
+    modal.present();
+  }
+
+
+
 }
 
 

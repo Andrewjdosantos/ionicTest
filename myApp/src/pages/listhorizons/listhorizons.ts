@@ -12,7 +12,7 @@ import { ModalselectPage } from '../modalselect/modalselect';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+// @IonicPage()
 @Component({
   selector: 'page-listhorizons',
   templateUrl: 'listhorizons.html',

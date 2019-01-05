@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { RestProvider } from '../../providers/rest/rest';
 import { EditpedocretePage } from '../editpedocrete/editpedocrete';
+import { ModalController } from 'ionic-angular';
+import { ModalselectPage } from '../modalselect/modalselect';
 /**
  * Generated class for the EditgroundwaterPage page.
  *
@@ -10,7 +12,7 @@ import { EditpedocretePage } from '../editpedocrete/editpedocrete';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+// @IonicPage()
 @Component({
   selector: 'page-editgroundwater',
   templateUrl: 'editgroundwater.html',
@@ -26,7 +28,7 @@ export class EditgroundwaterPage {
 	Horizon : any;
 	GWDescritpros :any;
 	id: any;
-  constructor(public navCtrl: NavController,public restProvider: RestProvider, public navParams: NavParams, private formBuilder: FormBuilder) {
+  constructor(public modalCtrl: ModalController,public navCtrl: NavController,public restProvider: RestProvider, public navParams: NavParams, private formBuilder: FormBuilder) {
     this.horizon = navParams.get("horizon");
     this.getDataSelect('GroundWaterDescriptor');
     this.id = this.horizon.id;
@@ -78,6 +80,11 @@ export class EditgroundwaterPage {
       console.log(this.todo.value)
     });
     } 
+  }
+
+    showPageModal(params) {
+    const modal = this.modalCtrl.create(ModalselectPage,{horizon:params});
+    modal.present();
   }
 
 
