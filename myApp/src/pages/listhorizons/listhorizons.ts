@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,Events } from 'ionic-angular';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { RestProvider } from '../../providers/rest/rest';
 import { CreateHorizonPage } from '../create-horizon/create-horizon';
@@ -24,13 +24,13 @@ export class ListhorizonsPage {
   TestPitObject:any;
   Project:any;
   ProjectDetails:any;
-  constructor(public modalCtrl: ModalController,public navCtrl: NavController,public restProvider: RestProvider, public navParams: NavParams, private formBuilder: FormBuilder) {
+  constructor(private events:Events,public modalCtrl: ModalController,public navCtrl: NavController,public restProvider: RestProvider, public navParams: NavParams, private formBuilder: FormBuilder) {
   	
     this.Project = navParams.get("project").TestPitProject;
   	this.TestPit = navParams.get("project").Name;
     this.TestPitObject = navParams.get("project");
     this.ProjectDetails = navParams.get("projectdets")['ProjectName'];
-  	
+  	this.events.publish('horizon', this.Project);
   	this.getDataLine(this.TestPitObject.id);
   }
 
@@ -40,6 +40,7 @@ export class ListhorizonsPage {
 
 
     showPageModal(params) {
+    this.restProvider.currenthorizon = params;
     const modal = this.modalCtrl.create(ModalselectPage,{horizon:params});
     modal.present();
   }

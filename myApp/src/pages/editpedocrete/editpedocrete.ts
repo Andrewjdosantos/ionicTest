@@ -5,6 +5,7 @@ import { RestProvider } from '../../providers/rest/rest';
 import { EditbioPage } from '../editbio/editbio';
 import { ModalController } from 'ionic-angular';
 import { ModalselectPage } from '../modalselect/modalselect';
+import { ListhorizonsPage } from '../listhorizons/listhorizons';
 /**
  * Generated class for the EditpedocretePage page.
  *
@@ -32,9 +33,9 @@ export class EditpedocretePage {
 	PedocreteTypeOptions :any;
 	PedocreteFrequencyOptions :any;
 	PedocreteCharacterOptions :any;
-
+  PedoCreteNote: any;
   constructor(public modalCtrl: ModalController,public navCtrl: NavController,public restProvider: RestProvider, public navParams: NavParams, private formBuilder: FormBuilder) {
-    this.horizon = navParams.get("horizon");
+    this.horizon = this.restProvider.currenthorizon;
     this.getTextInclSizeDataSelect('PedocreteType');
     this.getTextIncFreqDataSelect('PedocreteFrequency');
     this.getTextIncCharDataSelect('PedocreteCharacter');
@@ -42,6 +43,7 @@ export class EditpedocretePage {
     this.Horizon = this.horizon.Horizon
     this.Project = this.horizon.Project.id
     this.TestPit = this.horizon.TestPit.id
+
         try {
     this.PedocreteType = this.horizon.PedocreteType.id
       }
@@ -57,6 +59,11 @@ export class EditpedocretePage {
           }
     catch(TypeError) {
   }  
+        try {
+    this.PedoCreteNote = this.horizon.PedoCreteNote
+      }
+    catch(TypeError) {
+  }
  //    try {
 	// this.PrimaryTexture = this.horizon.PrimaryTexture.id;
 	// this.PrimaryTextureInclusionSize = this.horizon.PrimaryTextureInclusionSize.id;
@@ -84,6 +91,7 @@ export class EditpedocretePage {
 	    PedocreteType :['', Validators.required],
 		PedocreteFrequency : ['', Validators.required],
 		PedocreteCharacter : ['', Validators.required],	
+    PedoCreteNote:['']
     });
   }
 
@@ -137,6 +145,9 @@ export class EditpedocretePage {
     modal.present();
   }
 
+  NavHorizons(){
+    this.navCtrl.setRoot(ListhorizonsPage,{project:this.horizon.TestPit,projectdets:this.horizon.Project});
+  }
 
 }
 

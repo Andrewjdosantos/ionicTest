@@ -10,6 +10,10 @@
     <ion-title (click)='showPageModal(horizon)'>Colour</ion-title>
   
         <ion-buttons right>
+                <button (click)=NavHorizons(horizon) ion-button icon-end>
+        Horizons
+        <ion-icon style='font-size: 1.8em' color="secondary" name="arrow-backward"></ion-icon>
+      </button>
       <button (click)=gotoNextPage(horizon) ion-button icon-end>
         Next
         <ion-icon style='font-size: 1.8em' color="secondary" name="arrow-forward"></ion-icon>
@@ -135,7 +139,10 @@ Colour
     <button ion-button expandable (click)="DeleteElement('TertiaryInclusionCharacter')">Delete</button>
   </ion-item-options>
 </ion-item-sliding>
-
+     <ion-item>
+      <ion-label>ColourNote</ion-label>
+      <ion-input value={{ColourNote}} [max]=5 type="text" formControlName="ColourNote"></ion-input>
+    </ion-item>
 </ion-list>
 
     <button ion-button (click)="postDataLine()" type="submit" >Submit</button>

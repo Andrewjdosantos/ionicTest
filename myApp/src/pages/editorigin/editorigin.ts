@@ -5,6 +5,7 @@ import { RestProvider } from '../../providers/rest/rest';
 import { EditgroundwaterPage } from '../editgroundwater/editgroundwater';
 import { ModalController } from 'ionic-angular';
 import { ModalselectPage } from '../modalselect/modalselect';
+import { ListhorizonsPage } from '../listhorizons/listhorizons';
 /**
  * Generated class for the EditoriginPage page.
  *
@@ -33,12 +34,19 @@ export class EditoriginPage {
 	OriginCharacterOptions: any;
 	AllOriginTypeOptions :any;
 	AllOriginCharacterOptions :any;
+	OriginNote:any;
   constructor(public modalCtrl: ModalController,public navCtrl: NavController,public restProvider: RestProvider, public navParams: NavParams, private formBuilder: FormBuilder) {
-    this.horizon = navParams.get("horizon");
+    this.horizon = this.restProvider.currenthorizon;
     this.id = this.horizon.id;
     this.Horizon = this.horizon.Horizon
     this.Project = this.horizon.Project.id
     this.TestPit = this.horizon.TestPit.id
+    try {
+	this.OriginNote = this.horizon.OriginNote;
+		}
+	catch(TypeError) {
+		console.log('error')
+	}
     try {
 	this.PrimaryOrigin = this.horizon.PrimaryOrigin.id;
 		}
@@ -79,6 +87,7 @@ export class EditoriginPage {
 	  PrimaryOriginTyoe : ['', Validators.required],
       PrimaryOriginCharacter :['', Validators.required],
       OriginReworked :['', Validators.required],
+      OriginNote:['']
     });
   }
 
@@ -207,7 +216,10 @@ export class EditoriginPage {
     modal.present();
   }
 
-  
+  NavHorizons(){
+    this.navCtrl.setRoot(ListhorizonsPage,{project:this.horizon.TestPit,projectdets:this.horizon.Project});
+  }
+ 
 }
 
 

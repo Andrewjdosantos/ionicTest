@@ -5,6 +5,8 @@ import { RestProvider } from '../../providers/rest/rest';
 import { AddtestpitPage } from '../addtestpit/addtestpit';
 import { AddcontactPage } from '../addcontact/addcontact';
 import { AlertController } from 'ionic-angular';
+import { ListhorizonsPage } from '../listhorizons/listhorizons';
+
 /**
  * Generated class for the CreateHorizonPage page.
  *
@@ -28,6 +30,9 @@ export class CreateHorizonPage {
 	Contact: any;
 	Horizon: any;
 	Profiler: any;
+  UpperContactRange:any;
+  LowerContactRange: any;
+  ContactDirection: any;
   constructor(private alertCtrl: AlertController,public navCtrl: NavController,public restProvider: RestProvider, public navParams: NavParams, private formBuilder: FormBuilder) {
   this.project = navParams.get("project");
   console.log('Project')
@@ -75,6 +80,24 @@ export class CreateHorizonPage {
       catch(TypeError){
         console.log('no tp')
       }
+            try {
+  this.UpperContactRange = this.project.UpperContactRange;
+}
+  catch(TypeError) {
+    this.UpperContactRange = ''
+  } 
+      try {
+  this.LowerContactRange = this.project.LowerContactRange;
+}
+  catch(TypeError) {
+    this.LowerContactRange = ''
+  } 
+      try {
+  this.ContactDirection = this.project.ContactDirection;
+}
+  catch(TypeError) {
+    console.log('error')
+  } 
   }else{
     this.Project = this.project.TestPitProject;
     this.TestPit = this.project.id;
@@ -90,6 +113,9 @@ export class CreateHorizonPage {
       Contact: [''],
       Horizon: [-1],
       Profiler: [''],
+      UpperContactRange: [],
+      LowerContactRange: [],
+      ContactDirection: [],
     });
   }
 
@@ -97,6 +123,9 @@ export class CreateHorizonPage {
     this.navCtrl.push(AddcontactPage,{dataline:params});
   }
 
+  //  GotoListhorizons(params,project){
+  //   this.navCtrl.push(ListhorizonsPage,{project:params,projectdets:project});
+  // }
 
   getDataSelect(FieldName) {
     this.restProvider.getDataSelect(FieldName)
@@ -106,23 +135,33 @@ export class CreateHorizonPage {
   }
 
   postDataLine() {
-    // console.log(JSON.stringify(this.todo.value))
+    if (this.todo.value['UpperContactRange'] == ''){
+      this.todo.value['UpperContactRange']= null;
+    }
+    if (this.todo.value['LowerContactRange'] == ''){
+      this.todo.value['LowerContactRange']= null;
+    }
+
+
+
+    // console.log(JSON.stringify(this.todo.value))   
     if (this.id){
      this.restProvider.putDataLine(JSON.stringify(this.todo.value),this.id)
     .then(data => {
-      this.presentAlert()
-      this.navCtrl.pop();
-      console.log(this.todo.value)
+      // this.presentAlert()
+      // this.navCtrl.pop();
+      // this.GotoListhorizons(this.TestPit,this.project)
     });
     } 
     else{
     this.restProvider.postDataLine(JSON.stringify(this.todo.value))
     .then(data => {
-      this.presentAlert()
-      this.navCtrl.pop();
-      console.log(this.todo.value)
+      // this.presentAlert()
+      // this.navCtrl.pop();
+      // this.GotoListhorizons(this.TestPit,this.project)
     });
   }
+  this.navCtrl.pop();
   }
 
   presentAlert() {
@@ -142,5 +181,13 @@ export class CreateHorizonPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddtestpitPage');
   }
+
+ DeleteElement(FormElement){
+  console.log(FormElement)
+  // console.log(this.todo['value'][FormElement])
+  this.todo['value'][FormElement] = null
+  this[FormElement] = null
+  // this.todo['controls'][event]['value'] = undefined
+ }
 
 }

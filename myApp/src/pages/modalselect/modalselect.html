@@ -7,8 +7,13 @@
 <ion-header>
   <ion-navbar>
     <ion-buttons left>
+
       <button navPop ion-button icon-only>
         <ion-icon color="secondary" name="arrow-back"></ion-icon>
+      </button>
+        <button (click)=NavHorizons(horizon) ion-button icon-end>
+        Horizons
+        <ion-icon style='font-size: 1.8em' color="secondary" name="arrow-backward"></ion-icon>
       </button>
     </ion-buttons>
     <ion-title>Descriptions</ion-title>
@@ -21,25 +26,25 @@
 
 	<ion-list>
 <ion-list-header>
-TP{{horizon.TestPit.Name}}
+TP{{horizon?.TestPit?.Name}}
 </ion-list-header>
 <button ion-item (click)="gotoMoistureEditPage(horizon)">
-  Moisture
+  Moisture <p style='float:right'>{{horizon?.PrimaryMoisture?.MoistureName}}</p>
 </button>
 <button ion-item (click)="gotoColourEditPage(horizon)">
-  Colour
+  Colour <p style='float:right'>{{horizon?.TertiaryColour?.ColourName}} {{horizon?.SecondaryColour?.ColourName}} {{horizon?.PrimaryColour?.ColourName}}</p>
 </button>
 <button ion-item (click)="gotoConsEditPage(horizon)">
-  Consistency
+  Consistency <p style='float:right'>{{horizon?.PrimaryCohesiveCharacter?.ConsistencyName}}</p>
 </button>
 <button ion-item (click)="gotoStructEditPage(horizon)">
-  Structure
+  Structure <p style='float:right'>{{horizon?.PrimaryStructure?.SecondaryClassification}}</p>
 </button>
 <button ion-item (click)="gotoTextEditPage(horizon)">
-  Soil Texture
+  Soil Texture <p style='float:right'>{{horizon?.TertiaryTexture?.TextureClassificationName}} {{horizon?.SecondaryTexture?.TextureClassificationName}} {{horizon?.PrimaryTexture?.TextureClassificationName}}</p>
 </button>
 <button ion-item (click)="gotoOriginPage(horizon)">
-  Origin
+  Origin <p style='float:right'>{{horizon?.Label}}
 </button>
 </ion-list>
 <ion-list>
@@ -47,21 +52,27 @@ TP{{horizon.TestPit.Name}}
   Notes
 </ion-list-header>
 <button ion-item (click)="gotoGroundWaterEditPage(horizon)">
-  Groundwater Seepage
+  Groundwater Seepage <p style='float:right'>{{horizon?.GroundWaterDescriptors?.DescriptorName}}</p>
 </button>
 <button ion-item (click)="gotoPedocreteEditPage(horizon)">
-  Pedogenic Material
+  Pedogenic Material <p style='float:right'>{{horizon?.PedocreteCharacter?.Name}} {{horizon?.PedocreteFrequency?.Name}} {{horizon?.PedocreteType?.Name}}</p>
 </button>
 
 <button ion-item (click)="gotoBioEditPage(horizon)">
-  Biological Activity
+  Biological Activity <p style='float:right'>{{horizon?.BiologicalFrequency?.Name}} {{horizon?.BiologicalType?.Name}} </p>
 </button>
 
 <button ion-item (click)="gotoSamepleEditPage(horizon)">
-  Samples
+  Samples <p style='float:right'>{{horizon?.PrimarySampleType}} Sample: {{horizon?.PrimarySampleNumber}} </p>
 </button>
 
 
-
+<form [formGroup]="todo">
+       <ion-item>
+      <ion-label>Horizon Note</ion-label>
+      <ion-input value={{NoteNote}} [max]=5 type="text" formControlName="NoteNote"></ion-input>
+    </ion-item>
+    <button ion-button type="submit" (click)="postDataLine()">Save Horizon Note</button>
+  </form>
 </ion-list>
 </ion-content>

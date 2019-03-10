@@ -14,7 +14,8 @@
 
 <!-- Add origin to horizon descriptor -->
 <ion-content padding>
-<form [formGroup]="todo" (ngSubmit)="postDataLine()">
+<form [formGroup]="todo">
+  <ion-list>
     <ion-item>
       <ion-label>Depth</ion-label>
       <ion-input placeholder='metres' value={{PitDepth}} [max]=5 type="number" formControlName="PitDepth"></ion-input>
@@ -24,13 +25,31 @@
       <ion-input value={{Profiler}} [max]=5 type="text" formControlName="Profiler"></ion-input>
     </ion-item>
     <br>
+<ion-item-sliding (ionSwipe)="DeleteElement('Contact')">
     <ion-item>
       <ion-label>Contact</ion-label>
       <ion-select  [(ngModel)]="Contact" formControlName="Contact">
        <ion-option  *ngFor="let val of ContactOptions"  [value]="val.id"  selected="val.id == Contact">{{val.ContactName}}</ion-option>
       </ion-select>
     </ion-item>
-    <button ng-if='project.Horizon!==undefined' (click)="GOTOcontactDetails(project)" ion-button>Contact Details</button>
-    <button ion-button type="submit" [disabled]="!todo.valid">Submit</button>
+      <ion-item-options>
+    <button ion-button expandable (click)="DeleteElement('Contact')">Delete</button>
+  </ion-item-options>
+</ion-item-sliding>
+
+    <ion-item [hidden]="!todo.controls.Contact.value">
+      <ion-label>UpperContactRange</ion-label>
+      <ion-input value={{UpperContactRange}} [max]=5 type="number" formControlName="UpperContactRange"></ion-input>
+    </ion-item>
+    <ion-item [hidden]="!todo.controls.Contact.value">
+      <ion-label>LowerContactRange</ion-label>
+      <ion-input value={{LowerContactRange}} [max]=5 type="number" formControlName="LowerContactRange"></ion-input>
+    </ion-item>
+     <ion-item [hidden]="!todo.controls.Contact.value">
+      <ion-label>ContactDirection</ion-label>
+      <ion-input value={{ContactDirection}} [max]=5 type="text" formControlName="ContactDirection"></ion-input>
+    </ion-item>
+  </ion-list>
+    <button ion-button type="submit" (click)="postDataLine()">Submit</button>
   </form>
 </ion-content>

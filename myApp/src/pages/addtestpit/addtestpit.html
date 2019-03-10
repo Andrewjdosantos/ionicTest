@@ -22,7 +22,10 @@
       <ion-label>TP</ion-label>
       <ion-input placeholder="Number" value={{TPNumber}} type="number" formControlName="Name"></ion-input>
     </ion-item>
-
+     <ion-item>
+      <ion-label>TestPitNote</ion-label>
+      <ion-input value={{TestPitNote}} [max]=5 type="text" formControlName="TestPitNote"></ion-input>
+    </ion-item>
   <ion-row style='text-align:center'>
     <ion-col>
     <button ion-button type="submit" [disabled]="!todo.valid">Submit</button>

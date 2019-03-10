@@ -4,6 +4,7 @@ import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { RestProvider } from '../../providers/rest/rest';
 import { ModalController } from 'ionic-angular';
 import { ModalselectPage } from '../modalselect/modalselect';
+import { ListhorizonsPage } from '../listhorizons/listhorizons';
 /**
  * Generated class for the SampledetailsPage page.
  *
@@ -29,8 +30,9 @@ export class SampledetailsPage {
 	SecondarySampleNumber : any;
 	TertiarySampleNumber : any;
 	id: any;
+  SampleNote:any;
   constructor(public modalCtrl: ModalController,public navCtrl: NavController,public restProvider: RestProvider, public navParams: NavParams, private formBuilder: FormBuilder) {
-    this.horizon = navParams.get("horizon");
+    this.horizon = this.restProvider.currenthorizon;
     // this.getDataSelect('GroundWaterDescriptor');
     this.id = this.horizon.id;
     this.Project = this.horizon.Project.id
@@ -66,6 +68,13 @@ export class SampledetailsPage {
 	}
     catch(TypeError) {
 	}
+
+      try {
+  this.SampleNote = this.horizon.SampleNote;
+    }
+  catch(TypeError) {
+    console.log('error')
+  }
     this.todo = this.formBuilder.group({
   	  id:[this.id],
   	  Project: [this.Project],
@@ -77,6 +86,7 @@ export class SampledetailsPage {
       PrimarySampleNumber: [''],
       SecondarySampleNumber: [''],
       TertiarySampleNumber: [''],
+      SampleNote:['']
     });
 
 
@@ -108,6 +118,10 @@ export class SampledetailsPage {
     showPageModal(params) {
     const modal = this.modalCtrl.create(ModalselectPage,{horizon:params});
     modal.present();
+  }
+
+  NavHorizons(){
+    this.navCtrl.setRoot(ListhorizonsPage,{project:this.horizon.TestPit,projectdets:this.horizon.Project});
   }
 
 }

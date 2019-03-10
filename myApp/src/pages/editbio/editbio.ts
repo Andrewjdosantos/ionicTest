@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { RestProvider } from '../../providers/rest/rest';
 import { SampledetailsPage } from '../sampledetails/sampledetails';
+import { ListhorizonsPage } from '../listhorizons/listhorizons';
 import { ModalController } from 'ionic-angular';
 import { ModalselectPage } from '../modalselect/modalselect';
 /**
@@ -30,9 +31,9 @@ export class EditbioPage {
 
 	BiologicalTypeOptions :any;
 	BiologicalFrequencyOptions :any;
-
+  BioNote:any;
   constructor(public modalCtrl: ModalController,public navCtrl: NavController,public restProvider: RestProvider, public navParams: NavParams, private formBuilder: FormBuilder) {
-    this.horizon = navParams.get("horizon");
+    this.horizon = this.restProvider.currenthorizon;
     this.getBioTypeDataSelect('BiologicalType');
     this.getBioFreqDataSelect('BiologicalFrequency');
     this.id = this.horizon.id;
@@ -40,6 +41,11 @@ export class EditbioPage {
     this.Project = this.horizon.Project.id
     this.TestPit = this.horizon.TestPit.id
         try {
+    this.BioNote = this.horizon.BioNote
+      }
+    catch(TypeError) {
+  }
+          try {
     this.BiologicalType = this.horizon.BiologicalType.id
       }
     catch(TypeError) {
@@ -57,6 +63,7 @@ export class EditbioPage {
       Horizon: [this.Horizon],
 	    BiologicalType :['', Validators.required],
 		BiologicalFrequency : ['', Validators.required],
+    BioNote:['']
     });
   }
 
@@ -91,10 +98,13 @@ export class EditbioPage {
     if (this.id){
      this.restProvider.putDataLine(JSON.stringify(this.todo.value),this.id)
     .then(data => {
-      this.navCtrl.pop();
-      console.log(this.todo.value)
+      this.horizon = this.restProvider.currenthorizon;
     });
     } 
+  }
+
+  NavHorizons(){
+    this.navCtrl.setRoot(ListhorizonsPage,{project:this.horizon.TestPit,projectdets:this.horizon.Project});
   }
 
     showPageModal(params) {

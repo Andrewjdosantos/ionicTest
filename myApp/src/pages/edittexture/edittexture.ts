@@ -6,6 +6,7 @@ import { map, filter, scan } from 'rxjs/operators';
 import { EditoriginPage } from '../editorigin/editorigin';
 import { ModalController } from 'ionic-angular';
 import { ModalselectPage } from '../modalselect/modalselect';
+import { ListhorizonsPage } from '../listhorizons/listhorizons';
 /**
  * Generated class for the EdittexturePage page.
  *
@@ -55,8 +56,10 @@ export class EdittexturePage {
   FabricOptions :any;
 
   requiresMoreInfo:any;
+
+  TextureNote:any;
   constructor(public modalCtrl: ModalController,public navCtrl: NavController,public restProvider: RestProvider, public navParams: NavParams, private formBuilder: FormBuilder) {
-    this.horizon = navParams.get("horizon");
+    this.horizon = this.restProvider.currenthorizon;
     this.getTextInclSizeDataSelect('TextureInclusionSize');
     this.getTextIncFreqDataSelect('TextureInclusionFreq');
     this.getTextIncCharDataSelect('TextureInclusionCharacter');
@@ -68,6 +71,14 @@ export class EdittexturePage {
     this.Project = this.horizon.Project.id
     this.TestPit = this.horizon.TestPit.id
     this.requiresMoreInfo = false
+    
+    try {
+  this.TextureNote = this.horizon.TextureNote;
+  } 
+  catch(TypeError) {
+    console.log('TypeError')
+  }
+
     try {
 	this.PrimaryTexture = this.horizon.PrimaryTexture.id;
 } catch(TypeError) {
@@ -129,6 +140,25 @@ try{
 	catch(TypeError) {
 		console.log('TypeError')
 	}
+try{
+  this.Angularity = this.horizon.Angularity.id;
+  }
+  catch(TypeError) {
+    console.log('TypeError')
+  }
+try{
+  this.Fabric = this.horizon.Fabric.id;
+  }
+  catch(TypeError) {
+    console.log('TypeError')
+  }
+
+  
+
+
+
+
+
     this.todo = this.formBuilder.group({
   	  id:[this.id],
   	  Project: [this.Project],
@@ -148,7 +178,10 @@ try{
 		TertiaryTextureInclusionCharacter :[''],	
     Angularity :[''],
     Fabric :[''],
+    TextureNote: ['']
     });
+
+    this.checkReqInfo()
   }
 
  DeleteElement(FormElement){
@@ -160,8 +193,12 @@ try{
  }
  
   checkReqInfo(){
-    console.log(this.todo.controls.PrimaryTexture.value)
-    console.log(this.TextureClassificationsOptions)
+    if (this.Angularity){
+     this.requiresMoreInfo =  true
+    }
+    if (this.Fabric){
+       this.requiresMoreInfo =  true
+    }
     try{
     this.requiresMoreInfo = this.TextureClassificationsOptions.filter( element => element.id == this.todo.controls.PrimaryTexture.value)[0]['ReqExtraInfo']
     console.log(this.requiresMoreInfo)
@@ -240,6 +277,9 @@ try{
     modal.present();
   }
 
+  NavHorizons(){
+    this.navCtrl.setRoot(ListhorizonsPage,{project:this.horizon.TestPit,projectdets:this.horizon.Project});
+  }
 
 }
 

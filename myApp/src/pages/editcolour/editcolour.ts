@@ -5,6 +5,7 @@ import { RestProvider } from '../../providers/rest/rest';
 import { ConsistencyeditPage } from '../consistencyedit/consistencyedit';
 import { ModalController } from 'ionic-angular';
 import { ModalselectPage } from '../modalselect/modalselect';
+import { ListhorizonsPage } from '../listhorizons/listhorizons';
 /**
 
 /**
@@ -39,8 +40,9 @@ export class EditcolourPage {
   PrimColourOptions :any;
   TertColourOptions :any;
 	InclusionOptions :any;
+  ColourNote: any;
   constructor(public modalCtrl: ModalController,public navCtrl: NavController,public restProvider: RestProvider, public navParams: NavParams, private formBuilder: FormBuilder) {
-    this.horizon = navParams.get("horizon");
+    this.horizon = this.restProvider.currenthorizon;
     this.getPrimColDataSelect('PrimColour');
     this.getSecColDataSelect('SecColour');
     this.getTertColDataSelect('TertColour');
@@ -94,6 +96,12 @@ export class EditcolourPage {
 	}
 	catch(TypeError) {
 	}
+    try {
+  this.ColourNote = this.horizon.ColourNote;
+    }
+  catch(TypeError) {
+  }
+
     this.todo = this.formBuilder.group({
   	  id:[this.id],
   	  Project: [this.Project],
@@ -108,6 +116,7 @@ export class EditcolourPage {
 	  PrimaryInclusionCharacter : [''],
 	  SecondaryInclusionCharacter :[''],	
 	  TertiaryInclusionCharacter :[''],
+    ColourNote :[''],
     });
   }
 
@@ -168,6 +177,9 @@ export class EditcolourPage {
     modal.present();
   }
 
+  NavHorizons(){
+    this.navCtrl.setRoot(ListhorizonsPage,{project:this.horizon.TestPit,projectdets:this.horizon.Project});
+  }
 
 }
 

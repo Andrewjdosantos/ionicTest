@@ -18,25 +18,37 @@ export class AddcontactPage {
 	private todo : FormGroup; 
 	id:any;
 	dataline: any;
-    UpperContactRange:any;
+  UpperContactRange:any;
 	LowerContactRange: any;
 	ContactDirection: any;
 	Project: any;
 	TestPit: any;
 	Horizon : any;
   constructor(public navCtrl: NavController,public restProvider: RestProvider, public navParams: NavParams, private formBuilder: FormBuilder) {
-  this.dataline = navParams.get("dataline");
-  console.log('dataline')
-  console.log(this.dataline)
+  this.dataline = this.restProvider.currenthorizon;
 	this.id = this.dataline.id;
 	this.TestPit = this.dataline.TestPit.id;
   this.Project = this.dataline.Project.id;
   this.Horizon = this.dataline.Horizon
-	this.UpperContactRange = this.dataline.UpperContactRange;
-	this.LowerContactRange = this.dataline.LowerContactRange;
-	this.ContactDirection = this.dataline.ContactDirection;
+      try {
+  this.UpperContactRange = this.dataline.UpperContactRange;
+}
+  catch(TypeError) {
+    console.log('error')
+  } 
+      try {
+  this.LowerContactRange = this.dataline.LowerContactRange;
+}
+  catch(TypeError) {
+    console.log('error')
+  } 
+      try {
+  this.ContactDirection = this.dataline.ContactDirection;
+}
+  catch(TypeError) {
+    console.log('error')
+  } 
 
-  console.log(this)
   this.todo = this.formBuilder.group({
   	  id:[this.id],
   	  Project: [this.Project],

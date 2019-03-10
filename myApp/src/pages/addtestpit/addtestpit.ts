@@ -21,9 +21,18 @@ export class AddtestpitPage {
   testpit: any;
   TPNumber:any;
   id:any;
+  TestPitNote:any;
   constructor(public navCtrl: NavController,public restProvider: RestProvider, public navParams: NavParams, private formBuilder: FormBuilder) {
     this.project = navParams.get("project");
     this.testpit = navParams.get("testpit");
+    console.log(this.testpit)
+    try{
+      this.TestPitNote = this.testpit.TestPitNote
+    }
+    catch(TypeError){
+      console.log('no tp')
+    }
+
     try{
       this.id = this.testpit.id
     }
@@ -40,6 +49,7 @@ export class AddtestpitPage {
     this.todo = this.formBuilder.group({
     Name: ['', Validators.required],
     TestPitProject: this.project.id,
+    TestPitNote:['']
   });
   }
 
@@ -65,10 +75,11 @@ export class AddtestpitPage {
     else{
     this.restProvider.postDataSelect('TestPit',JSON.stringify(this.todo.value))
     .then(data => {
-      this.navCtrl.pop();
+      
       console.log(this.todo.value)
     });
   }
+  this.navCtrl.pop();
   }
   
   ionViewDidLoad() {

@@ -7,6 +7,7 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { AlertController } from 'ionic-angular';
+import { ToastController } from 'ionic-angular';
 // import { ModalController } from 'ionic-angular';
 // import { ModalselectPage } from '../../pages/modalselect/modalselect';
 /*
@@ -23,28 +24,46 @@ export class RestProvider {
 
 
 
-
+  currenthorizon:any;
   // apiUrl = 'http://icefyer5004.pythonanywhere.com/api';
   apiUrl = 'http://icefyer5004.pythonanywhere.com/api';
-  constructor(public http: HttpClient,public alertCtrl: AlertController) {
+  constructor(public http: HttpClient,public toastController: ToastController) {
     console.log('Hello PeopleServiceProvider Provider');
   }
 
-  	Success() {
-  	let alert = this.alertCtrl.create({
-    title: 'Data Added',
-    buttons: ['Dismiss']
-  	});
-  	alert.present();
-	}
+    async Success() {
+    const toast = await this.toastController.create({
+        message: 'Data Added',
+        // position: "bottom',
+        duration: 3000
+    });
+    toast.present();
+  }
+
+    async Failure() {
+    const toast = await this.toastController.create({
+        message: 'Data Not Added',
+        // position: "bottom',
+        duration: 3000
+    });
+    toast.present();
+  }
+
+ //  	Success() {
+ //  	let alert = this.alertCtrl.create({
+ //    // title: 'Data Added',
+ //    // buttons: ['Dismiss']
+ //  	});
+ //  	alert.present();
+	// }
  
-  	Failure() {
-  	let alert = this.alertCtrl.create({
-    title: 'Data Not Added',
-    buttons: ['Dismiss']
-  	});
-  	alert.present();
-	}
+ //  	Failure() {
+ //  	let alert = this.alertCtrl.create({
+ //    title: 'Data Not Added',
+ //    // buttons: ['Dismiss']
+ //  	});
+ //  	alert.present();
+	// }
 
 	getProjects() {
 	return new Promise(resolve => {
@@ -130,6 +149,22 @@ export class RestProvider {
 	});
 	}
 
+	getHorizon(filter) {
+	return new Promise(resolve => {
+	this.http.get(this.apiUrl+'/horizon/?project='+filter).subscribe(data => {
+		// console.log(this.apiUrl+'/horizon/?project='+filter);
+		console.log('COMING THROUGH')
+		console.log(data[0])
+		this.currenthorizon = data[0];
+	resolve(data);}, 
+	err => {
+	console.log(err);
+	});
+	});
+	}
+
+
+
 	postDataLine(body) {
 	return new Promise(resolve => {
 	this.http.post(this.apiUrl+'/listpost/',body,
@@ -153,6 +188,7 @@ export class RestProvider {
 		{  	headers: { 'Content-Type': 'application/json' }
 	}).subscribe(data => {
 		this.Success()
+		this.getHorizon(pk)
 		// alert('Data Added');
 	}, 
 	err => {

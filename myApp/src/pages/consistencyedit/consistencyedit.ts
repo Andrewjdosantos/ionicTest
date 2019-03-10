@@ -5,6 +5,7 @@ import { RestProvider } from '../../providers/rest/rest';
 import { EditstructurePage } from '../editstructure/editstructure';
 import { ModalController } from 'ionic-angular';
 import { ModalselectPage } from '../modalselect/modalselect';
+import { ListhorizonsPage } from '../listhorizons/listhorizons';
 /**
  * Generated class for the ConsistencyeditPage page.
  *
@@ -33,13 +34,22 @@ export class ConsistencyeditPage {
 	SecConsistencyOptions :any;
 	AllConsOptions: any;
 	AllConsVariants:any;
+	ConsistencyNote:any;
+	checked: any;
   constructor(public modalCtrl: ModalController,public navCtrl: NavController,public restProvider: RestProvider, public navParams: NavParams, private formBuilder: FormBuilder) {
-    this.horizon = navParams.get("horizon");
+    this.horizon = this.restProvider.currenthorizon;
     this.id = this.horizon.id;
-    this.Horizon = this.horizon.Horizon
-    this.Project = this.horizon.Project.id
-    this.TestPit = this.horizon.TestPit.id
-    
+    this.Horizon = this.horizon.Horizon;
+    this.Project = this.horizon.Project.id;
+    this.TestPit = this.horizon.TestPit.id;
+    this.checked = false;
+    try {
+	this.ConsistencyNote = this.horizon.ConsistencyNote;
+}
+	catch(TypeError) {
+		console.log('error')
+	}    
+
     try {
 	this.PrimaryCohesiveCharacter = this.horizon.PrimaryCohesiveCharacter.id;
 }
@@ -81,12 +91,13 @@ export class ConsistencyeditPage {
   	  id:[this.id],
   	  Project: [this.Project],
       TestPit: [this.TestPit],
-      Horizon: [this.Horizon],
+      Horizon: [this.horizon.id],
       PrimaryCohesiveCharacter :['', Validators.required],
 	  SecondaryCohesiveCharacter : [''],
       PrimaryCohesive :[''],
 	  SecondaryCohesive : [''],
-	  ConsistencyVariation : ['']
+	  ConsistencyVariation : [''],
+	  ConsistencyNote:['']
     });
   }
 
@@ -156,6 +167,10 @@ export class ConsistencyeditPage {
     showPageModal(params) {
     const modal = this.modalCtrl.create(ModalselectPage,{horizon:params});
     modal.present();
+  }
+
+  NavHorizons(){
+    this.navCtrl.setRoot(ListhorizonsPage,{project:this.horizon.TestPit,projectdets:this.horizon.Project});
   }
 
 }

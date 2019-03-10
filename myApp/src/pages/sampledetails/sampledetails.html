@@ -5,13 +5,20 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
-    <ion-title (click)='showPageModal(horizon)'>Samples</ion-title>
+    <ion-title (click)='showPageModal(horizon)'>Sample Details</ion-title>
+        <ion-buttons right>
+                <button (click)=NavHorizons(horizon) ion-button icon-end>
+        Horizons
+        <ion-icon style='font-size: 1.8em' color="secondary" name="arrow-backward"></ion-icon>
+      </button>
+      <button (click)=gotoNextPage(horizon) ion-button icon-end>
+        Next
+        <ion-icon style='font-size: 1.8em' color="secondary" name="arrow-forward"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
-
 </ion-header>
-
 <!-- Add origin to horizon descriptor -->
 <ion-content padding>
 <form [formGroup]="todo" (ngSubmit)="postDataLine()">
@@ -25,22 +32,29 @@
 	</ion-item>
 	<br>
 	<ion-item [hidden]="!todo.controls.PrimarySampleType.value">
-	  <ion-label>Sample Number</ion-label>
-	  <ion-input text-right value={{SecondarySampleNumber}} [max]=5 type="text" formControlName="SecondarySampleNumber"></ion-input>
+	  <ion-label>Sample Type</ion-label>
+	  <ion-input text-right value={{SecondarySampleType}} [max]=5 type="text" formControlName="SecondarySampleType"></ion-input>
 	</ion-item>
 	<ion-item [hidden]="!todo.controls.PrimarySampleType.value">
-	  <ion-label>Sample Type</ion-label>
-	  <ion-input text-right value={{SecondarySampleType}} [max]=5 type="number" formControlName="SecondarySampleType"></ion-input>
+	  <ion-label>Sample Number</ion-label>
+	  <ion-input text-right value={{SecondarySampleNumber}} [max]=5 type="number" formControlName="SecondarySampleNumber"></ion-input>
 	</ion-item>
 	<br>
 	<ion-item [hidden]="!todo.controls.SecondarySampleType.value">
-	  <ion-label>Sample Number</ion-label>
-	  <ion-input text-right value={{TertiarySampleNumber}} [max]=5 type="text" formControlName="TertiarySampleNumber"></ion-input>
+	  <ion-label>Sample Type</ion-label>
+	  <ion-input text-right value={{TertiarySampleType}} [max]=5 type="text" formControlName="TertiarySampleType"></ion-input>
 	</ion-item>
 	<ion-item [hidden]="!todo.controls.SecondarySampleType.value">
-	  <ion-label>Sample Type</ion-label>
-	  <ion-input text-right value={{TertiarySampleType}} [max]=5 type="number" formControlName="TertiarySampleType"></ion-input>
+	  <ion-label>Sample Number</ion-label>
+	  <ion-input text-right value={{TertiarySampleNumber}} [max]=5 type="number" formControlName="TertiarySampleNumber"></ion-input>
 	</ion-item>
+
+     <ion-item>
+      <ion-label>SampleNote</ion-label>
+      <ion-input value={{SampleNote}} [max]=5 type="text" formControlName="SampleNote"></ion-input>
+    </ion-item>
+
+
     <button ion-button type="submit" [disabled]="!todo.valid">Submit</button>
   </form>
 </ion-content>

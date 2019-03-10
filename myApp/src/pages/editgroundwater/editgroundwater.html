@@ -9,6 +9,10 @@
   <ion-navbar>
     <ion-title (click)='showPageModal(horizon)'>Groundwater Seepage</ion-title>
     <ion-buttons right>
+            <button (click)=NavHorizons(horizon) ion-button icon-end>
+        Horizons
+        <ion-icon style='font-size: 1.8em' color="secondary" name="arrow-backward"></ion-icon>
+      </button>
       <button (click)=gotoNextPage(horizon) ion-button icon-end>
         Next
         <ion-icon style='font-size: 1.8em' color="secondary" name="arrow-forward"></ion-icon>
@@ -20,18 +24,18 @@
 
 <!-- Add origin to horizon descriptor -->
 <ion-content padding>
-<form [formGroup]="todo" (ngSubmit)="postDataLine()">
+<form [formGroup]="todo">
   <ion-list>
     <ion-item>
       <ion-label>Depth</ion-label>
-      <ion-input text-right value={{GroundwaterSeepageDepth}} [max]=5 type="number" formControlName="GroundwaterSeepageDepth"></ion-input>
+      <ion-input clearInput=true text-right value={{GroundwaterSeepageDepth}} [max]=5 type="number" formControlName="GroundwaterSeepageDepth"></ion-input>
     </ion-item>
   </ion-list>
 <ion-list>
 <ion-list-header>
   Seepage Rate
 </ion-list-header>
-<ion-item-sliding (ionSwipe)="DeleteElement('PrimaryOriginCharacter')">
+<ion-item-sliding (ionSwipe)="DeleteElement('GroundWaterDescriptors')">
     <ion-item>
       <ion-label>Estimate Rate</ion-label>
       <ion-select interface="popover" interface="popover" [(ngModel)]="GroundWaterDescriptors" formControlName="GroundWaterDescriptors">
@@ -39,14 +43,18 @@
       </ion-select>
     </ion-item>
       <ion-item-options>
-    <button ion-button expandable (click)="DeleteElement('PrimaryOriginCharacter')">Delete</button>
+    <button ion-button expandable (click)="DeleteElement('GroundWaterDescriptors')">Delete</button>
   </ion-item-options>
 </ion-item-sliding>
     <ion-item>
       <ion-label>Measured Rate</ion-label>
-      <ion-input text-right value={{GroundwaterSeepageRate}} [max]=5 type="number" formControlName="GroundwaterSeepageRate"></ion-input>
+      <ion-input clearInput=true text-right value={{GroundwaterSeepageRate}} [max]=5 type="number" formControlName="GroundwaterSeepageRate"></ion-input>
+    </ion-item>
+     <ion-item>
+      <ion-label>GroundWaterNote</ion-label>
+      <ion-input clearInput=true value={{GroundWaterNote}} [max]=5 type="text" formControlName="GroundWaterNote"></ion-input>
     </ion-item>
   </ion-list>
-    <button ion-button type="submit" [disabled]="!todo.valid">Submit</button>
+    <button ion-button type="submit" (click)="postDataLine()">Submit</button>
   </form>
 </ion-content>

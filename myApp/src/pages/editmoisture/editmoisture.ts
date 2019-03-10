@@ -5,6 +5,7 @@ import { RestProvider } from '../../providers/rest/rest';
 import { EditcolourPage } from '../editcolour/editcolour';
 import { ModalController } from 'ionic-angular';
 import { ModalselectPage } from '../modalselect/modalselect';
+import { ListhorizonsPage } from '../listhorizons/listhorizons';
 /**
  * Generated class for the EditmoisturePage page.
  *
@@ -28,8 +29,9 @@ export class EditmoisturePage {
 	Horizon : any;
 	MoistureOptions :any;
 	id: any;
+  MoistureNote:any;
   constructor(public modalCtrl: ModalController,public navCtrl: NavController,public restProvider: RestProvider, public navParams: NavParams, private formBuilder: FormBuilder) {
-    this.horizon = navParams.get("horizon");
+    this.horizon = this.restProvider.currenthorizon;
     this.getDataSelect('Moisture');
     this.id = this.horizon.id;
     this.Project = this.horizon.Project.id
@@ -50,6 +52,11 @@ export class EditmoisturePage {
 	}
     catch(TypeError) {
 	}
+    try {
+    this.MoistureNote = this.horizon.MoistureNote
+  }
+    catch(TypeError) {
+  }
     this.todo = this.formBuilder.group({
   	  id:[this.id],
   	  Project: [this.Project],
@@ -58,6 +65,7 @@ export class EditmoisturePage {
       PrimaryMoisture: ['', Validators.required],
       SecondaryMoisture: [''],
       MoistureVariant: [''],
+      MoistureNote: [''],
     });
     console.log(this.todo)
   }
@@ -102,6 +110,8 @@ export class EditmoisturePage {
     modal.present();
   }
 
-
+  NavHorizons(){
+    this.navCtrl.setRoot(ListhorizonsPage,{project:this.horizon.TestPit,projectdets:this.horizon.Project});
+  }
 }
 

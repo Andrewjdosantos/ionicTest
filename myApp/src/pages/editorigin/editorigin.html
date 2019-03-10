@@ -10,6 +10,10 @@
     <ion-title (click)='showPageModal(horizon)'>Origin</ion-title>
   
         <ion-buttons right>
+                <button (click)=NavHorizons(horizon) ion-button icon-end>
+        Horizons
+        <ion-icon style='font-size: 1.8em' color="secondary" name="arrow-backward"></ion-icon>
+      </button>
       <button (click)=gotoNextPage(horizon) ion-button icon-end>
         Next
         <ion-icon style='font-size: 1.8em' color="secondary" name="arrow-forward"></ion-icon>
@@ -63,6 +67,11 @@
     <ion-label>Reworked</ion-label>
     <ion-toggle checked={{OriginReworked}} [(ngModel)]="OriginReworked" formControlName="OriginReworked" ></ion-toggle>
   </ion-item>
+
+     <ion-item>
+      <ion-label>OriginNote</ion-label>
+      <ion-input value={{OriginNote}} [max]=5 type="text" formControlName="OriginNote"></ion-input>
+    </ion-item>
 </ion-list>
     <button ion-button type="submit" >Submit</button>
   </form>

@@ -5,6 +5,7 @@ import { RestProvider } from '../../providers/rest/rest';
 import { EdittexturePage } from '../edittexture/edittexture';
 import { ModalController } from 'ionic-angular';
 import { ModalselectPage } from '../modalselect/modalselect';
+import { ListhorizonsPage } from '../listhorizons/listhorizons';
 /**
  * Generated class for the EditstructurePage page.
  *
@@ -32,17 +33,39 @@ export class EditstructurePage {
 	SecFilter :any;
 	StructureOptions: any;
 	AllStructOptions: any;
+	StructureNote:any;
   constructor(public modalCtrl: ModalController,public navCtrl: NavController,public restProvider: RestProvider, public navParams: NavParams, private formBuilder: FormBuilder) {
-    this.horizon = navParams.get("horizon");
+    this.horizon = this.restProvider.currenthorizon;
     this.id = this.horizon.id;
     this.Horizon = this.horizon.Horizon
     this.Project = this.horizon.Project.id
     this.TestPit = this.horizon.TestPit.id
     try {
 	this.PrimaryStructure = this.horizon.PrimaryStructure.id;
+		}
+	catch(TypeError) {
+		console.log('error')
+	}
+	try {
 	this.SecondaryStructure = this.horizon.SecondaryStructure.id;
+			}
+	catch(TypeError) {
+		console.log('error')
+	}
+	try {
 	this.PrimFilter = this.horizon.PrimaryStructure.PrimaryClassification;
+	}
+	catch(TypeError) {
+		console.log('error')
+	}
+	try {
 	this.SecFilter = this.horizon.SecondaryStructure.PrimaryClassification;
+	}
+	catch(TypeError) {
+		console.log('error')
+	}
+	try {
+	this.StructureNote = this.horizon.StructureNote;
 	}
 	catch(TypeError) {
 		console.log('error')
@@ -61,6 +84,7 @@ export class EditstructurePage {
 	  SecondaryStructure : ['', Validators.required],
       PrimFilter :['', Validators.required],
 	  SecFilter : ['', Validators.required],
+	  StructureNote: ['']
     });
   }
 
@@ -140,7 +164,9 @@ export class EditstructurePage {
   }
 
 
-
+  NavHorizons(){
+    this.navCtrl.setRoot(ListhorizonsPage,{project:this.horizon.TestPit,projectdets:this.horizon.Project});
+  }
 }
 
 

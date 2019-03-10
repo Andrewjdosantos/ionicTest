@@ -30,9 +30,9 @@ export class AddprojectPage {
    postNewProject() {
    this.restProvider.postDataSelect('Project',JSON.stringify(this.todo.value))
     .then(data => {
-      this.navCtrl.pop();
       console.log(this.todo.value)
     });
+     this.navCtrl.pop();
   }
   
   
