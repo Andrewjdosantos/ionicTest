@@ -5,7 +5,7 @@ import { RestProvider } from '../../providers/rest/rest';
 import { AddtestpitPage } from '../addtestpit/addtestpit';
 import { CreateHorizonPage } from '../create-horizon/create-horizon';
 import { ListhorizonsPage } from '../listhorizons/listhorizons';
-
+import { HomePage } from '../home/home';
 /**
  * Generated class for the AddprojectPage page.
  *
@@ -23,12 +23,13 @@ export class ListTestPitsPage {
 	dataline: any;
 
   constructor(public navCtrl: NavController,public restProvider: RestProvider, public navParams: NavParams, private formBuilder: FormBuilder) {
-  	this.project = navParams.get("project");
+  	this.project = this.restProvider.currentproject;
     console.log(this.project)
   	this.getTestPits(String(this.project.id));
   }
 
    goAnOtherPage(params,project){
+    this.restProvider.currenttestpit = params
   	this.navCtrl.push(ListhorizonsPage,{project:params,projectdets:project});
   }
 
@@ -56,6 +57,10 @@ export class ListTestPitsPage {
   EditTestpit(params,testpitid){
     this.navCtrl.push(AddtestpitPage,{project:params,testpit:testpitid});
   } 
+
+  Navhome(){
+    this.navCtrl.setRoot(HomePage);
+  }
   
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddprojectPage');

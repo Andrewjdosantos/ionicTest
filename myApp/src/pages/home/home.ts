@@ -33,6 +33,7 @@ export class HomePage {
   }
 
   goAnOtherPage(params){
+    this.restProvider.currentproject = params
   	this.navCtrl.push(ListTestPitsPage,{project:params});
   }
 

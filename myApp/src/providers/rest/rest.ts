@@ -22,8 +22,8 @@ import { ToastController } from 'ionic-angular';
 @Injectable()
 export class RestProvider {
 
-
-
+  currenttestpit:any;
+  currentproject:any;
   currenthorizon:any;
   // apiUrl = 'http://icefyer5004.pythonanywhere.com/api';
   apiUrl = 'http://icefyer5004.pythonanywhere.com/api';
