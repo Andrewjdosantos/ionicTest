@@ -32,14 +32,15 @@
             <ion-list-header>
   {{ProjectDetails}} : TP{{TestPit}} <!-- barry comes from porject name -->
 </ion-list-header>
-    <ion-item-sliding *ngFor="let horizon of dataline">
-              <ion-item (click)="showPageModal(horizon)">
-      <h2>{{horizon.PitDepth}} m | {{horizon.Label}}</h2>
-<!--       <button (click)="goAnOtherPage(horizon)" ion-button>Edit Horizon</button>
-      <button (click)="showPageModal(horizon)" ion-button>---</button> -->
+    <ion-item-sliding *ngFor="let i of dataline">
+              <ion-item>
+      <h2 (click)="showPageModal(i)">{{i.PitDepth}} m | {{i.Label}}</h2>
+<!--       <button (click)="goAnOtherPage(i)" ion-button>Edit i</button>
+      <button (click)="showPageModal(i)" ion-button>---</button> -->
+      <button (click)="presentConfirm(i)" [hidden]="!CreateHorizon" ion-button>Duplicate</button>
       </ion-item>
       <ion-item-options side="left">
-        <button ion-button (click)="goAnOtherPage(horizon)">edit</button>
+        <button ion-button (click)="goAnOtherPage(i)">edit</button>
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
@@ -49,4 +50,5 @@
   <button (click)="goAnOtherPage(TestPitObject)" ion-button>Create Horizon</button>
     </ion-col>
   </ion-row>
+  <button (click)='getGeolocation()' ion-button>Geo</button>
 </ion-content>

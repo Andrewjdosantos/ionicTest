@@ -6,7 +6,7 @@ import { AddtestpitPage } from '../addtestpit/addtestpit';
 import { AddcontactPage } from '../addcontact/addcontact';
 import { AlertController } from 'ionic-angular';
 import { ListhorizonsPage } from '../listhorizons/listhorizons';
-
+import { ListTestPitsPage } from '../list-test-pits/list-test-pits';
 /**
  * Generated class for the CreateHorizonPage page.
  *
@@ -120,7 +120,7 @@ export class CreateHorizonPage {
   }
 
    GOTOcontactDetails(params){
-    this.navCtrl.push(AddcontactPage,{dataline:params});
+    this.navCtrl.push(ListTestPitsPage,{dataline:params});
   }
 
   //  GotoListhorizons(params,project){
@@ -132,6 +132,11 @@ export class CreateHorizonPage {
     .then(data => {
       this.ContactOptions = data;
     });
+  }
+
+
+  duplicate(){
+    this.navCtrl.push(ListTestPitsPage,{dataline:this.todo.value});
   }
 
   postDataLine() {

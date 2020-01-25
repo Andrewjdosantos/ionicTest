@@ -4,9 +4,11 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
+import { FilePath } from '@ionic-native/file-path/ngx';
+
 
 import { AboutPage } from '../pages/about/about';
-
+import { Geolocation } from '@ionic-native/geolocation';
 import { HomePage } from '../pages/home/home';
 import { AddprojectPage } from '../pages/addproject/addproject';
 import { AddtestpitPage } from '../pages/addtestpit/addtestpit';
@@ -28,6 +30,7 @@ import { SampledetailsPage } from '../pages/sampledetails/sampledetails';
 import { EditbioPage } from '../pages/editbio/editbio';
 import { ContactPage } from '../pages/contact/contact';
 import { CreatetestpitPage } from '../pages/createtestpit/createtestpit';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -58,13 +61,14 @@ import { RestProvider } from '../providers/rest/rest';
     EditpedocretePage,
     SampledetailsPage,
     EditbioPage,
-    CreatetestpitPage
+    CreatetestpitPage,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp),
-    HttpModule
+    HttpModule,
+    // Geolocation
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -97,7 +101,10 @@ import { RestProvider } from '../providers/rest/rest';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     PeopleServiceProvider,
-    RestProvider
+    RestProvider,
+    Geolocation,
+    Camera,
+    FilePath
   ]
 })
 export class AppModule {}

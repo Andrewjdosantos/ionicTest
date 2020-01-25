@@ -21,16 +21,22 @@ import { HomePage } from '../home/home';
 export class ListTestPitsPage {
 	project: any;
 	dataline: any;
-
+  CreateHorizon :any;
   constructor(public navCtrl: NavController,public restProvider: RestProvider, public navParams: NavParams, private formBuilder: FormBuilder) {
   	this.project = this.restProvider.currentproject;
-    console.log(this.project)
+    try{
+    this.CreateHorizon = navParams.get("dataline");
+  }catch{
+    this.CreateHorizon = false
+  }
+
+    console.log(this.CreateHorizon)
   	this.getTestPits(String(this.project.id));
   }
 
    goAnOtherPage(params,project){
     this.restProvider.currenttestpit = params
-  	this.navCtrl.push(ListhorizonsPage,{project:params,projectdets:project});
+  	this.navCtrl.push(ListhorizonsPage,{project:params,projectdets:project,CreateHorizon:this.CreateHorizon});
   }
 
   getTestPits(filter) {

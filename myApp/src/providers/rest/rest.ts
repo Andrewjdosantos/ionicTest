@@ -170,7 +170,26 @@ export class RestProvider {
 	this.http.post(this.apiUrl+'/listpost/',body,
 		{  	headers: { 'Content-Type': 'application/json' }
 	}).subscribe(data => {
+		this.Success(data);
+		resolve(data)
+		console.log('duplicate',data)
+		// alert('Data Added');
+	}, 
+	err => {
+		console.log(body);
+		this.Failure();
+	// alert('Data Not Added');
+	});
+	});
+	}
+
+	duplicateDataLine(body) {
+	return new Promise(resolve => {
+	this.http.post(this.apiUrl+'/listpost/',body,
+		{  	headers: { 'Content-Type': 'application/json' }
+	}).subscribe(data => {
 		this.Success();
+		console.log('duplicate',data)
 		// alert('Data Added');
 	}, 
 	err => {

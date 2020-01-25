@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,Events } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,Events,Platform } from 'ionic-angular';
 import { CreateHorizonPage } from '../create-horizon/create-horizon';
 import { EditmoisturePage } from '../editmoisture/editmoisture';
 import { EditcolourPage } from '../editcolour/editcolour';
@@ -14,6 +14,7 @@ import { EditbioPage } from '../editbio/editbio';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { RestProvider } from '../../providers/rest/rest';
 import { ListhorizonsPage } from '../listhorizons/listhorizons';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 /**
  * Generated class for the ModalselectPage page.
  *
@@ -34,7 +35,8 @@ export class ModalselectPage {
   Project:any;
   TestPit:any;
   Horizon:any;
-  constructor(public events:Events,public navCtrl: NavController, public navParams: NavParams, public restProvider: RestProvider, private formBuilder: FormBuilder) {
+    Pictures = [];
+  constructor(private plt: Platform,private camera: Camera,public events:Events,public navCtrl: NavController, public navParams: NavParams, public restProvider: RestProvider, private formBuilder: FormBuilder) {
   this.horizon = this.restProvider.currenthorizon
   this.id = this.horizon.Horizon;
   this.Horizon = this.horizon.Horizon
@@ -47,13 +49,26 @@ export class ModalselectPage {
   catch(TypeError) {
     console.log('error')
   }
-
+    try{
+      let x = this.horizon.Pictures.split(',')
+      console.log('pictures',this.horizon.TestPit.Pictures.length)
+      if (this.horizon.Pictures.length >0){
+      for (var i in x){
+        this.Pictures.push(x[i])
+      }
+    }
+      // this.Pictures = this.testpit.Pictures
+    }
+    catch(TypeError){
+      console.log('no pictures')
+    }
     this.todo = this.formBuilder.group({
       id:[this.id],
       Project: [this.Project],
       TestPit: [this.TestPit],
       Horizon: [this.horizon.id],
       NoteNote :[''],
+      Pictures:['']
     });
   }
 
@@ -112,8 +127,58 @@ closeModal() {
     this.navCtrl.setRoot(ListhorizonsPage,{project:this.horizon.TestPit,projectdets:this.horizon.Project});
   }
 
+
+takePicture(){
+const options: CameraOptions = {
+  quality: 100,
+  destinationType: this.camera.DestinationType.FILE_URI,
+  encodingType: this.camera.EncodingType.JPEG,
+  mediaType: this.camera.MediaType.PICTURE
+}
+
+//   this.camera.getPicture(options).then((imagePath) => {
+//  // imageData is either a base64 encoded string or a file URI
+//  // If it's base64 (DATA_URL):
+//  // let base64Image = 'data:image/jpeg;base64,' + imageData;
+//  let base64Image = imagePath.substring(imagePath.lastIndexOf('/') + 1, imagePath.lastIndexOf('?'));
+//  this.Pictures.push(base64Image)
+//  console.log(base64Image)
+// }, (err) => {
+//  // Handle error
+// });
+
+
+    this.camera.getPicture(options).then(imagePath => {
+        // if (this.plt.is('android') && sourceType === this.camera.PictureSourceType.PHOTOLIBRARY) {
+        //     this.filePath.resolveNativePath(imagePath)
+        //         .then(filePath => {
+        //             let correctPath = filePath.substr(0, filePath.lastIndexOf('/') + 1);
+        //             let currentName = imagePath.substring(imagePath.lastIndexOf('/') + 1, imagePath.lastIndexOf('?'));
+        //             this.Pitctures.push(currentName)
+        //             // this.copyFileToLocalDir(correctPath, currentName, this.createFileName());
+        //         });
+        // } else {
+            var currentName = imagePath.substr(imagePath.lastIndexOf('/') + 1);
+            var correctPath = imagePath.substr(0, imagePath.lastIndexOf('/') + 1);
+            // this.copyFileToLocalDir(correctPath, currentName, this.createFileName());
+            this.Pictures.push(currentName)
+        // }
+    });
+
+
+
+}
+
+deletePic(item){
+  let pic = this.Pictures.indexOf(item)
+  this.Pictures.splice(item,1)
+  // this.alert = this.Pictures[0]
+}
+   
+
   postDataLine() {
     // console.log(JSON.stringify(this.todo.value))
+    this.todo.value.Pictures = this.Pictures.toString()
     if (this.id){
      this.restProvider.putDataLine(JSON.stringify(this.todo.value),this.restProvider.currenthorizon.id)
     .then(data => {

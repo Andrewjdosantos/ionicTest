@@ -72,7 +72,15 @@ TP{{horizon?.TestPit?.Name}}
       <ion-label>Horizon Note</ion-label>
       <ion-input value={{NoteNote}} [max]=5 type="text" formControlName="NoteNote"></ion-input>
     </ion-item>
-    <button ion-button type="submit" (click)="postDataLine()">Save Horizon Note</button>
+          <a (click)='takePicture()' color="red" ion-button>Add Picture</a>
+    <ion-list inset>
+      <ion-item  *ngFor="let item of Pictures; index as i;">{{item}}<button color='warn' (click)="deletePic(i)" ion-button>Delete</button></ion-item>
+      <ion-item color='danger' *ngIf='horizon.Pictures.length==0'>Please remeber to add pictures.</ion-item>
+    </ion-list>
+
+    <button [style.background-color]="Pictures?.length>0 ? 'Primary' : 'red'" ion-button type="submit" (click)="postDataLine()">Save Horizon Details</button>
   </form>
 </ion-list>
 </ion-content>
+
+ <!-- [color]="Pictures?.length>0 ? 'Primary' : 'warning'" -->

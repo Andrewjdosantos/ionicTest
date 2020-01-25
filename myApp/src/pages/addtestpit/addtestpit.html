@@ -18,20 +18,52 @@
 
 <ion-content padding>
   <form [formGroup]="todo" (ngSubmit)="postDataLine()">
+  <ion-list>
     <ion-item>
       <ion-label>TP</ion-label>
       <ion-input placeholder="Number" value={{TPNumber}} type="number" formControlName="Name"></ion-input>
     </ion-item>
      <ion-item>
-      <ion-label>TestPitNote</ion-label>
+      <ion-label>TestPit Note</ion-label>
       <ion-input value={{TestPitNote}} [max]=5 type="text" formControlName="TestPitNote"></ion-input>
     </ion-item>
+  </ion-list>
+         <ion-list>
+          <ion-list-header>
+Location<a (click)='getGeolocation()' ion-button>Get Location</a>
+</ion-list-header>
+<ion-item>
+          <!-- <button (click)='getGeolocation()' ion-button>Geo</button> -->
+      <ion-label>Longitude</ion-label>
+      <ion-input value={{testpit?.Longitude}} [max]=5 type="text" formControlName="Longitude"></ion-input>
+    </ion-item>
+             <ion-item>
+      <ion-label>Latitude</ion-label>
+      <ion-input value={{testpit?.Latitude}} [max]=5 type="text" formControlName="Latitude"></ion-input>
+    </ion-item>
+  </ion-list>
+
   <ion-row style='text-align:center'>
     <ion-col>
+      <a (click)='takePicture()' ion-button>Add Pictur</a>
+    <ion-list inset>
+      <ion-item  *ngFor="let item of Pictures; index as i;">{{item}}<button color='warn' (click)="deletePic(i)" ion-button>Delete</button></ion-item>
+    </ion-list>
     <button ion-button type="submit" [disabled]="!todo.valid">Submit</button>
     </ion-col>
 </ion-row>
+
   </form>
+<!--     <ion-row style='text-align:center'>
+    <ion-col>
+    <button (click)='getGeolocation()' ion-button>Geo</button>
+    <button (click)='takePicture()' ion-button>AddPic</button>
+    <ion-list inset>
+      <ion-item  *ngFor="let item of Pictures; index as i;">{{item}}<button color='warn' (click)="deletePic(i)" ion-button>Delete</button></ion-item>
+    </ion-list>
+  </ion-col>
+</ion-row> -->
+    {{alert}}
 </ion-content>
 
 

@@ -50,6 +50,7 @@
       <ion-input value={{ContactDirection}} [max]=5 type="text" formControlName="ContactDirection"></ion-input>
     </ion-item>
   </ion-list>
-    <button ion-button type="submit" (click)="postDataLine()">Submit</button>
+    <button [disabled]="!todo.valid" ion-button type="submit" (click)="postDataLine()">Submit</button>
+     <button [disabled]="!todo.valid" ion-button type="submit" (click)="duplicate()">Duplicate</button>
   </form>
 </ion-content>
